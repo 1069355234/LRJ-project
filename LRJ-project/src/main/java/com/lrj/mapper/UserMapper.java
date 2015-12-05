@@ -1,0 +1,13 @@
+package com.lrj.mapper;
+
+import java.util.List;
+
+import com.lrj.entity.UserFormMap;
+import com.lrj.mapper.base.BaseMapper;
+
+
+public interface UserMapper extends BaseMapper{
+
+	public List<UserFormMap> findUserPage(UserFormMap userFormMap);
+
+}
