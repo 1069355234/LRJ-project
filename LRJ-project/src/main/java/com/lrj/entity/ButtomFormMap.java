@@ -1,4 +1,4 @@
-package com.lrj.entity;
+﻿package com.lrj.entity; 
 
 import com.lrj.annotation.TableSeg;
 import com.lrj.util.FormMap;
