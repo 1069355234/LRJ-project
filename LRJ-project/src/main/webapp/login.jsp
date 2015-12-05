@@ -31,10 +31,20 @@ function genTimestamp(){
 	var time = new Date();
 	return time.getTime();
 }
+//回车事件 点击回车按钮登录
+function KeyDown(e) {
+	e = window.event || e;
+	var ke = e.keyCode || e.which;
+	if (ke == 13) {
+		if(checkUserForm()){
+			document.getElementById("loginform").submit();
+		}
+	}
+}
 </script>
 </head>
-<body onload="javascript:to_top()"
-	style="background-image: url('${pageContext.servletContext.contextPath }/admin_files/bg.jpg');margin-top:0px;background-repeat: round;"">
+<body onload="javascript:to_top()"  onkeydown="KeyDown(event);"
+	style="background-image: url('${pageContext.servletContext.contextPath }/admin_files/bg.jpg');margin-top:0px;background-repeat: round;">
 	<div id="loginbox" style="padding-top: 10%;">
 		<form id="loginform" name="loginform" class="form-vertical"
 			style="background-color: rgba(0, 0, 0, 0.5) !important; background: #000; filter: alpha(opacity = 50); *background: #000; *filter: alpha(opacity = 50); /*黑色透明背景结束*/ color: #FFF; bottom: 0px; right: 0px; border: 1px solid #000;"
@@ -106,7 +116,7 @@ function genTimestamp(){
 			var code = $("input[name='code']").val();
 			if("" == username){
 				$("#info").text("用户名不能为空");
-				return;
+				return ;
 			}
 			if("" == pwd){
 				$("#info").text("密码不能为空");
