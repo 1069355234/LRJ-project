@@ -17,6 +17,7 @@ import com.lrj.entity.ButtomFormMap;
 import com.lrj.entity.Params;
 import com.lrj.entity.ResFormMap;
 import com.lrj.entity.ResUserFormMap;
+import com.lrj.entity.RoleResFormMap;
 import com.lrj.entity.UserGroupsFormMap;
 import com.lrj.mapper.ResourcesMapper;
 import com.lrj.util.Common;
@@ -230,6 +231,15 @@ public class ResourcesController extends BaseController {
 		List<ResFormMap> rs = resourcesMapper.findRes(resFormMap);
 		return rs;
 	}
+
+	@ResponseBody
+	@RequestMapping("findRoleRes")
+	public List<ResFormMap> findRoleRes() {
+		ResFormMap resFormMap = getFormMap(ResFormMap.class);
+		List<ResFormMap> rs = resourcesMapper.findRoleRes(resFormMap);
+		return rs;
+	}
+
 	@ResponseBody
 	@RequestMapping("addUserRes")
 	@Transactional(readOnly=false)//需要事务操作必须加入此注解
@@ -264,6 +274,28 @@ public class ResourcesController extends BaseController {
 			}
 			resourcesMapper.batchSave(resUserFormMaps);
 		}
+		return "success";
+	}
+
+	@ResponseBody
+	@RequestMapping("addRoleRes")
+	@Transactional(readOnly=false)//需要事务操作必须加入此注解
+	@SystemLog(module="系统管理",methods="用户管理/组管理-修改权限")//凡需要处理业务逻辑的.都需要记录操作日志
+	public String addRoleRes() throws Exception {
+		String roleId = getPara("roleId");
+		resourcesMapper.deleteByAttribute("role_id", roleId, RoleResFormMap.class);
+		String[] resIds = getParaValues("resId[]");
+		List<RoleResFormMap> roleResFormMaps = new ArrayList<>();
+
+		for(String resId : resIds){
+			RoleResFormMap roleResFormMap = new RoleResFormMap();
+			roleResFormMap.put("role_id", roleId);
+			roleResFormMap.put("res_id", resId);
+			roleResFormMaps.add(roleResFormMap);
+		}
+
+		resourcesMapper.batchSave(roleResFormMaps);
+
 		return "success";
 	}
 

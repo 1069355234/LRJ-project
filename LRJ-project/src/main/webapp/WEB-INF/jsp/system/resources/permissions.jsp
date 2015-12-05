@@ -16,7 +16,7 @@
 
 caption {
  padding: 0 0 5px 0;
- width: 660px;  
+ width: 660px;
  font: italic 13px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
  text-align: right;
 }
@@ -76,7 +76,7 @@ th.specalt {
 html>body td{ font-size:13px;}
 </style>
 <script type="text/javascript">
-function smenu(obj,id){  
+function smenu(obj,id){
 	  $("input[_key='menu_1_"+id+"']").each(function(){
 	   $(this).prop("checked",obj.checked);
 	  });
@@ -84,7 +84,7 @@ function smenu(obj,id){
 		   $(this).prop("checked",obj.checked);
 		  });
 };
-function menu_1(obj,id,pid){  
+function menu_1(obj,id,pid){
 	  $("input[_key_2='menu_1_1_"+id+"']").each(function(){
 		   $(this).prop("checked",obj.checked);
 	});
@@ -94,7 +94,7 @@ function menu_1(obj,id,pid){
 		});
 	  }
 };
-function menu_1_1(obj,id,pid){  
+function menu_1_1(obj,id,pid){
 	if(obj.checked==true){
 		  $("input[_key_1='menu_1_1_"+id+"']").each(function(){
 			   $(this).prop("checked",obj.checked);
@@ -115,7 +115,7 @@ function sub(){
 			async : false, //请勿改成异步，下面有些程序依赖此请数据
 			type : "POST",
 			data : $("#from").serializeJson(),
-			url : rootPath + '/resources/addUserRes.shtml',
+			url : rootPath + '/resources/addRoleRes.shtml',
 			dataType : 'json',
 			success : function(json) {
 				if (json == "success") {
@@ -157,7 +157,7 @@ function sub(){
     </th>
      <th>
     <c:if test="${not empty kc.children}">
-   
+
     <table id="mytable" cellspacing="0" summary="The technical specifications of the Apple PowerMac G5 series" style="width: 100%;height: 100%;">
     <c:forEach items="${kc.children}" var="kcc">
     <tr>
@@ -167,14 +167,14 @@ function sub(){
     </th>
      </tr>
     </c:forEach>
-   
+
     </table>
-    
+
     </c:if>
     </th>
      </tr>
     </c:forEach>
-   
+
     </table>
     </th>
   </tr>
@@ -194,7 +194,7 @@ function sub(){
 			"resFormMap.userId" : "${param.userId}",
 			"resFormMap.roleId" : "${param.roleId}"
 		},
-		url : rootPath + '/resources/findRes.shtml',
+		url : rootPath + '/resources/findRoleRes.shtml',
 		dataType : 'json',
 		success : function(json) {
 			for (index in json) {

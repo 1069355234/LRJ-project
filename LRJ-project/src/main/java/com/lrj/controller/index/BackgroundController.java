@@ -35,6 +35,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.lrj.entity.ResFormMap;
 import com.lrj.entity.UserFormMap;
 import com.lrj.entity.UserLoginFormMap;
+import com.lrj.entity.UserRoleFormMap;
 import com.lrj.mapper.ResourcesMapper;
 import com.lrj.mapper.UserLoginMapper;
 import com.lrj.util.Common;
@@ -122,24 +123,39 @@ public class BackgroundController extends BaseController {
 	 */
 	@RequestMapping("index")
 	public String index(Model model) throws Exception {
-		// 获取登录的bean
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
-		UserFormMap userFormMap = (UserFormMap)Common.findUserSession(request);
-		ResFormMap resFormMap = new ResFormMap();
-		resFormMap.put("userId", userFormMap.get("id"));
-		List<ResFormMap> mps = resourcesMapper.findRes(resFormMap);
-		//List<ResFormMap> mps = resourcesMapper.findByWhere(new ResFormMap());
-		List<TreeObject> list = new ArrayList<TreeObject>();
-		for (ResFormMap map : mps) {
-			TreeObject ts = new TreeObject();
-			Common.flushObject(ts, map);
-			list.add(ts);
+		try {
+			// 获取登录的bean
+			HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+			UserFormMap userFormMap = (UserFormMap)Common.findUserSession(request);
+
+			UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
+			userRoleFormMap.put("userId", userFormMap.get("id").toString());
+			List<UserRoleFormMap> userRoles = userLoginMapper.findByNames(userRoleFormMap);
+			List<ResFormMap> mps = new ArrayList<>();
+			for(UserRoleFormMap userRole : userRoles){
+				ResFormMap resFormMap = new ResFormMap();
+				resFormMap.put("roleId", userRole.get("roleId").toString());
+				List<ResFormMap> findRoleRes = resourcesMapper.findRoleRes(resFormMap);
+				for(ResFormMap res : findRoleRes){
+					mps.add(res);
+				}
+			}
+
+			List<TreeObject> list = new ArrayList<TreeObject>();
+			for (ResFormMap map : mps) {
+				TreeObject ts = new TreeObject();
+				Common.flushObject(ts, map);
+				list.add(ts);
+			}
+			TreeUtil treeUtil = new TreeUtil();
+			List<TreeObject> ns = treeUtil.getChildTreeObjects(list, 0);
+			model.addAttribute("list", ns);
+			// 登陆的信息回传页面
+			model.addAttribute("userFormMap", userFormMap);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		TreeUtil treeUtil = new TreeUtil();
-		List<TreeObject> ns = treeUtil.getChildTreeObjects(list, 0);
-		model.addAttribute("list", ns);
-		// 登陆的信息回传页面
-		model.addAttribute("userFormMap", userFormMap);
 		return "/index";
 	}
 

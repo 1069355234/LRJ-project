@@ -49,6 +49,17 @@
 		order by level asc
 	</select>
 
+	<!-- 获取该角色的权限 -->
+	<select id="findRoleRes" parameterType="String" resultType="com.lrj.entity.ResFormMap">
+		SELECT
+		<include refid="selectId" />
+		from ly_resources where id in(
+		select res_id from
+		ly_role_res where role_id = #{roleId})
+
+		order by level asc
+	</select>
+
 	<!-- 根据账号Id获取该用户的权限 -->
 	<select id="findUserResourcess" parameterType="String"
 		resultType="com.lrj.entity.ResFormMap">

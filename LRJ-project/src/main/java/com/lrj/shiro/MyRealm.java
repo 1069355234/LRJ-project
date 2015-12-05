@@ -1,5 +1,6 @@
 package com.lrj.shiro;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import org.apache.shiro.util.ByteSource;
 
 import com.lrj.entity.ResFormMap;
 import com.lrj.entity.UserFormMap;
+import com.lrj.entity.UserRoleFormMap;
 import com.lrj.mapper.ResourcesMapper;
 import com.lrj.mapper.UserMapper;
 
@@ -46,7 +48,20 @@ public class MyRealm extends AuthorizingRealm {
 		String loginName = SecurityUtils.getSubject().getPrincipal().toString();
 		if (loginName != null) {
 			String userId = SecurityUtils.getSubject().getSession().getAttribute("userSessionId").toString();
-			List<ResFormMap> rs = resourcesMapper.findUserResourcess(userId);
+
+			UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
+			userRoleFormMap.put("userId", userId);
+			List<UserRoleFormMap> userRoles = resourcesMapper.findByNames(userRoleFormMap);
+			List<ResFormMap> rs = new ArrayList<>();
+			for(UserRoleFormMap userRole : userRoles){
+				ResFormMap resFormMap = new ResFormMap();
+				resFormMap.put("roleId", userRole.get("roleId").toString());
+				List<ResFormMap> findRoleRes = resourcesMapper.findRoleRes(resFormMap);
+				for(ResFormMap res : findRoleRes){
+					rs.add(res);
+				}
+			}
+
 			// 权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			// 用户的角色集合

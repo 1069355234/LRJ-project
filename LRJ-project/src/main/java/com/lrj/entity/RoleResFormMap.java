@@ -8,7 +8,7 @@ import com.lrj.util.FormMap;
 /**
  * 实体表
  */
-@TableSeg(tableName = "ly_role_res", id="roleId")
+@TableSeg(tableName = "ly_role_res", id="role_id")
 public class RoleResFormMap extends FormMap<String,Object>{
 
 	/**
