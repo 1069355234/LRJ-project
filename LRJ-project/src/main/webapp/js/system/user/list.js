@@ -7,6 +7,7 @@ $(function() {
 		l_column : [ {
 			colkey : "id",
 			name : "id",
+			hide : true
 		}, {
 			colkey : "userName",
 			name : "用户名",
@@ -16,29 +17,23 @@ $(function() {
 			name : "账号",
 			isSort:true,
 		}, {
+			colkey : "region",
+			name : "负责区域",
+			isSort:true,
+		}, {
 			colkey : "roleName",
 			name : "所属角色"
 		}, {
-			colkey : "locked",
-			name : "账号状态",
-			width : '90px',
-			isSort:true
-		}, {
-			colkey : "description",
-			name : "描述"
-		}, {
 			colkey : "createTime",
-			name : "时间",
+			name : "创建时间",
 			isSort:true,
 			renderData : function(rowindex,data, rowdata, column) {
 				return new Date(data).format("yyyy-MM-dd hh:mm:ss");
 			}
-		}, {
-			name : "操作",
-			renderData : function( rowindex ,data, rowdata, colkeyn) {
-				return "测试渲染函数";
-			}
-		} ],
+		} , {
+			colkey : "description",
+			name : "描述"
+		}],
 		jsonUrl : rootPath + '/user/findByPage.shtml',
 		checkbox : true,
 		serNumber : true

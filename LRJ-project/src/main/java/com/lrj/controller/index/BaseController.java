@@ -1,5 +1,6 @@
 package com.lrj.controller.index;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.lrj.entity.ResFormMap;
 import com.lrj.entity.UserFormMap;
+import com.lrj.entity.UserRoleFormMap;
 import com.lrj.mapper.ResourcesMapper;
 import com.lrj.plugin.PageView;
 import com.lrj.util.Common;
@@ -73,11 +75,21 @@ public class BaseController {
 		UserFormMap userFormMap = (UserFormMap)Common.findUserSession(request);
 		// user id
 		int userId = userFormMap.getInt("id");
-		ResFormMap resQueryForm = new ResFormMap();
-		resQueryForm.put("parentId", id);
-		resQueryForm.put("userId", userId);
-		List<ResFormMap> rse = resourcesMapper.findRes(resQueryForm);
-		//List<ResFormMap> rse = resourcesMapper.findByAttribute("parentId", id, ResFormMap.class);
+		
+		UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
+		userRoleFormMap.put("userId", userId);
+		List<UserRoleFormMap> userRoles = resourcesMapper.findByNames(userRoleFormMap);
+		List<ResFormMap> rse = new ArrayList<>();
+		for(UserRoleFormMap userRole : userRoles){
+			ResFormMap resFormMap = new ResFormMap();
+			resFormMap.put("roleId", userRole.get("roleId").toString());
+			resFormMap.put("parentId", id);
+			List<ResFormMap> findRoleRes = resourcesMapper.findRoleRes(resFormMap);
+			for(ResFormMap r : findRoleRes){
+				rse.add(r);
+			}
+		}
+		
 		for (ResFormMap resFormMap : rse) {
 			Object o =resFormMap.get("description");
 			if(o!=null&&!Common.isEmpty(o.toString())){

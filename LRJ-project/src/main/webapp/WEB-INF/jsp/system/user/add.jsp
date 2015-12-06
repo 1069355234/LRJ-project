@@ -59,6 +59,26 @@ label[class^="btn btn-default"] {
 			<div class="form-group" id="selRole" data-url="/role/selRole.shtml"></div>
 			<div class="line line-dashed line-lg pull-in"></div>
 			<div class="form-group">
+				<label class="col-sm-3 control-label">负责区域</label>
+				<div class="col-sm-9">
+					<div class="btn-group m-r">
+						<button data-toggle="dropdown"
+							class="btn btn-sm btn-default dropdown-toggle">
+							<span class="dropdown-label">南京</span> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-select">
+							<li class="active"><a href="#"><input type="radio"
+									name="userFormMap.region" value="南京" checked="checked">南京</a></li>
+							<li class=""><a href="#"><input type="radio"
+									name="userFormMap.region" value="扬州">扬州</a></li>
+							<li class=""><a href="#"><input type="radio"
+									name="userFormMap.region" value="淮北">淮北</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="line line-dashed line-lg pull-in"></div>
+			<div class="form-group">
 				<label class="col-sm-3 control-label">是否禁用</label>
 				<div class="col-sm-9">
 					<div class="btn-group m-r">
@@ -74,7 +94,7 @@ label[class^="btn btn-default"] {
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="line line-dashed line-lg pull-in"></div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">描述</label>

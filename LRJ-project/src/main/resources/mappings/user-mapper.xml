@@ -19,7 +19,8 @@
 		description,
 		locked,
 		credentialsSalt,
-		createTime
+		createTime,
+		region
 	</sql>
 
 	<select id="findUserPage" resultType="com.lrj.entity.UserFormMap">

@@ -55,7 +55,11 @@
 		<include refid="selectId" />
 		from ly_resources where id in(
 		select res_id from
-		ly_role_res where role_id = #{roleId})
+		ly_role_res where role_id = #{roleId}
+		<if test="parentId != null and parentId != '' and parentId != 0">
+			and parentId = #{parentId}
+		</if>
+		)
 
 		order by level asc
 	</select>

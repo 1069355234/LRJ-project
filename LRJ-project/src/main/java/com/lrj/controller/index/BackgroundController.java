@@ -77,10 +77,10 @@ public class BackgroundController extends BaseController {
 			if (!request.getMethod().equals("POST")) {
 				request.setAttribute("error", "支持POST方法提交！");
 			}
-			if (!code.toUpperCase().equals(sessionCode.getAttribute(Const.SESSION_SECURITY_CODE))) {
+			/*if (!code.toUpperCase().equals(sessionCode.getAttribute(Const.SESSION_SECURITY_CODE))) {
 				request.setAttribute("error", "验证码错误！");
 				return "/login";
-			}
+			}*/
 			// 想要得到 SecurityUtils.getSubject()　的对象．．访问地址必须跟ｓｈｉｒｏ的拦截地址内．不然后会报空指针
 			Subject user = SecurityUtils.getSubject();
 			// 用户输入的账号和密码,,存到UsernamePasswordToken对象中..然后由shiro内部认证对比,
