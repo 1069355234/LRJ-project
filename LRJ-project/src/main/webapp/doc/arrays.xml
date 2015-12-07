@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- 民族-->
+	<string-array name="list_nation">
+		<item value="0">汉族</item>
+		<item value="1">回族</item>		
+		<item value="2">其他</item>		
+	</string-array>
+	<!-- 省份-->
+	<string-array name="list_province">
+		<item value="0">河北</item>
+		<item value="1">山西</item>
+		<item value="2">辽宁</item>
+		<item value="3">吉林</item>
+		<item value="4">黑龙江</item>
+		<item value="5">江苏</item>
+		<item value="6">浙江</item>
+		<item value="7">安徽</item>
+		<item value="8">福建</item>
+		<item value="9">江西</item>
+		<item value="10">山东</item>
+		<item value="11">河南</item>
+		<item value="12">湖北</item>
+		<item value="13">湖南</item>
+		<item value="14">广东</item>
+		<item value="15">四川</item>
+		<item value="16">贵州</item>
+		<item value="17">云南</item>
+		<item value="18">陕西</item>
+		<item value="19">甘肃</item>
+		<item value="20">青海</item>
+		<item value="21">台湾</item>		
+		<item value="22">北京</item>
+		<item value="23">天津</item>
+		<item value="24">上海</item>
+		<item value="25">重庆</item>		
+	
+	</string-array>
+
+	<!-- 业务员负责区域-->
+	<string-array name="employee_region">
+		<item value="0">南京</item>
+		<item value="1">扬州</item>
+		<item value="2">淮北</item>
+	</string-array>
+
+	<!-- 角色列表-->
+	<string-array name="role_list">
+		<item value="0">业务员</item>
+		<item value="1">团队长</item>
+		<item value="2">产品总监</item>
+		<item value="3">内审</item>
+		<item value="4">总审</item>
+	</string-array>
+
+	<!-- 工作年限-->
+	<string-array name="list_work_years">
+		<item value="-1">请选择</item>
+		<item value="0">5年以上</item>
+		<item value="1">3-5年(含)</item>
+		<item value="2">1-3年(含)</item>
+		<item value="3">1年以下(含)</item>
+		<item value="4">无单位、没工作</item>
+	</string-array>
+	<!-- 商业保险-->
+	<string-array name="commercial_insurance">
+		<item value="-1">请选择</item>
+		<item value="0">有</item>
+		<item value="1">无</item>
+	</string-array>
+	<!-- 职称--->
+	<string-array name="job_level">
+		<item value="-1">请选择</item>
+		<item value="0">高级管理人员、总公司总经历、中校以上(教授)</item>
+		<item value="1">中级管理人员、公司或分公司总经理</item>
+		<item value="2">一般管理人员、部门经理、科技干部、中、少尉</item>
+		<item value="3">一般员工、工人、科员</item>
+		<item value="4">行业人员、学生和职位不确定、其他人员</item>
+	</string-array>
+	<!-- 社保年限--->
+	<string-array name="social_insurance">
+		<item value="-1">请选择</item>
+		<item value="0">5年以上</item>
+		<item value="1">3-5年(含)</item>
+		<item value="2">1-3年(含)</item>
+		<item value="3">1年以下(含)</item>
+		<item value="4">未缴纳</item>
+	</string-array>
+		<!-- 房产---->
+	<string-array name="house_property">
+		<item value="-1">请选择</item>
+		<item value="0">自有未按揭，价值100万元以上(含)</item>
+		<item value="1">自有未按揭，价值0-100万元(不含)</item>
+		<item value="2">按揭40万以上(不含)</item>
+		<item value="3">按揭40万以下(不含)</item>
+		<item value="4">租凭、无房</item>
+		<item value="5">父母所有</item>		
+	</string-array>
+		<!-- 长期居住地---->
+	<string-array name="long_live">
+		<item value="-1">请选择</item>
+		<item value="0">商业社区</item>
+		<item value="1">城镇社区</item>
+		<item value="2">农村居住区</item>
+		<item value="3">其他居住区</item>
+	</string-array>
+		<!-- 年收入---->
+	<string-array name="year_income">
+		<item value="0">合计所得40万元以上</item>
+		<item value="1">合计所得24.1-39万元</item>
+		<item value="2">合计所得12.1-24万元</item>
+		<item value="3">合计所得6.1-12万元</item>
+		<item value="4">合计所得2.1-6万元</item>
+		<item value="5">合计所得2万元以下</item>		
+	</string-array>
+	<!-- 婚姻状况---->
+	<string-array name="marriage_status">
+		<item value="-1">请选择</item>
+		<item value="0">已婚有子女</item>
+		<item value="1">已婚无子女</item>
+		<item value="2">单身</item>
+		<item value="3">离异</item>
+	</string-array>
+	<!-- 年龄---->
+	<string-array name="age">
+		<item value="-1">请选择</item>
+		<item value="0">60岁以上</item>
+		<item value="1">51-60岁</item>
+		<item value="2">43-50岁</item>
+		<item value="3">31-42岁</item>
+		<item value="4">26-30岁</item>
+		<item value="5">23-25岁</item>
+		<item value="6">18-22</item>
+		<item value="7">18岁以下</item>	
+	</string-array>
+	<!-- 教育程度---->
+	<string-array name="edu_level">
+		<item value="0">硕士研究生或以上</item>
+		<item value="1">本科</item>
+		<item value="2">专科</item>
+		<item value="3">高中(中专)</item>
+		<item value="4">初中或初中以下</item>
+	</string-array>
+	<!-- 职业---->
+	<string-array name="job_type">
+		<item value="0">金融机构(不含保险公司)</item>
+		<item value="1">人民警察、武警、人民解放军</item>
+		<item value="2">国家机关离退休人员</item>
+		<item value="3">优质公用事业单位员工</item>
+		<item value="4">一般上市公司员工</item>
+		<item value="5">一般股份公司、私营企业员工</item>
+		<item value="6">学生、待业或无业人员</item>
+		<item value="7">其他职业</item>
+		<item value="8">国家机关公务员</item>
+		<item value="9">事业单位员工</item>
+	</string-array>
+	<!-- 贷款记录---->
+	<string-array name="loan_record">
+		<item value="-1">请选择</item>
+		<item value="0">5年以上</item>
+		<item value="1">3-5年</item>
+		<item value="2">1-3年</item>
+		<item value="3">无贷款</item>
+	</string-array>
+	<!-- 信用卡额度---->
+	<string-array name="creditcard_level">
+		<item value="-1">请选择</item>
+		<item value="1">无信用卡</item>
+		<item value="2">3000以下</item>
+		<item value="3">3001-6000</item>
+		<item value="4">60001-20000</item>
+		<item value="5">200001-50000</item>
+		<item value="6">50001-100000</item>
+		<item value="7">100000以上</item>	
+	</string-array>
+	<!-- 征信报告 -->
+	<string-array name="credit_report">
+		<item value="-1">请选择</item>
+		<item value="0">有</item>
+		<item value="1">无</item>
+	</string-array>
+	<!-- 标类型 -->
+	<string-array name="product">
+		<item value="0">翼龙贷</item>
+		<item value="1">翼商贷</item>
+		<item value="2">房抵标</item>
+		<item value="3">房抵标(定期)</item>
+		<item value="4">DD借款</item>
+		<item value="5">翼企贷标</item>
+		<item value="6">翼车贷标</item>
+		<item value="7">联保贷</item>
+		<item value="8">翼农贷</item>
+		<item value="9">房贷</item>
+	</string-array>
+	<!-- 材料分类 -->
+	<string-array name="material_type">
+		<item value="0">系统</item>
+		<item value="1">标记</item>
+		<item value="2">普通</item>
+		<item value="3">提现</item>
+		<item value="4">可选</item>
+	</string-array>
+	<!-- 图片分类 -->
+	<string-array name="customer_pic_type" product="0" material_type="2">
+		<item value="0">本人身份证</item>
+		<item value="1">行驶证</item>
+		<item value="2">车辆登记证</item>
+		<item value="3">车辆照片</item>
+		<item value="4">二手车网站车辆评估</item>
+		<item value="5">保单</item>
+		<item value="6">正副钥匙</item>
+		<item value="7">车辆抵押借款申请表</item>
+		<item value="8">车辆价值评估表</item>
+		<item value="9">机动车抵押借款合同</item>
+		<item value="10">车辆买卖合同</item>
+		<item value="11">授权委托书</item>
+		<item value="12">盟商签署担保函</item>
+		<item value="13">车贷服务费用明细</item>
+		<item value="14">借款承诺书</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="0" material_type="4">
+		<item value="0">补充材料</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="9" material_type="0">
+		<item value="0">央行征信报告</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="9" material_type="2">
+		<item value="0">本人身份证</item>
+		<item value="1">家属身份证</item>
+		<item value="2">户口本</item>
+		<item value="3">结婚证</item>
+		<item value="4">与直系亲属合影照</item>
+		<item value="5">场所照片</item>
+		<item value="6">家访记录</item>
+		<item value="7">房产证明及家访照片</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="8" material_type="2">
+		<item value="0">本人身份证</item>
+		<item value="1">家属身份证</item>
+		<item value="2">户口本</item>
+		<item value="3">结婚证</item>
+		<item value="4">与直系亲属合影照</item>
+		<item value="5">固定电话近3个月详单</item>
+		<item value="6">住处相关照片</item>
+		<item value="7">场所照片</item>
+		<item value="8">家访记录</item>
+		<item value="9">房产证明及家访照片</item>
+		<item value="10">担保人材料</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="8" material_type="0">
+		<item value="0">央行征信报告</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="8" material_type="4">
+		<item value="0">驾照</item>
+		<item value="1">行驶证</item>
+		<item value="2">营业执照</item>
+		<item value="3">学历证明</item>
+		<item value="4">农村医疗保险</item>
+		<item value="5">购房发票</item>
+		<item value="6">水电煤气费</item>
+		<item value="7">养殖证明</item>
+		<item value="8">种植证明</item>
+		<item value="9">机动车登记证</item>
+		<item value="10">道路运输证</item>
+		<item value="11">挂靠协议</item>
+		<item value="12">项目承包合同</item>
+		<item value="13">经营发票</item>
+		<item value="14">车辆保险</item>
+		<item value="15">保险证明(医疗,社保..)</item>
+		<item value="16">房产证明</item>
+		<item value="17">购车发票</item>
+		<item value="18">企业工商查证</item>
+		<item value="19">经营场地证明(房屋租赁合同、水电及物业费收据或发票)</item>
+		<item value="20">机构代码证(正、副本)</item>
+		<item value="21">盟商承诺函</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="5" material_type="2">
+		<item value="0">生产经营许可资料</item>
+		<item value="1">五证一卡</item>
+		<item value="2">章程、验资报告、工商查册</item>
+		<item value="3">身份、婚姻、户籍、居所证明</item>
+		<item value="4">资产清单-总表</item>
+		<item value="5">企业不动产及照片</item>
+		<item value="6">企业车辆及相关照片</item>
+		<item value="7">企业的机器设备及其他</item>
+		<item value="8">借款人、股东的资产及照片</item>
+		<item value="9">借款主体经营状况资料</item>
+		<item value="10">犯罪、诉讼、信用查询</item>
+		<item value="11">签署文件</item>
+		<item value="12">经营场地证明</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="5" material_type="4">
+		<item value="0">补充材料</item>
+		<item value="1">担保人材料</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="1" material_type="0">
+		<item value="0">央行征信报告</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="1" material_type="2">
+		<item value="0">本人身份证</item>
+		<item value="1">家属身份证</item>
+		<item value="2">户口本</item>
+		<item value="3">结婚证</item>
+		<item value="4">与直系亲属合影照</item>
+		<item value="4">固定电话近3个月详单</item>
+		<item value="5">婚姻证明</item>
+		<item value="6">经营发票</item>
+		<item value="7">房产证明及家访照片</item>
+		<item value="8">营业执照(正、副本)</item>
+		<item value="9">经营场地证明(房屋租赁合同、水电及物业费收据或发票)</item>
+		<item value="10">主帐银行流水</item>
+		<item value="11">经营场所照片</item>
+		<item value="12">担保人材料</item>
+	</string-array>
+
+	<string-array name="customer_pic_type" product="1" material_type="4">
+		<item value="0">驾照</item>
+		<item value="1">行驶证</item>
+		<item value="2">个人社保</item>
+		<item value="3">营业执照</item>
+		<item value="4">学历证明</item>
+		<item value="5">职工社保</item>
+		<item value="6">农村医疗保险</item>
+		<item value="7">购房发票</item>
+		<item value="8">水电煤气费</item>
+		<item value="9">养殖证明</item>
+		<item value="10">种植证明</item>
+		<item value="11">办公场所照片</item>
+		<item value="12">银行开户许可证</item>
+		<item value="13">车辆保险</item>
+		<item value="14">房产证明</item>
+		<item value="15">家访记录</item>
+		<item value="16">购车发票</item>
+		<item value="17">企业工商查证</item>
+		<item value="18">征信查询授权书-法人个人</item>
+		<item value="19">税务登记证(正、副本)</item>
+		<item value="20">开户许可证</item>
+		<item value="21">企业经验状况材料</item>
+		<item value="22">生产经营许可证</item>
+		<item value="23">盟商承诺函</item>
+	</string-array>
+	<!-- 借款期限 -->
+	<string-array name="loan_deadline">
+		<item value="-1">请选择</item>
+		<item value="0">2个月</item>
+		<item value="1">3个月</item>
+		<item value="2">4个月</item>
+		<item value="3">5个月</item>
+		<item value="4">6个月</item>
+		<item value="5">7个月</item>
+		<item value="6">8个月</item>
+		<item value="7">9个月</item>
+		<item value="8">10个月</item>
+		<item value="9">11个月</item>
+		<item value="10">12个月</item>
+		<item value="11">15个月</item>
+		<item value="12">18个月</item>
+		<item value="13">21个月</item>
+		<item value="14">24个月</item>
+	</string-array>
+	<!-- 借款类型 -->
+	<string-array name="loan_type">
+		<item value="0">个人消费</item>
+		<item value="1">教育助学</item>
+		<item value="2">生意周转</item>
+		<item value="3">网店周转</item>
+		<item value="4">站内周转</item>
+		<item value="5">翼企贷</item>
+		<item value="6">翼车贷</item>
+		<item value="7">其他</item>
+	</string-array>
+</resources>

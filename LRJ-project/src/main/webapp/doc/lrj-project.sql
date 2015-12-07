@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50621
+Source Server Version : 50624
 Source Host           : localhost:3306
 Source Database       : lrj-project
 
 Target Server Type    : MYSQL
-Target Server Version : 50621
+Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-12-05 16:01:19
+Date: 2015-12-07 23:52:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,7 +53,7 @@ CREATE TABLE `ly_log` (
   `operTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_log
@@ -65,6 +65,17 @@ INSERT INTO `ly_log` VALUES ('138', 'admin', '系统管理', '组管理-修改�
 INSERT INTO `ly_log` VALUES ('139', 'admin', '系统管理', '组管理-修改组', '51', '0:0:0:0:0:0:0:1', '2015-12-05 14:32:46', '执行成功!');
 INSERT INTO `ly_log` VALUES ('140', 'admin', '系统管理', '用户管理/组管理-修改权限', '138', '0:0:0:0:0:0:0:1', '2015-12-05 14:33:02', '执行成功!');
 INSERT INTO `ly_log` VALUES ('141', 'admin', '系统管理', '用户管理-新增用户', '99', '0:0:0:0:0:0:0:1', '2015-12-05 14:52:20', '执行成功!');
+INSERT INTO `ly_log` VALUES ('142', 'admin', '系统管理', '组管理-新增组', '57', '0:0:0:0:0:0:0:1', '2015-12-06 16:49:19', '执行成功!');
+INSERT INTO `ly_log` VALUES ('143', 'admin', '系统管理', '组管理-新增组', '13', '0:0:0:0:0:0:0:1', '2015-12-06 16:52:48', '执行成功!');
+INSERT INTO `ly_log` VALUES ('144', 'admin', '系统管理', '组管理-新增组', '134', '0:0:0:0:0:0:0:1', '2015-12-06 17:02:53', '执行成功!');
+INSERT INTO `ly_log` VALUES ('145', 'admin', '系统管理', '组管理-新增组', '51', '0:0:0:0:0:0:0:1', '2015-12-06 17:03:54', '执行成功!');
+INSERT INTO `ly_log` VALUES ('146', 'admin', '系统管理', '组管理-新增组', '50', '0:0:0:0:0:0:0:1', '2015-12-06 17:04:48', '执行成功!');
+INSERT INTO `ly_log` VALUES ('147', 'admin', '系统管理', '组管理-删除组', '40', '0:0:0:0:0:0:0:1', '2015-12-06 17:05:13', '执行成功!');
+INSERT INTO `ly_log` VALUES ('148', 'admin', '系统管理', '组管理-删除组', '7', '0:0:0:0:0:0:0:1', '2015-12-06 17:05:18', '执行成功!');
+INSERT INTO `ly_log` VALUES ('149', 'admin', '系统管理', '用户管理-新增用户', '35', '0:0:0:0:0:0:0:1', '2015-12-06 17:21:34', '执行成功!');
+INSERT INTO `ly_log` VALUES ('150', 'admin', '系统管理', '用户管理-删除用户', '89', '0:0:0:0:0:0:0:1', '2015-12-06 17:23:46', '执行成功!');
+INSERT INTO `ly_log` VALUES ('151', 'admin', '系统管理', '用户管理-删除用户', '21', '0:0:0:0:0:0:0:1', '2015-12-06 17:23:50', '执行成功!');
+INSERT INTO `ly_log` VALUES ('152', 'admin', '系统管理', '用户管理-修改用户', '18', '0:0:0:0:0:0:0:1', '2015-12-06 17:35:26', '执行成功!');
 
 -- ----------------------------
 -- Table structure for `ly_resources`
@@ -152,14 +163,17 @@ CREATE TABLE `ly_role` (
   `roleKey` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_role
 -- ----------------------------
 INSERT INTO `ly_role` VALUES ('1', '0', '系统管理员', 'admin', '系统管理员');
-INSERT INTO `ly_role` VALUES ('2', '0', '普通角色', 'simple', '普通角色');
-INSERT INTO `ly_role` VALUES ('3', '0', '总经理', 'SUPER', '总经理');
+INSERT INTO `ly_role` VALUES ('4', '0', '业务员', 'salesman', '业务员角色');
+INSERT INTO `ly_role` VALUES ('5', '0', '团队长', 'caption', '团队长角色');
+INSERT INTO `ly_role` VALUES ('6', '0', '产品总监', 'chief', '产皮总监角色');
+INSERT INTO `ly_role` VALUES ('7', '0', '内审', 'innerCheckor', '内审角色');
+INSERT INTO `ly_role` VALUES ('8', '0', '总审', 'allCheckor', '总审角色');
 
 -- ----------------------------
 -- Table structure for `ly_role_res`
@@ -259,17 +273,16 @@ CREATE TABLE `ly_user` (
   `locked` varchar(3) DEFAULT '0',
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deletestatus` int(1) DEFAULT '0' COMMENT '逻辑删除状态0:存在1:删除',
-  `region_id` int(11) DEFAULT NULL COMMENT '区域外键',
+  `region` varchar(10) DEFAULT NULL COMMENT '用户负责的城市',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_user
 -- ----------------------------
-INSERT INTO `ly_user` VALUES ('1', '蓝缘', 'simple', '78e21a6eb88529eab722793a448ed394', '4157c3feef4a6ed91b2c28cf4392f2d1', '0', '1', '2015-05-17 22:23:15', '0', null);
-INSERT INTO `ly_user` VALUES ('2', '超级管理员', 'ROOT', '78e21a6eb88529eab722793a448ed394', '4157c3feef4a6ed91b2c28cf4392f2d1', '0000', '1', '2015-05-23 17:39:37', '0', null);
 INSERT INTO `ly_user` VALUES ('3', '管理员', 'admin', '78e21a6eb88529eab722793a448ed394', '4157c3feef4a6ed91b2c28cf4392f2d1', '3434', '1', '2015-05-23 17:39:39', '0', null);
 INSERT INTO `ly_user` VALUES ('4', 'zhangdf', 'zhangdf', '6ed1a356109c8cbd8cea1b476d5c610b', '5b44bfbe41d192ac387b5b32fabcce12', null, '0', '2015-12-05 14:52:19', '0', null);
+INSERT INTO `ly_user` VALUES ('5', 'test', 'test', '304a462e232bb2ea5d75fe6c8f06755c', '3e0b8c9a05c6e0b06fa132e3070ac8fa', null, '0', '2015-12-06 17:35:25', '0', '扬州');
 
 -- ----------------------------
 -- Table structure for `ly_userlogin`
@@ -283,7 +296,7 @@ CREATE TABLE `ly_userlogin` (
   `loginIP` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ly_user_loginlist` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_userlogin
@@ -316,6 +329,15 @@ INSERT INTO `ly_userlogin` VALUES ('167', '3', 'admin', '2015-12-05 14:31:55', '
 INSERT INTO `ly_userlogin` VALUES ('168', '3', 'admin', '2015-12-05 14:33:29', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('169', '4', 'zhangdf', '2015-12-05 14:52:36', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('170', '4', 'zhangdf', '2015-12-05 14:55:39', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('171', '4', 'zhangdf', '2015-12-06 11:46:04', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('172', '4', 'zhangdf', '2015-12-06 13:49:20', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('173', '4', 'zhangdf', '2015-12-06 13:54:35', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('174', '4', 'zhangdf', '2015-12-06 13:56:29', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('175', '4', 'zhangdf', '2015-12-06 14:11:44', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('176', '3', 'admin', '2015-12-06 14:12:36', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('177', '3', 'admin', '2015-12-06 16:48:09', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('178', '3', 'admin', '2015-12-06 17:20:43', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('179', '3', 'admin', '2015-12-06 17:23:30', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for `ly_user_role`
@@ -330,38 +352,36 @@ CREATE TABLE `ly_user_role` (
 -- ----------------------------
 -- Records of ly_user_role
 -- ----------------------------
-INSERT INTO `ly_user_role` VALUES ('1', '1');
-INSERT INTO `ly_user_role` VALUES ('1', '2');
-INSERT INTO `ly_user_role` VALUES ('2', '3');
 INSERT INTO `ly_user_role` VALUES ('3', '1');
 INSERT INTO `ly_user_role` VALUES ('4', '1');
+INSERT INTO `ly_user_role` VALUES ('5', '1');
 
 -- ----------------------------
 -- Table structure for `tb_customer`
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_customer`;
 CREATE TABLE `tb_customer` (
-  `customer_id` int(11) NOT NULL COMMENT '主键',
+  `customer_id` int(11) unsigned zerofill NOT NULL COMMENT '主键',
   `customer_name` varchar(20) DEFAULT NULL COMMENT '客户名称',
   `customer_phone` varchar(15) DEFAULT NULL COMMENT '手机号码',
   `customer_card` varchar(20) DEFAULT NULL COMMENT '身份证号码',
   `customer_sex` int(1) DEFAULT NULL COMMENT '性别 0-女 1-男',
   `customer_company_phone` varchar(15) DEFAULT NULL COMMENT '单位电话',
   `customer_company_name` varchar(255) DEFAULT NULL COMMENT '单位名称',
-  `customer_age` int(4) DEFAULT NULL COMMENT '年龄',
+  `customer_age_key` varchar(4) DEFAULT NULL COMMENT '年龄外键',
   `customer_home_phone` varchar(15) DEFAULT NULL COMMENT '家庭电话',
   `customer_company_add` varchar(255) DEFAULT NULL COMMENT '单位地址',
-  `customer_nation` int(11) DEFAULT NULL COMMENT '民族外键',
+  `customer_nation_key` varchar(11) DEFAULT NULL COMMENT '民族外键',
   `customer_email` varchar(100) DEFAULT NULL COMMENT '电子邮件',
   `customer_now_address` varchar(255) DEFAULT NULL COMMENT '现居住地',
-  `customer_region_id` int(11) DEFAULT NULL COMMENT '户籍外键',
+  `customer_region_key` varchar(11) DEFAULT NULL COMMENT '户籍外键',
   `customer_qq` varchar(20) DEFAULT NULL COMMENT 'QQ号码',
   `customer_parent_address` varchar(255) DEFAULT NULL COMMENT '父母所在地',
-  `customer_industry` varchar(255) DEFAULT NULL COMMENT '从事行业',
+  `customer_job_type_key` varchar(255) DEFAULT NULL COMMENT '从事行业外键',
   `customer_self_des` varchar(255) DEFAULT NULL COMMENT '个人描述',
   `customer_risk_type` varchar(50) DEFAULT NULL COMMENT '风险类别',
   `customer_work_years` varchar(50) DEFAULT NULL COMMENT '工作年限',
-  `customer_insurance` tinyint(1) DEFAULT NULL COMMENT '是否有商业保险 0-没有 1-有',
+  `customer_insurance` varchar(10) DEFAULT NULL COMMENT '是否有商业保险 0-没有 1-有',
   `customer_profession` varchar(100) DEFAULT NULL COMMENT '职称',
   `customer_social_age` varchar(50) DEFAULT NULL COMMENT '社保年限',
   `customer_long_term_home` varchar(50) DEFAULT NULL COMMENT '长期居住地',
@@ -398,7 +418,7 @@ CREATE TABLE `tb_customer` (
 DROP TABLE IF EXISTS `tb_custom_pic`;
 CREATE TABLE `tb_custom_pic` (
   `pic_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '图片编号',
-  `materials_id` int(11) DEFAULT NULL COMMENT '所属材料外键',
+  `customer_pic_type` varchar(11) DEFAULT NULL COMMENT '所属材料外键',
   `pic_url` varchar(255) DEFAULT NULL COMMENT '图片保存路径(相对路径)，多个路径用逗号隔开',
   `pic_time` varchar(32) DEFAULT NULL COMMENT '保存时间(yyyy-MM-dd HH:mm:ss)',
   PRIMARY KEY (`pic_id`)
@@ -407,156 +427,3 @@ CREATE TABLE `tb_custom_pic` (
 -- ----------------------------
 -- Records of tb_custom_pic
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `tb_materials`
--- ----------------------------
-DROP TABLE IF EXISTS `tb_materials`;
-CREATE TABLE `tb_materials` (
-  `materials_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '借款材料类型编号',
-  `materials_name` varchar(255) NOT NULL COMMENT '借款材料类型名称',
-  `product_id` int(11) NOT NULL COMMENT '借款材料所属产品的类型',
-  `materials_type` varchar(10) NOT NULL COMMENT '材料类型（系统、标记、普通、提现、可选）',
-  `customer_id` int(11) DEFAULT NULL COMMENT '客户外键',
-  `user_id` int(11) DEFAULT NULL COMMENT '员工外键',
-  PRIMARY KEY (`materials_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tb_materials
--- ----------------------------
-
--- ----------------------------
--- Table structure for `tb_nation`
--- ----------------------------
-DROP TABLE IF EXISTS `tb_nation`;
-CREATE TABLE `tb_nation` (
-  `nation_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '民族编号',
-  `nation_name` varchar(255) NOT NULL COMMENT '民族名称',
-  PRIMARY KEY (`nation_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tb_nation
--- ----------------------------
-INSERT INTO `tb_nation` VALUES ('1', '汉族');
-INSERT INTO `tb_nation` VALUES ('2', '蒙古族');
-INSERT INTO `tb_nation` VALUES ('3', '回族');
-INSERT INTO `tb_nation` VALUES ('4', '藏族');
-INSERT INTO `tb_nation` VALUES ('5', '维吾尔族');
-INSERT INTO `tb_nation` VALUES ('6', '苗族');
-INSERT INTO `tb_nation` VALUES ('7', '彝族');
-INSERT INTO `tb_nation` VALUES ('8', '壮族');
-INSERT INTO `tb_nation` VALUES ('9', '布依族');
-INSERT INTO `tb_nation` VALUES ('10', '朝鲜族');
-INSERT INTO `tb_nation` VALUES ('11', '满族');
-INSERT INTO `tb_nation` VALUES ('12', '侗族');
-INSERT INTO `tb_nation` VALUES ('13', '瑶族');
-INSERT INTO `tb_nation` VALUES ('14', '白族');
-INSERT INTO `tb_nation` VALUES ('15', '土家族');
-INSERT INTO `tb_nation` VALUES ('16', '哈尼族');
-INSERT INTO `tb_nation` VALUES ('17', '哈萨克族');
-INSERT INTO `tb_nation` VALUES ('18', '傣族');
-INSERT INTO `tb_nation` VALUES ('19', '黎族');
-INSERT INTO `tb_nation` VALUES ('20', '傈僳族');
-INSERT INTO `tb_nation` VALUES ('21', '佤族');
-INSERT INTO `tb_nation` VALUES ('22', '畲族');
-INSERT INTO `tb_nation` VALUES ('23', '高山族');
-INSERT INTO `tb_nation` VALUES ('24', '拉祜族');
-INSERT INTO `tb_nation` VALUES ('25', '水族');
-INSERT INTO `tb_nation` VALUES ('26', '东乡族');
-INSERT INTO `tb_nation` VALUES ('27', '纳西族');
-INSERT INTO `tb_nation` VALUES ('28', '景颇族');
-INSERT INTO `tb_nation` VALUES ('29', '柯尔克孜族');
-INSERT INTO `tb_nation` VALUES ('30', '土族');
-INSERT INTO `tb_nation` VALUES ('31', '布朗族');
-INSERT INTO `tb_nation` VALUES ('32', '撒拉族');
-INSERT INTO `tb_nation` VALUES ('33', '阿昌族');
-INSERT INTO `tb_nation` VALUES ('34', '乌孜别克族');
-INSERT INTO `tb_nation` VALUES ('35', '鄂温克族');
-INSERT INTO `tb_nation` VALUES ('36', '仫佬族');
-INSERT INTO `tb_nation` VALUES ('37', '毛难族');
-INSERT INTO `tb_nation` VALUES ('38', '普米族');
-INSERT INTO `tb_nation` VALUES ('39', '怒族');
-INSERT INTO `tb_nation` VALUES ('40', '崩龙族');
-INSERT INTO `tb_nation` VALUES ('41', '保安族');
-INSERT INTO `tb_nation` VALUES ('42', '塔塔尔族');
-INSERT INTO `tb_nation` VALUES ('43', '鄂伦春族');
-INSERT INTO `tb_nation` VALUES ('44', '赫哲族');
-INSERT INTO `tb_nation` VALUES ('45', '珞巴族');
-INSERT INTO `tb_nation` VALUES ('46', '达斡尔族');
-INSERT INTO `tb_nation` VALUES ('47', '仡佬族');
-INSERT INTO `tb_nation` VALUES ('48', '锡伯族');
-INSERT INTO `tb_nation` VALUES ('49', '塔吉克族');
-INSERT INTO `tb_nation` VALUES ('50', '俄罗斯族');
-INSERT INTO `tb_nation` VALUES ('51', '裕固族');
-INSERT INTO `tb_nation` VALUES ('52', '京族');
-INSERT INTO `tb_nation` VALUES ('53', '独龙族');
-INSERT INTO `tb_nation` VALUES ('54', '门巴族');
-INSERT INTO `tb_nation` VALUES ('55', '基诺族');
-INSERT INTO `tb_nation` VALUES ('56', '羌族');
-
--- ----------------------------
--- Table structure for `tb_product`
--- ----------------------------
-DROP TABLE IF EXISTS `tb_product`;
-CREATE TABLE `tb_product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `product_name` varchar(255) DEFAULT NULL COMMENT '产品名称',
-  `company_id` int(11) DEFAULT NULL COMMENT '归属那个公司的产品',
-  `product_des` varchar(1024) DEFAULT NULL COMMENT '产品描述',
-  `product_enable` tinyint(1) DEFAULT NULL COMMENT '产品是否可用 0-不可用 1-可用',
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tb_product
--- ----------------------------
-
--- ----------------------------
--- Table structure for `tb_region`
--- ----------------------------
-DROP TABLE IF EXISTS `tb_region`;
-CREATE TABLE `tb_region` (
-  `region_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '地区编号',
-  `region_name` varchar(20) NOT NULL COMMENT '区域名称',
-  PRIMARY KEY (`region_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tb_region
--- ----------------------------
-INSERT INTO `tb_region` VALUES ('1', '北京市');
-INSERT INTO `tb_region` VALUES ('2', '天津市');
-INSERT INTO `tb_region` VALUES ('3', '上海市');
-INSERT INTO `tb_region` VALUES ('4', '重庆市');
-INSERT INTO `tb_region` VALUES ('5', '河北省');
-INSERT INTO `tb_region` VALUES ('6', '山西省');
-INSERT INTO `tb_region` VALUES ('7', '台湾省');
-INSERT INTO `tb_region` VALUES ('8', '辽宁省');
-INSERT INTO `tb_region` VALUES ('9', '吉林省');
-INSERT INTO `tb_region` VALUES ('10', '黑龙江省');
-INSERT INTO `tb_region` VALUES ('11', '江苏省');
-INSERT INTO `tb_region` VALUES ('12', '浙江省');
-INSERT INTO `tb_region` VALUES ('13', '安徽省');
-INSERT INTO `tb_region` VALUES ('14', '福建省');
-INSERT INTO `tb_region` VALUES ('15', '江西省');
-INSERT INTO `tb_region` VALUES ('16', '山东省');
-INSERT INTO `tb_region` VALUES ('17', '河南省');
-INSERT INTO `tb_region` VALUES ('18', '湖北省');
-INSERT INTO `tb_region` VALUES ('19', '湖南省');
-INSERT INTO `tb_region` VALUES ('20', '广东省');
-INSERT INTO `tb_region` VALUES ('21', '甘肃省');
-INSERT INTO `tb_region` VALUES ('22', '四川省');
-INSERT INTO `tb_region` VALUES ('23', '贵州省');
-INSERT INTO `tb_region` VALUES ('24', '海南省');
-INSERT INTO `tb_region` VALUES ('25', '云南省');
-INSERT INTO `tb_region` VALUES ('26', '青海省');
-INSERT INTO `tb_region` VALUES ('27', '陕西省');
-INSERT INTO `tb_region` VALUES ('28', '广西壮族自治区');
-INSERT INTO `tb_region` VALUES ('29', '西藏自治区');
-INSERT INTO `tb_region` VALUES ('30', '宁夏回族自治区');
-INSERT INTO `tb_region` VALUES ('31', '新疆维吾尔自治区');
-INSERT INTO `tb_region` VALUES ('32', '内蒙古自治区');
-INSERT INTO `tb_region` VALUES ('33', '澳门特别行政区');
-INSERT INTO `tb_region` VALUES ('34', '香港特别行政区');
