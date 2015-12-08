@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-12-07 23:52:35
+Date: 2015-12-09 00:04:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,7 +53,7 @@ CREATE TABLE `ly_log` (
   `operTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_log
@@ -76,6 +76,7 @@ INSERT INTO `ly_log` VALUES ('149', 'admin', '系统管理', '用户管理-新�
 INSERT INTO `ly_log` VALUES ('150', 'admin', '系统管理', '用户管理-删除用户', '89', '0:0:0:0:0:0:0:1', '2015-12-06 17:23:46', '执行成功!');
 INSERT INTO `ly_log` VALUES ('151', 'admin', '系统管理', '用户管理-删除用户', '21', '0:0:0:0:0:0:0:1', '2015-12-06 17:23:50', '执行成功!');
 INSERT INTO `ly_log` VALUES ('152', 'admin', '系统管理', '用户管理-修改用户', '18', '0:0:0:0:0:0:0:1', '2015-12-06 17:35:26', '执行成功!');
+INSERT INTO `ly_log` VALUES ('153', 'admin', '系统管理', '用户管理/组管理-修改权限', '118', '0:0:0:0:0:0:0:1', '2015-12-08 22:55:49', '执行成功!');
 
 -- ----------------------------
 -- Table structure for `ly_resources`
@@ -93,7 +94,7 @@ CREATE TABLE `ly_resources` (
   `ishide` int(3) DEFAULT '0',
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_resources
@@ -119,6 +120,8 @@ INSERT INTO `ly_resources` VALUES ('31', '删除菜单资源', '4', 'ly_resource
 INSERT INTO `ly_resources` VALUES ('32', '系统监控管理', '0', 'monitor', '0', 'monitor', '16', 'fa-tag', '0', '系统监控管理');
 INSERT INTO `ly_resources` VALUES ('33', '实时监控', '32', 'sysmonitor', '1', '/monitor/monitor.shtml', '17', null, '0', '实时监控');
 INSERT INTO `ly_resources` VALUES ('35', '告警列表', '32', 'monitor_warn', '1', '/monitor/list.shtml', null, null, '0', '告警列表');
+INSERT INTO `ly_resources` VALUES ('36', '客户资料', '0', 'customer_material', '0', 'customer_material', '2', 'fa-desktop', '0', null);
+INSERT INTO `ly_resources` VALUES ('37', '客户列表', '36', 'customer_list', '1', '/customer/list.shtml', '1', null, '0', null);
 
 -- ----------------------------
 -- Table structure for `ly_res_user`
@@ -209,6 +212,8 @@ INSERT INTO `ly_role_res` VALUES ('1', '31');
 INSERT INTO `ly_role_res` VALUES ('1', '32');
 INSERT INTO `ly_role_res` VALUES ('1', '33');
 INSERT INTO `ly_role_res` VALUES ('1', '35');
+INSERT INTO `ly_role_res` VALUES ('1', '36');
+INSERT INTO `ly_role_res` VALUES ('1', '37');
 
 -- ----------------------------
 -- Table structure for `ly_server_info`
@@ -296,7 +301,7 @@ CREATE TABLE `ly_userlogin` (
   `loginIP` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ly_user_loginlist` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=185 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_userlogin
@@ -338,6 +343,11 @@ INSERT INTO `ly_userlogin` VALUES ('176', '3', 'admin', '2015-12-06 14:12:36', '
 INSERT INTO `ly_userlogin` VALUES ('177', '3', 'admin', '2015-12-06 16:48:09', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('178', '3', 'admin', '2015-12-06 17:20:43', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('179', '3', 'admin', '2015-12-06 17:23:30', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('180', '3', 'admin', '2015-12-08 22:39:51', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('181', '3', 'admin', '2015-12-08 22:52:13', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('182', '3', 'admin', '2015-12-08 22:56:01', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('183', '3', 'admin', '2015-12-08 23:20:56', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('184', '3', 'admin', '2015-12-08 23:51:11', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for `ly_user_role`
@@ -368,7 +378,7 @@ CREATE TABLE `tb_customer` (
   `customer_sex` int(1) DEFAULT NULL COMMENT '性别 0-女 1-男',
   `customer_company_phone` varchar(15) DEFAULT NULL COMMENT '单位电话',
   `customer_company_name` varchar(255) DEFAULT NULL COMMENT '单位名称',
-  `customer_age_key` varchar(4) DEFAULT NULL COMMENT '年龄外键',
+  `customer_age` varchar(4) DEFAULT NULL COMMENT '年龄外键',
   `customer_home_phone` varchar(15) DEFAULT NULL COMMENT '家庭电话',
   `customer_company_add` varchar(255) DEFAULT NULL COMMENT '单位地址',
   `customer_nation_key` varchar(11) DEFAULT NULL COMMENT '民族外键',
@@ -405,12 +415,16 @@ CREATE TABLE `tb_customer` (
   `customer_normal_phone` varchar(20) DEFAULT NULL COMMENT '普通朋友电话',
   `customer_loan_name` varchar(10) DEFAULT NULL COMMENT '贷友名称',
   `customer_loan_phone` varchar(20) DEFAULT NULL COMMENT '贷友电话',
+  `product_name` varchar(20) DEFAULT NULL,
+  `customer_time` varchar(32) DEFAULT NULL,
+  `employee_id` int(11) DEFAULT NULL COMMENT '员工编号',
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_customer
 -- ----------------------------
+INSERT INTO `tb_customer` VALUES ('00000000001', '张三', null, null, '1', null, null, '24', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '翼龙贷', '2015-12-08', '1');
 
 -- ----------------------------
 -- Table structure for `tb_custom_pic`
