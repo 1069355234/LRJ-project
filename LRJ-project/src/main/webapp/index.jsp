@@ -23,10 +23,15 @@
 				$(this).bind("click",function(){
 						var nav = $(this).attr("nav-n");
 						var sn = nav.split(",");
+						var menuId = sn[2].substring(sn[2].lastIndexOf("=")+1,sn[2].length);//获取二级菜单的id
 						var html = '<li><i class="fa fa-home"></i>';
 						html+='<a href="index.shtml">Home</a></li>';
 						for(var i=0;i<2;i++){
-							html+='<li><a href="javascript:void(0)">'+sn[i]+'</a></li>';
+							if(i == 1){//如果是二级菜单，将二级菜单的id赋值给他对应的a标签，并在a标签上加个id='kcId'
+								html+='<li onclick="jumpToList($(this))" id="kcMenu" value="'+rootPath+sn[2]+'">><a href="javascript:void(0)" id="kcId" value="'+menuId+'">'+sn[i]+'</a></li>';
+							}else{
+								html+='<li><a href="javascript:void(0)">'+sn[i]+'</a></li>';
+							}
 						}
 						$("#topli").html(html);
 						var tb = $("#loadhtml");
@@ -35,6 +40,26 @@
 				});
 			});
 		});
+	
+	function jumpToList(li){
+		li.nextAll().each(function(){
+			try{
+				//IE采用此种方式删除元素
+				this.removeNode(true);
+			}
+			catch(e){
+				//chrome和Firefox采用此方式
+				this.remove();
+			}
+		});//删除后面所有面包屑
+		var url = li.attr("value");
+
+		//跳转到角色列表页面
+		var roleMenuId= $("#kcId").attr("value");
+		var tb = $("#loadhtml");
+		tb.html(CommnUtil.loadingImg());
+		tb.load(url);
+	}
 </script>
 </head>
 <body class="" style="">

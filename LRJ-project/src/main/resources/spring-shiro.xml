@@ -110,7 +110,7 @@
         <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
         <property name="sessionDAO" ref="sessionDAO"/>
     </bean>
-
+    
 
 	<!--shiro缓存管理器 -->
 	<bean id="cacheManager" class="com.lrj.shiro.spring.SpringCacheManagerWrapper" >
