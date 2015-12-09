@@ -53,9 +53,11 @@
 					<div class="btn-group m-r">
 						<button data-toggle="dropdown"
 							class="btn btn-sm btn-default dropdown-toggle">
-							<span class="dropdown-label"><c:if test="${user.region eq '南京' }">南京</c:if><c:if test="${user.region eq '扬州' }">扬州</c:if><c:if test="${user.region eq '淮北' }">淮北</c:if></span> <span class="caret"></span>
+							<span class="dropdown-label"><c:if test="${user.region eq '南京' }">南京</c:if><c:if test="${user.region eq '扬州' }">扬州</c:if><c:if test="${user.region eq '淮北' }">淮北</c:if><c:if test="${user.region == null || user.region eq '' }">请选择</c:if></span> <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-select">
+							<li class="<c:if test="${user.region eq '' }">active</c:if>"><a href="#"><input type="radio"
+									name="userFormMap.region" value="" <c:if test="${user.region eq '' }">checked='checked'</c:if>>请选择</a></li>
 							<li class="<c:if test="${user.region eq '南京' }">active</c:if>"><a href="#"><input type="radio"
 									name="userFormMap.region" value="南京" <c:if test="${user.region eq '南京' }">checked='checked'</c:if>>南京</a></li>
 							<li class="<c:if test="${user.region eq '扬州' }">active</c:if>"><a href="#"><input type="radio"
@@ -63,6 +65,7 @@
 							<li class="<c:if test="${user.region eq '淮北' }">active</c:if>"><a href="#"><input type="radio"
 									name="userFormMap.region" value="淮北" <c:if test="${user.region eq '淮北' }">checked='checked'</c:if>>淮北</a></li>
 						</ul>
+						<span style="color:red;display: inline-block; height:30px;line-height: 30px;">&nbsp;&nbsp;业务员请选择负责区域</span>
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lrj.mapper.UserMapper">
 	<!--mybatis ehcache缓存配置 -->
-	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache"
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
 		/> -->
 	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
 	<!-- 以下与实体类的中字段一致 -->
@@ -16,12 +16,18 @@
 		where ly_role.id
 		in (SELECT roleId FROM ly_user_role WHERE
 		userId=ly_user.id) ) roleName,
+		(select group_concat(u.userName) from
+		ly_user u where u.id in (select user_child_id from tb_user_relation
+		where user_parent_id = ly_user.id)) lowerUsers,
 		password,
 		description,
 		locked,
 		credentialsSalt,
 		createTime,
-		region
+		region,
+		longitude,
+		latitude,
+		locationTime
 	</sql>
 
 	<select id="findUserPage" resultType="com.lrj.entity.UserFormMap">
@@ -49,8 +55,21 @@
 		select
 		<include refid="selectId" />
 		from ly_user where id in (select userId from ly_user_role where roleId
-		in (select id from ly_role where parentId in (${roleIds}))) and id not in (select
-		user_child_id from tb_user_relation WHERE user_parent_id = ${userId});
+		in (select id from ly_role where parentId in (${roleIds}))) and id not
+		in (select
+		user_child_id from tb_user_relation WHERE user_parent_id =
+		${userId});
+	</select>
+	
+	<select id="selectAllLowerUser" resultType="com.lrj.entity.UserFormMap">
+		select
+		<include refid="selectId" />
+		from ly_user where id in
+		(select DISTINCT userId from ly_user_role
+		WHERE roleId in (${roleIds}) )
+		<if test="column != null">
+			order by ${column} ${sort}
+		</if>
 	</select>
 
 </mapper>

@@ -24,6 +24,9 @@ $(function() {
 			colkey : "roleName",
 			name : "所属角色"
 		}, {
+			colkey : "lowerUsers",
+			name : "下属员工"
+		}, {
 			colkey : "createTime",
 			name : "创建时间",
 			isSort:true,
@@ -107,7 +110,7 @@ function permissions() {
 	pageii = layer.open({
 		title : "分配下属员工",
 		type : 2,
-		area : [ "700px", "80%" ],
+		area : [ "416px", "50%" ],
 		content : url
 	});
 }

@@ -7,17 +7,12 @@
 	map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
 	map.enableScrollWheelZoom(true);
 
-	map.setCenter("江苏");
+	//map.setCenter("江苏");
 	map.setZoom(7);
 
-	var new_point = new BMap.Point(118.78,32.07);
+	var new_point = new BMap.Point(${longitude},${latitude});
 	var marker = new BMap.Marker(new_point);  // 创建标注
 	map.addOverlay(marker);              // 将标注添加到地图中
-	map.panTo(new_point);
-
-	var new_point2 = new BMap.Point(117.18,34.27);
-	var marker2 = new BMap.Marker(new_point2);  // 创建标注
-	map.addOverlay(marker2);              // 将标注添加到地图中
 	map.panTo(new_point);
 
 </script>

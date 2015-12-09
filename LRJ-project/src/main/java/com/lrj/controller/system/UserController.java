@@ -2,6 +2,7 @@ package com.lrj.controller.system;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -20,8 +22,10 @@ import com.lrj.controller.index.BaseController;
 import com.lrj.entity.ResUserFormMap;
 import com.lrj.entity.UserFormMap;
 import com.lrj.entity.UserGroupsFormMap;
+import com.lrj.entity.UserRelationFormMap;
 import com.lrj.entity.UserRoleFormMap;
 import com.lrj.exception.SystemException;
+import com.lrj.mapper.RoleMapper;
 import com.lrj.mapper.UserMapper;
 import com.lrj.plugin.PageView;
 import com.lrj.util.Common;
@@ -40,6 +44,9 @@ import com.lrj.util.PasswordHelper;
 public class UserController extends BaseController {
 	@Inject
 	private UserMapper userMapper;
+	
+	@Inject
+	private RoleMapper roleMapper;
 
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
@@ -82,9 +89,34 @@ public class UserController extends BaseController {
 		ugid = Common.trimComma(ugid);
 		model.addAttribute("txtLowerUserSelect", ugid);
 		model.addAttribute("lowerUsers", list);
+		model.addAttribute("userId", userId);
 		List<UserFormMap> users = userMapper.selectUnChoosedLowerUser(userFormMap);
 		model.addAttribute("users", users);
 		return Common.BACKGROUND_PATH + "/system/user/userSelect";
+	}
+	
+	@ResponseBody
+	@RequestMapping("assignUsers")
+	@Transactional(readOnly=false)//需要事务操作必须加入此注解
+	public String assignUsers(String txtGroupsSelect,Integer userId){
+		try {
+			userMapper.deleteByAttribute("user_parent_id", userId.toString(), UserRelationFormMap.class);
+			if(StringUtils.isNotEmpty(txtGroupsSelect)){
+				List<UserRelationFormMap> userRelationFormMaps = new ArrayList<>();
+				String[] lowerUsers = txtGroupsSelect.split(",");
+				for(String str : lowerUsers){
+					UserRelationFormMap userRelationFormMap = new UserRelationFormMap();
+					userRelationFormMap.put("user_parent_id", userId);
+					userRelationFormMap.put("user_child_id", Integer.parseInt(str));
+					userRelationFormMaps.add(userRelationFormMap);
+				}
+				userMapper.batchSave(userRelationFormMaps);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "success";
 	}
 
 	@RequestMapping("/export")
@@ -220,4 +252,5 @@ public class UserController extends BaseController {
 		userMapper.editEntity(userFormMap);
 		return "success";
 	}
+	
 }

@@ -13,5 +13,7 @@ public interface UserMapper extends BaseMapper{
 	public List<UserFormMap> selectChoosedLowerUser(UserFormMap userFormMap);
 
 	public List<UserFormMap> selectUnChoosedLowerUser(UserFormMap userFormMap);
+	
+	public List<UserFormMap> selectAllLowerUser(UserFormMap userFormMap);
 
 }

@@ -16,9 +16,9 @@
      });
     }
     //---------修改人赵雷完毕----------
-		var tb = $("#loadhtml");
-		tb.html(CommnUtil.loadingImg());
-		tb.load(rootPath+"/welcome.jsp");
+		//var tb = $("#loadhtml");
+		//tb.html(CommnUtil.loadingImg());
+		//tb.load(rootPath+"/welcome.jsp");
 		$("[nav-n]").each(function () {
 				$(this).bind("click",function(){
 						var nav = $(this).attr("nav-n");

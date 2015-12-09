@@ -188,7 +188,7 @@ public class BaseController {
 					}
 				}else{
 					String as = request.getParameter(nms);
-					if(!Common.isEmpty(as)){
+					if(null != as){
 						String mname = t.getClass().getSimpleName().toUpperCase();
 						if(nms.toUpperCase().startsWith(mname)){
 							nms=nms.substring(mname.length()+1);

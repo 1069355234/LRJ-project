@@ -64,16 +64,19 @@ label[class^="btn btn-default"] {
 					<div class="btn-group m-r">
 						<button data-toggle="dropdown"
 							class="btn btn-sm btn-default dropdown-toggle">
-							<span class="dropdown-label">南京</span> <span class="caret"></span>
+							<span class="dropdown-label">请选择</span> <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-select">
 							<li class="active"><a href="#"><input type="radio"
-									name="userFormMap.region" value="南京" checked="checked">南京</a></li>
+									name="userFormMap.region" value="" checked="checked">请选择</a></li>
+							<li class=""><a href="#"><input type="radio"
+									name="userFormMap.region" value="南京">南京</a></li>
 							<li class=""><a href="#"><input type="radio"
 									name="userFormMap.region" value="扬州">扬州</a></li>
 							<li class=""><a href="#"><input type="radio"
 									name="userFormMap.region" value="淮北">淮北</a></li>
 						</ul>
+						<span style="color:red;display: inline-block; height:30px;line-height: 30px;">&nbsp;&nbsp;业务员请选择负责区域</span>
 					</div>
 				</div>
 			</div>

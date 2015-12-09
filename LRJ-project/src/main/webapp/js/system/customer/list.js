@@ -37,7 +37,7 @@ $(function() {
 			colkey : "customer_id",
 			name : "操作",
 			renderData : function(rowindex,data, rowdata, column) {
-				return "<a href='javascript:void(0)' onclick='detail("+data+")'>详情</a>";
+				return "<a href='javascript:void(0)' onclick='detail("+data+")' style='color:blue'>详情</a>";
 			}
 		}],
 		jsonUrl : rootPath + '/customer/findByPage.shtml',
@@ -55,6 +55,8 @@ $(function() {
 
 
 function detail(data){
+	var li = $("<li>><a href='javascript:void(0)'>客户详情</a></li>");
+	$("#topli").append(li);
 	var tb = $("#loadhtml");
 	tb.html(CommnUtil.loadingImg());
 	tb.load(rootPath+"/customer/detail.shtml",{"customer_id":data});
