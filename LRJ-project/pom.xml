@@ -130,6 +130,12 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.1.4</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.6</version>
+		</dependency>
 		<!-- ############################################## -->
 		<!-- javax提供的annotation -->
 		<dependency>
