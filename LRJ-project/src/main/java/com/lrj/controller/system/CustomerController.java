@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
 import com.lrj.entity.CustomerFormMap;
@@ -62,11 +63,12 @@ public class CustomerController extends BaseController {
         pageView.setRecords(customerMapper.findCustomerPage(customerFormMap));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
 	}
-	
-	@ResponseBody
+
 	@RequestMapping("detail")
-	public void detail(int customer_id){
-		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id+"", CustomerFormMap.class);
+	public String detail(String customer_id){
+		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
+		System.out.println(JSONObject.toJSONString(customerFormMap));
+		return Common.BACKGROUND_PATH + "/system/customer/detail";
 	}
 
 	@RequestMapping("/export")

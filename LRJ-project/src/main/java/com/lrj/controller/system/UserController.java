@@ -20,6 +20,7 @@ import com.lrj.controller.index.BaseController;
 import com.lrj.entity.ResUserFormMap;
 import com.lrj.entity.UserFormMap;
 import com.lrj.entity.UserGroupsFormMap;
+import com.lrj.entity.UserRoleFormMap;
 import com.lrj.exception.SystemException;
 import com.lrj.mapper.UserMapper;
 import com.lrj.plugin.PageView;
@@ -56,6 +57,34 @@ public class UserController extends BaseController {
 		userFormMap.put("sort", sort);
         pageView.setRecords(userMapper.findUserPage(userFormMap));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
+	}
+
+	@RequestMapping("selUser")
+	public String seletUser(Model model) throws Exception {
+		UserFormMap userFormMap = getFormMap(UserFormMap.class);
+		Object userId = userFormMap.get("userId");
+		String roleIds = "";
+
+		UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
+		userRoleFormMap.put("userId", userId);
+
+		List<UserRoleFormMap> userRoleFormMaps = userMapper.findByNames(userRoleFormMap);
+		for(UserRoleFormMap u : userRoleFormMaps){
+			roleIds += u.get("roleId").toString();
+		}
+		roleIds = Common.trimComma(roleIds);
+		userFormMap.put("roleIds", roleIds);
+		List<UserFormMap> list = userMapper.selectChoosedLowerUser(userFormMap);
+		String ugid = "";
+		for (UserFormMap ml : list) {
+			ugid += ml.get("id")+",";
+		}
+		ugid = Common.trimComma(ugid);
+		model.addAttribute("txtLowerUserSelect", ugid);
+		model.addAttribute("lowerUsers", list);
+		List<UserFormMap> users = userMapper.selectUnChoosedLowerUser(userFormMap);
+		model.addAttribute("users", users);
+		return Common.BACKGROUND_PATH + "/system/user/userSelect";
 	}
 
 	@RequestMapping("/export")

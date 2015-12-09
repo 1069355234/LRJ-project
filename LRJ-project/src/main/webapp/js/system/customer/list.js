@@ -1,7 +1,7 @@
 var pageii = null;
 var grid = null;
 $(function() {
-	
+
 	grid = lyGrid({
 		pagId : 'paging',
 		l_column : [ {
@@ -50,18 +50,7 @@ $(function() {
 			data : searchParams
 		});
 	});
-	$("#addAccount").click("click", function() {
-		addAccount();
-	});
-	$("#editAccount").click("click", function() {
-		editAccount();
-	});
-	$("#delAccount").click("click", function() {
-		delAccount();
-	});
-	$("#permissions").click("click", function() {
-		permissions();
-	});
+
 });
 
 

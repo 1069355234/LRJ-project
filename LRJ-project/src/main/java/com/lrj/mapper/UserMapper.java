@@ -10,4 +10,8 @@ public interface UserMapper extends BaseMapper{
 
 	public List<UserFormMap> findUserPage(UserFormMap userFormMap);
 
+	public List<UserFormMap> selectChoosedLowerUser(UserFormMap userFormMap);
+
+	public List<UserFormMap> selectUnChoosedLowerUser(UserFormMap userFormMap);
+
 }

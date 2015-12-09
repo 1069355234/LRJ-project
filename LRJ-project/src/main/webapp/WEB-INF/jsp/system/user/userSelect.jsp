@@ -76,24 +76,24 @@ function unselectedAll() {
 }
 </script>
 <div class="form-group">
-<input id="txtGroupsSelect" type="hidden" value="${txtRoleSelect}"
+<input id="txtGroupsSelect" type="hidden" value="${txtLowerUserSelect}"
 			name="txtGroupsSelect" />
-	<label for="host" class="col-sm-3 control-label">角色</label>
+	<label for="host" class="col-sm-3 control-label"></label>
 	<div class="col-sm-9">
 		<table class="tweenBoxTable" name="groups_tweenbox"
 			id="groups_tweenbox" cellspacing="0" cellpadding="0">
 			<tbody>
 				<tr>
-					<td>可选角色</td>
+					<td>可选员工</td>
 					<td></td>
-					<td>已选角色</td>
+					<td>已选员工</td>
 				</tr>
 				<tr>
 					<td><select id="groupsForSelect"
 						multiple="multiple" class="input-large"
 						style="height: 150px; width: 150px">
-						<c:forEach items="${role}" var="key">
-						<option value="${key.id}">${key.name}</option>
+						<c:forEach items="${users}" var="key">
+						<option value="${key.id}">${key.userName}</option>
 						</c:forEach>
 					</select></td>
 					<td align="center">
@@ -117,8 +117,8 @@ function unselectedAll() {
 					<td><select id="selectGroups" multiple="multiple"
 						class="input-large" name="selectGroups"
 						style="height: 150px; width: 150px">
-						<c:forEach items="${userRole}" var="key">
-						<option value="${key.id}">${key.name}</option>
+						<c:forEach items="${lowerUsers}" var="key">
+						<option value="${key.id}">${key.userName}</option>
 						</c:forEach>
 					</select></td>
 				</tr>

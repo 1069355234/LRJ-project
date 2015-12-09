@@ -39,7 +39,6 @@ import com.lrj.entity.UserRoleFormMap;
 import com.lrj.mapper.ResourcesMapper;
 import com.lrj.mapper.UserLoginMapper;
 import com.lrj.util.Common;
-import com.lrj.util.Const;
 import com.lrj.util.TreeObject;
 import com.lrj.util.TreeUtil;
 import com.mysql.jdbc.Connection;
@@ -149,6 +148,10 @@ public class BackgroundController extends BaseController {
 			}
 			TreeUtil treeUtil = new TreeUtil();
 			List<TreeObject> ns = treeUtil.getChildTreeObjects(list, 0);
+
+			String username = SecurityUtils.getSubject().getPrincipal().toString();
+			model.addAttribute("username", username);
+
 			model.addAttribute("list", ns);
 			// 登陆的信息回传页面
 			model.addAttribute("userFormMap", userFormMap);

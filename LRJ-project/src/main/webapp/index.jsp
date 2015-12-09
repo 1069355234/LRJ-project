@@ -16,9 +16,9 @@
      });
     }
     //---------修改人赵雷完毕----------
-		//var tb = $("#loadhtml");
-		//tb.html(CommnUtil.loadingImg());
-		//tb.load(rootPath+"/welcome.jsp");
+		var tb = $("#loadhtml");
+		tb.html(CommnUtil.loadingImg());
+		tb.load(rootPath+"/welcome.jsp");
 		$("[nav-n]").each(function () {
 				$(this).bind("click",function(){
 						var nav = $(this).attr("nav-n");
@@ -40,7 +40,7 @@
 				});
 			});
 		});
-	
+
 	function jumpToList(li){
 		li.nextAll().each(function(){
 			try{
@@ -80,19 +80,13 @@
 				<li class="dropdown"><a href="index.html#"
 					class="dropdown-toggle" data-toggle="dropdown"> <span
 						class="thumb-sm avatar pull-left"> <img
-							src="${ctx}/notebook/notebook_files/avatar.jpg">
-					</span> ${userFormMap.accountName} <b class="caret"></b>
+							src="${ctx}/admin_files/user_photo.png">
+					</span> ${username }<b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu animated fadeInRight">
 						<span class="arrow top"></span>
-						<li><a href="index.shtml#">Settings</a></li>
 						<li><a href="#" onclick="javascript:updatePasswordLayer();">密码修改</a></li>
-						<li><a href="index.html#"> <span
-								class="badge bg-danger pull-right">3</span> Notifications
-						</a></li>
-						<li><a href="docs.html">Help</a></li>
-						<li class="divider"></li>
-						<li><a href="logout.shtml">Logout</a></li>
+						<li><a href="logout.shtml">注销</a></li>
 					</ul></li>
 			</ul>
 		</header>

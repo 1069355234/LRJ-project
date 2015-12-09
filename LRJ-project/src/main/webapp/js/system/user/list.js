@@ -1,7 +1,7 @@
 var pageii = null;
 var grid = null;
 $(function() {
-	
+
 	grid = lyGrid({
 		pagId : 'paging',
 		l_column : [ {
@@ -103,9 +103,9 @@ function permissions() {
 		layer.msg("请选择一个对象！");
 		return;
 	}
-	var url = rootPath + '/resources/permissions.shtml?userId='+cbox;
+	var url = rootPath + '/user/selUser.shtml?userFormMap.userId='+cbox;
 	pageii = layer.open({
-		title : "分配权限",
+		title : "分配下属员工",
 		type : 2,
 		area : [ "700px", "80%" ],
 		content : url

@@ -14,7 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon">
-<!-- 
+<!--
 width - viewport的宽度 height - viewport的高度
 initial-scale - 初始的缩放比例
 minimum-scale - 允许用户缩放到的最小比例
@@ -34,6 +34,7 @@ user-scalable - 用户是否可以手动缩放
 <script type="text/javascript" src="${ctx}/common/common.js"></script>
 <script type="text/javascript" src="${ctx}/js/jquery/underscore.js"></script>
 <script type="text/javascript" src="${ctx}/common/lyGrid.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=PTMqxMtnef8lkyn258SbHH5l"></script>
 <!--[if lt IE 9]> <script src="${ctx}/js/jquery/ie/html5shiv.js"></script> <script src="${ctx}/js/jquery/ie/respond.min.js"></script><![endif]-->
 <style type="text/css">
 .l_err{
@@ -84,7 +85,7 @@ var rootPath = "${ctx}";
  */
 function getSelectEx(byId,options){
 	if(byId && options){
-		if(options.url && options.textFiled 
+		if(options.url && options.textFiled
 				&& options.valueFiled && options.name){
 			$.ajax({
 				type : "post", //使用get方法访问后台
@@ -94,7 +95,7 @@ function getSelectEx(byId,options){
 			    data : options.data,
 			    success : function(data){
 			    	for(var i = 0; i < data.length;i++){
-				    	var selectObj = $("#"+byId).find("ul"); 
+				    	var selectObj = $("#"+byId).find("ul");
 				    	if(selectObj){
 				    		if(options.value == "" && i == 0){
 				    			$("#"+byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
@@ -112,11 +113,11 @@ function getSelectEx(byId,options){
 									    		" value="+data[i][options.valueFiled]+" >"+data[i][options.textFiled]+"</a></li>");
 								 }
 							}
-					    }	
-			    	}	
+					    }
+			    	}
 				}
 			});
-			
+
 		}
 	}
 }
