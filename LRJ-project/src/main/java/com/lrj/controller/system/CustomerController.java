@@ -1,9 +1,8 @@
 package com.lrj.controller.system;
 
 
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -27,9 +26,9 @@ import com.lrj.mapper.CustomerMapper;
 import com.lrj.mapper.UserMapper;
 import com.lrj.plugin.PageView;
 import com.lrj.util.Common;
-import com.lrj.util.JsonUtils;
-import com.lrj.util.POIUtils;
+import com.lrj.util.DownloadUtils;
 import com.lrj.util.PasswordHelper;
+import com.lrj.util.ZipUtil;
 
 /**
  *
@@ -52,6 +51,20 @@ public class CustomerController extends BaseController {
 		return Common.BACKGROUND_PATH + "/system/customer/list";
 	}
 
+	/**
+	 *
+	 * @Description 显示客户列表
+	 * @CreateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @CreateDate 2015年12月10日 下午7:17:21
+	 * @UpdateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @UpdateDate 2015年12月10日 下午7:17:21
+	 * @param pageNow
+	 * @param pageSize
+	 * @param column
+	 * @param sort
+	 * @return
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping("findByPage")
 	public PageView findByPage( String pageNow,
@@ -64,37 +77,75 @@ public class CustomerController extends BaseController {
         return pageView;
 	}
 
+	/**
+	 *
+	 * @Description 客户详细信息
+	 * @CreateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @CreateDate 2015年12月10日 下午7:17:03
+	 * @UpdateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @UpdateDate 2015年12月10日 下午7:17:03
+	 * @param model
+	 * @param customer_id
+	 * @return
+	 */
 	@RequestMapping("detail")
-	public String detail(String customer_id){
+	public String detail(Model model,String customer_id){
+//		model.addAttribute("res", findByRes());
 		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
 		System.out.println(JSONObject.toJSONString(customerFormMap));
 		return Common.BACKGROUND_PATH + "/system/customer/detail";
 	}
 
+	/**
+	 *
+	 * @Description 显示图片列表
+	 * @CreateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @CreateDate 2015年12月10日 下午7:15:30
+	 * @UpdateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @UpdateDate 2015年12月10日 下午7:15:30
+	 * @param model
+	 * @param customer_id
+	 * @return
+	 */
 	@RequestMapping("piclist")
-	public String picList(String customer_id){
+	public String picList(Model model,String customer_id){
+//		model.addAttribute("res", findByRes());
 //		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
 //		System.out.println(JSONObject.toJSONString(customerFormMap));
 		return Common.BACKGROUND_PATH + "/system/customer/piclist";
 	}
 
-	@RequestMapping("/export")
-	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String fileName = "用户列表";
-		UserFormMap userFormMap = findHasHMap(UserFormMap.class);
-		//exportData =
-		// [{"colkey":"sql_info","name":"SQL语句","hide":false},
-		// {"colkey":"total_time","name":"总响应时长","hide":false},
-		// {"colkey":"avg_time","name":"平均响应时长","hide":false},
-		// {"colkey":"record_time","name":"记录时间","hide":false},
-		// {"colkey":"call_count","name":"请求次数","hide":false}
-		// ]
-		String exportData = userFormMap.getStr("exportData");// 列表头的json字符串
+	/**
+	 *
+	 * @Description 导出全部图片
+	 * @CreateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @CreateDate 2015年12月10日 下午7:16:32
+	 * @UpdateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @UpdateDate 2015年12月10日 下午7:16:32
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/exportAll")
+	public void exportAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String filePath = request.getServletContext().getRealPath("/uploadFile/张三");
 
-		List<Map<String, Object>> listMap = JsonUtils.parseJSONList(exportData);
+		File zip = ZipUtil.zip(filePath);
 
-		List<UserFormMap> lis = userMapper.findUserPage(userFormMap);
-		POIUtils.exportToExcel(response, listMap, lis, fileName);
+		DownloadUtils.downloadFile(zip,response);
+	}
+	
+	@RequestMapping("/exportBaseInfo")
+	public void exportBaseInfo(String customer_id,HttpServletRequest request, HttpServletResponse response) throws IOException {
+//		String filePath = request.getServletContext().getRealPath("/uploadFile/张三");
+//
+//		File zip = ZipUtil.zip(filePath);
+//
+//		DownloadUtils.downloadFile(zip,response);
+		
+		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
+		
+		
 	}
 
 	@RequestMapping("addUI")

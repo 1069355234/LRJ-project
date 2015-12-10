@@ -40,50 +40,19 @@
 </style>
 
 <script type="text/javascript">
-
+function exportAll(){
+	window.location.href = "${pageContext.request.contextPath}/customer/exportAll.shtml";
+}
 </script>
 
+<div class="doc-buttons" style="text-align: right;">
+	<button class="btn btn-primary marR10" type="button" onclick="exportAll()">全部导出</button>
+</div>
 <div class="container">
 	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片" rel="lightbox-group"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片" rel="lightbox-group"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片" rel="lightbox-group"></a>
-		<span>身份证照片</span>
-	</div>
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片2" rel="lightbox-group2"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片2" rel="lightbox-group2"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片2" rel="lightbox-group2"></a>
-		<span>身份证照片</span>
-	</div>
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片3" rel="lightbox-group3"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片3" rel="lightbox-group3"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片3" rel="lightbox-group3"></a>
-		<span>身份证照片</span>
-	</div>
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片4" rel="lightbox-group4"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片4" rel="lightbox-group4"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片4" rel="lightbox-group4"></a>
-		<span>身份证照片</span>
-	</div>
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片5" rel="lightbox-group5"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片5" rel="lightbox-group5"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片5" rel="lightbox-group5"></a>
-		<span>身份证照片</span>
-	</div>
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片6" rel="lightbox-group6"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片6" rel="lightbox-group6"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片6" rel="lightbox-group6"></a>
-		<span>身份证照片</span>
-	</div>
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/aa.jpg" title="身份证照片6" rel="lightbox-group7"><img src="${pageContext.request.contextPath}/uploadFile/aa.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/bb.jpg" title="身份证照片6" rel="lightbox-group7"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/cc.jpg" title="身份证照片6" rel="lightbox-group7"></a>
+		<a href="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/房产/aa.jpg" title="身份证照片" rel="lightbox-group"><img src="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/驾照/bb.jpg" width="148px;" height="140px;"/></a>
+		<a href="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/驾照/bb.jpg" title="身份证照片" rel="lightbox-group"></a>
+		<a href="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/身份证/cc.jpg" title="身份证照片" rel="lightbox-group"></a>
 		<span>身份证照片</span>
 	</div>
 

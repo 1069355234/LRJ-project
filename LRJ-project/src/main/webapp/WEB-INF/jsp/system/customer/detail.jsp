@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/system/customer/list.js"></script>
+<script type="text/javascript" src=""></script>
 
 <style type="text/css">
 	table{
@@ -33,6 +33,16 @@
 		background-color: #DCDCDC;
 	}
 </style>
+
+<script type="text/javascript">
+function exportBaseInfo(){
+	window.location.href = "${pageContext.request.contextPath}/customer/exportBaseInfo.shtml";
+}
+</script>
+
+<div class="doc-buttons" style="text-align: right;">
+	<button class="btn btn-primary marR10" type="button" onclick="exportBaseInfo()">导出客户基本信息</button>
+</div>
 
 <table>
 	<tr class="big-title">

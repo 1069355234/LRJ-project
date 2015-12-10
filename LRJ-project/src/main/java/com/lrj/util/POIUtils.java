@@ -18,16 +18,17 @@ import javax.servlet.http.HttpServletResponse;
 public class POIUtils {
 
 	/**
-	 * @author lijianning
-	 * Email：mmm333zzz520@163.com
-	 * date：2015-11-11
-	 * @param exportData 列表头
-	 * @param lis 数据集
-	 * @param fileName 文件名
-	 * 
+	 * @author lijianning Email：mmm333zzz520@163.com date：2015-11-11
+	 * @param exportData
+	 *            列表头
+	 * @param lis
+	 *            数据集
+	 * @param fileName
+	 *            文件名
+	 *
 	 */
-	public static void exportToExcel(HttpServletResponse response, List<Map<String, Object>> exportData, List<?> lis,
-			String fileName) {
+	public static void exportToExcel(HttpServletResponse response,
+			List<Map<String, Object>> exportData, List<?> lis, String fileName) {
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
 		try {
@@ -38,8 +39,8 @@ public class POIUtils {
 			// 设置response参数，可以打开下载页面
 			response.reset();
 			response.setContentType("application/vnd.ms-excel;charset=utf-8");
-			response.setHeader("Content-Disposition",
-					"attachment;filename=" + new String((fileName + ".xls").getBytes(), "iso-8859-1"));
+			response.setHeader("Content-Disposition", "attachment;filename="
+					+ new String((fileName + ".xls").getBytes(), "iso-8859-1"));
 			ServletOutputStream out = response.getOutputStream();
 			bis = new BufferedInputStream(is);
 			bos = new BufferedOutputStream(out);
@@ -52,15 +53,16 @@ public class POIUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-				try {
-					if (bis != null)
+			try {
+				if (bis != null)
 					bis.close();
-					if (bos != null)
-						bos.close();
-				} catch (IOException e) {
-				}
-			
+				if (bos != null)
+					bos.close();
+			} catch (IOException e) {
+			}
+
 		}
 	}
+
 
 }
