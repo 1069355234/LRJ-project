@@ -139,7 +139,7 @@ public class Plugin implements InvocationHandler {
 		if (Configuration.FINDBYWHERE.equals(sqlId)) {
 			if (null != formMap.get("where")
 					&& !StringUtils.isBlank(formMap.get("where").toString())) {
-				sql += " " + formMap.get("where").toString();
+				sql += " where " + formMap.get("where").toString();
 			}
 		} else if (Configuration.FINDBYPAGE.equals(sqlId)) {
 			String[] fe = field.split(",");

@@ -1,7 +1,6 @@
 var pageii = null;
 var grid = null;
 $(function() {
-
 	grid = lyGrid({
 		pagId : 'paging',
 		l_column : [ {
@@ -42,13 +41,22 @@ $(function() {
 		}],
 		jsonUrl : rootPath + '/customer/findByPage.shtml',
 		checkbox : true,
-		serNumber : true
+		serNumber : true,
+		checkValue : "customer_id"
 	});
 	$("#search").click("click", function() {// 绑定查询按扭
 		var searchParams = $("#searchForm").serializeJson();// 初始化传参数
 		grid.setOptions({
 			data : searchParams
 		});
+	});
+	
+	$("#allExport").click("click", function() {// 绑定查询按扭
+		allExport();
+	});
+	
+	$("#chooseExport").click("click", function() {// 绑定查询按扭
+		chooseExport();
 	});
 
 });
@@ -70,58 +78,15 @@ function piclist(data){
 	tb.load(rootPath+"/customer/piclist.shtml",{"customer_id":data});
 }
 
+function allExport(){
+	window.location.href = rootPath + "/customer/exportBaseInfo.shtml";
+}
 
-function editAccount() {
-	var cbox = grid.getSelectedCheckbox();
-	if (cbox.length > 1 || cbox == "") {
-		layer.msg("只能选中一个");
-		return;
-	}
-	pageii = layer.open({
-		title : "编辑",
-		type : 2,
-		area : [ "600px", "80%" ],
-		content : rootPath + '/user/editUI.shtml?id=' + cbox
-	});
-}
-function addAccount() {
-	pageii = layer.open({
-		title : "新增",
-		type : 2,
-		area : [ "600px", "80%" ],
-		content : rootPath + '/user/addUI.shtml'
-	});
-}
-function delAccount() {
+function chooseExport(){
 	var cbox = grid.getSelectedCheckbox();
 	if (cbox == "") {
-		layer.msg("请选择删除项！！");
+		layer.msg("请选择要导出的客户！");
 		return;
 	}
-	layer.confirm('是否删除？', function(index) {
-		var url = rootPath + '/user/deleteEntity.shtml';
-		var s = CommnUtil.ajax(url, {
-			ids : cbox.join(",")
-		}, "json");
-		if (s == "success") {
-			layer.msg('删除成功');
-			grid.loadData();
-		} else {
-			layer.msg('删除失败');
-		}
-	});
-}
-function permissions() {
-	var cbox = grid.getSelectedCheckbox();
-	if (cbox.length > 1 || cbox == "") {
-		layer.msg("请选择一个对象！");
-		return;
-	}
-	var url = rootPath + '/resources/permissions.shtml?userId='+cbox;
-	pageii = layer.open({
-		title : "分配权限",
-		type : 2,
-		area : [ "700px", "80%" ],
-		content : url
-	});
+	window.location.href = rootPath + "/customer/exportBaseInfo.shtml?customerIds="+cbox.join(",");
 }

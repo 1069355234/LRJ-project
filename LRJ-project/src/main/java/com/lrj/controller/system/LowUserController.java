@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -67,6 +68,12 @@ public class LowUserController extends BaseController {
 			strRoleIds += roleId + ",";
 		}
 		strRoleIds = Common.trimComma(strRoleIds);
+		
+		/*if(StringUtils.isEmpty(strRoleIds)){
+			UserFormMap ufm = getFormMap(UserFormMap.class);
+			ufm=toFormMap(ufm, pageNow, pageSize,ufm.getStr("orderby"));
+			return pageView;
+		}*/
 		
 		UserFormMap ufm = getFormMap(UserFormMap.class);
 		ufm.put("roleIds", strRoleIds);

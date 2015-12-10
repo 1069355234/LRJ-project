@@ -65,8 +65,15 @@
 		select
 		<include refid="selectId" />
 		from ly_user where id in
-		(select DISTINCT userId from ly_user_role
-		WHERE roleId in (${roleIds}) )
+		(
+		<if test="roleIds == ''">
+			-1
+		</if>
+		<if test="roleIds != ''">
+			select DISTINCT userId from ly_user_role
+			WHERE roleId in (${roleIds})
+		</if>
+		)
 		<if test="column != null">
 			order by ${column} ${sort}
 		</if>

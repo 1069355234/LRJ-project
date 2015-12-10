@@ -3,6 +3,9 @@ package com.lrj.controller.system;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,6 +31,8 @@ import com.lrj.mapper.UserMapper;
 import com.lrj.plugin.PageView;
 import com.lrj.util.Common;
 import com.lrj.util.DownloadUtils;
+import com.lrj.util.JsonUtils;
+import com.lrj.util.POIUtils;
 import com.lrj.util.PasswordHelper;
 import com.lrj.util.ZipUtil;
 
@@ -136,15 +142,24 @@ public class CustomerController extends BaseController {
 	}
 	
 	@RequestMapping("/exportBaseInfo")
-	public void exportBaseInfo(String customer_id,HttpServletRequest request, HttpServletResponse response) throws IOException {
-//		String filePath = request.getServletContext().getRealPath("/uploadFile/张三");
-//
-//		File zip = ZipUtil.zip(filePath);
-//
-//		DownloadUtils.downloadFile(zip,response);
-		
-		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
-		
+	public void exportBaseInfo(String customerIds,HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String fileName = "客户信息";
+		String exportData =
+		 "[{\"colkey\":\"customer_name\",\"name\":\"客户名\",\"hide\":false}"
+		 + ",{\"colkey\":\"customer_phone\",\"name\":\"电话号码\",\"hide\":false}"
+		 + "]";
+
+		List<Map<String, Object>> listMap = JsonUtils.parseJSONList(exportData);
+
+		List<CustomerFormMap> customerFormMaps = null;
+		if(StringUtils.isEmpty(customerIds)){
+			customerFormMaps = customerMapper.findByNames(new CustomerFormMap());
+		}else{
+			CustomerFormMap params = new CustomerFormMap();
+			params.put("where", "customer_id in (" + customerIds + ")");
+			customerFormMaps = customerMapper.findByWhere(params);
+		}
+		POIUtils.exportToExcel(response, listMap, customerFormMaps, fileName);		
 		
 	}
 
