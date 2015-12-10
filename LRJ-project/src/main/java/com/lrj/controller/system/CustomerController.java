@@ -71,6 +71,13 @@ public class CustomerController extends BaseController {
 		return Common.BACKGROUND_PATH + "/system/customer/detail";
 	}
 
+	@RequestMapping("piclist")
+	public String picList(String customer_id){
+//		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
+//		System.out.println(JSONObject.toJSONString(customerFormMap));
+		return Common.BACKGROUND_PATH + "/system/customer/piclist";
+	}
+
 	@RequestMapping("/export")
 	public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String fileName = "用户列表";
