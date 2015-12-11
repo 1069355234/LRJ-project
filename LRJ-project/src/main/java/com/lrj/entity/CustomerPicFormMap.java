@@ -8,7 +8,7 @@ import com.lrj.util.FormMap;
 /**
  * customer_pic实体表
  */
-@TableSeg(tableName = "tb_custom_pic", id="pic_id")
+@TableSeg(tableName = "tb_custom_pic", id="id")
 public class CustomerPicFormMap extends FormMap<String,Object>{
 
 	/**

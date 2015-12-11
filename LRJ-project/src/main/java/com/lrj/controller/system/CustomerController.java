@@ -1,9 +1,12 @@
 package com.lrj.controller.system;
 
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,12 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
 import com.lrj.entity.CustomerFormMap;
+import com.lrj.entity.CustomerPicFormMap;
 import com.lrj.entity.ResUserFormMap;
 import com.lrj.entity.UserFormMap;
 import com.lrj.entity.UserGroupsFormMap;
@@ -114,10 +119,26 @@ public class CustomerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("piclist")
-	public String picList(Model model,String customer_id){
-//		model.addAttribute("res", findByRes());
-//		CustomerFormMap customerFormMap = customerMapper.findbyFrist("customer_id", customer_id, CustomerFormMap.class);
-//		System.out.println(JSONObject.toJSONString(customerFormMap));
+	public String picList(Model model,String customerPhone){
+		CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
+		customerPicFormMap.put("username", customerPhone);
+
+		List<CustomerPicFormMap> findByNames = customerMapper.findByNames(customerPicFormMap);
+
+		Map<String,List<CustomerPicFormMap>> customerPics = new HashMap<>();
+
+		for(CustomerPicFormMap pic : findByNames){
+			String filetype = pic.get("filetype").toString();
+			if(customerPics.containsKey(filetype)){
+				customerPics.get(filetype).add(pic);
+			}else{
+				List<CustomerPicFormMap> map = new ArrayList<>();
+				map.add(pic);
+				customerPics.put(filetype, map);
+			}
+		}
+
+		model.addAttribute("customerPics", customerPics);
 		return Common.BACKGROUND_PATH + "/system/customer/piclist";
 	}
 
@@ -140,7 +161,19 @@ public class CustomerController extends BaseController {
 
 		DownloadUtils.downloadFile(zip,response);
 	}
-	
+
+	/**
+	 *
+	 * @Description 导出客户基本信息成excel表格
+	 * @CreateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @CreateDate 2015年12月11日 下午2:33:06
+	 * @UpdateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @UpdateDate 2015年12月11日 下午2:33:06
+	 * @param customerIds
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/exportBaseInfo")
 	public void exportBaseInfo(String customerIds,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String fileName = "客户信息";
@@ -159,38 +192,76 @@ public class CustomerController extends BaseController {
 			params.put("where", "customer_id in (" + customerIds + ")");
 			customerFormMaps = customerMapper.findByWhere(params);
 		}
-		POIUtils.exportToExcel(response, listMap, customerFormMaps, fileName);		
-		
+		POIUtils.exportToExcel(response, listMap, customerFormMaps, fileName);
+
 	}
 
-	@RequestMapping("addUI")
-	public String addUI(Model model) throws Exception {
-		return Common.BACKGROUND_PATH + "/system/user/add";
+
+	/**
+	 *
+	 * @Description app接口，新增客户基本信息
+	 * @CreateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @CreateDate 2015年12月11日 下午2:33:35
+	 * @UpdateUser 张顶飞 zhangdf@tiansu-china.com
+	 * @UpdateDate 2015年12月11日 下午2:33:35
+	 * @param txtGroupsSelect
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="addCusInfo", method = RequestMethod.POST)
+	@SystemLog(module="客户管理",methods="客户管理-新增客户")//凡需要处理业务逻辑的.都需要记录操作日志
+	@Transactional(readOnly=false)//需要事务操作必须加入此注解
+	public String addCusInfo(String cusInfo){
+		String param = "{\"name\":\"testinterface\",\"phoneNumber\":\"12345677\"}";
+		CustomerFormMap customerFormMap = JSONObject.parseObject(param, CustomerFormMap.class);
+		try {
+			customerMapper.addEntity(customerFormMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "success";
 	}
 
 	@ResponseBody
-	@RequestMapping("addEntity")
-	@SystemLog(module="系统管理",methods="用户管理-新增用户")//凡需要处理业务逻辑的.都需要记录操作日志
+	@RequestMapping(value="addCusPic", method = RequestMethod.POST)
+	@SystemLog(module="客户管理",methods="客户管理-上传图片")//凡需要处理业务逻辑的.都需要记录操作日志
 	@Transactional(readOnly=false)//需要事务操作必须加入此注解
-	public String addEntity(String txtGroupsSelect){
+	public String addCusPic(byte[] picFile, String picInfo) {
+
+		CustomerPicFormMap customerPicFormMap = JSONObject.parseObject(picInfo, CustomerPicFormMap.class);
+
+		String filePath = customerPicFormMap.get("filepath").toString();
+		String fileName = customerPicFormMap.get("filename").toString();
+
+		BufferedOutputStream bos = null;
+		FileOutputStream fos = null;
+		File file = null;
 		try {
-			UserFormMap userFormMap = getFormMap(UserFormMap.class);
-			userFormMap.put("txtGroupsSelect", txtGroupsSelect);
-			PasswordHelper passwordHelper = new PasswordHelper();
-			userFormMap.set("password","123456789");
-			passwordHelper.encryptPassword(userFormMap);
-			userMapper.addEntity(userFormMap);//新增后返回新增信息
-			if (!Common.isEmpty(txtGroupsSelect)) {
-				String[] txt = txtGroupsSelect.split(",");
-				UserGroupsFormMap userGroupsFormMap = new UserGroupsFormMap();
-				for (String roleId : txt) {
-					userGroupsFormMap.put("userId", userFormMap.get("id"));
-					userGroupsFormMap.put("roleId", roleId);
-					userMapper.addEntity(userGroupsFormMap);
+			File dir = new File(filePath);
+			if (!dir.exists() && dir.isDirectory()) {// 判断文件目录是否存在
+				dir.mkdirs();
+			}
+			file = new File(filePath + "\\" + fileName);
+			fos = new FileOutputStream(file);
+			bos = new BufferedOutputStream(fos);
+			bos.write(picFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (bos != null) {
+				try {
+					bos.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
-		} catch (Exception e) {
-			 throw new SystemException("添加账号异常");
+			if (fos != null) {
+				try {
+					fos.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
 		}
 		return "success";
 	}

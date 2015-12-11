@@ -49,11 +49,18 @@ function exportAll(){
 	<button class="btn btn-primary marR10" type="button" onclick="exportAll()">全部导出</button>
 </div>
 <div class="container">
-	<div class="part" title="身份证照片">
-		<a href="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/房产/aa.jpg" title="身份证照片" rel="lightbox-group"><img src="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/驾照/bb.jpg" width="148px;" height="140px;"/></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/驾照/bb.jpg" title="身份证照片" rel="lightbox-group"></a>
-		<a href="${pageContext.request.contextPath}/uploadFile/张三/翼农贷/身份证/cc.jpg" title="身份证照片" rel="lightbox-group"></a>
-		<span>身份证照片</span>
-	</div>
+	<c:forEach var="item" items="${customerPics}" varStatus="i">
+		<div class="part" title="${item.key }">
+			<c:forEach varStatus="j" var="pic" items="${item.value }">
+				<c:if test="${j.index == 0 }">
+					<a href="${pageContext.request.contextPath}${pic.filepath}" title="${pic.filename }" rel="lightbox-group${i.index }"><img src="${pageContext.request.contextPath}${pic.filepath}" width="148px;" height="140px;"/></a>
+				</c:if>
+				<c:if test="${j.index != 0 }">
+					<a href="${pageContext.request.contextPath}${pic.filepath}" title="${pic.filename }" rel="lightbox-group${i.index }"></a>
+				</c:if>
+			</c:forEach>
+			<span>${item.key }</span>
+		</div>
+	</c:forEach>
 
 </div>

@@ -12,6 +12,21 @@
 		select *
 		from tb_customer
 		where 1 = 1
+		<if test="name != null and name != ''">
+          and name like '%${name}%'
+        </if>
+        <if test="salesman != null and salesman != ''">
+          and salesman like '%${salesman}%'
+        </if>
+        <if test="begin != null and end == null">
+          <![CDATA[ and createtime >= '${begin}']]>
+        </if>
+        <if test="begin == null and end != null">
+          <![CDATA[ and createtime <= '${end}']]>
+        </if>
+        <if test="begin != null and end != null">
+          <![CDATA[ and createtime <= '${end}' and createtime >= '${begin}']]>
+        </if>
 		<if test="column != null">
           order by ${column} ${sort}
         </if>

@@ -78,6 +78,7 @@
     		/layer-v1.9.2/** = anon
     		/notebook/** = anon
     		/login.shtml = anon
+    		/app_login.shtml = anon
 			/denied.jsp = anon
 			/install.shtml = anon
 			/lanyuan.shtml = anon
@@ -110,7 +111,7 @@
         <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
         <property name="sessionDAO" ref="sessionDAO"/>
     </bean>
-    
+
 
 	<!--shiro缓存管理器 -->
 	<bean id="cacheManager" class="com.lrj.shiro.spring.SpringCacheManagerWrapper" >

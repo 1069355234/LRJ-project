@@ -7,7 +7,7 @@
 			name="searchForm">
 			<div class="form-group">
 				<label class="control-label"> <span
-					class="h4 font-thin v-middle">菜单名:</span></label> <input
+					class="h6 font-thin v-middle">菜单名:</span></label> <input
 					class="input-medium ui-autocomplete-input" id="name"
 					name="resFormMap.name">
 			</div>

@@ -116,6 +116,37 @@ public class BackgroundController extends BaseController {
 		return "redirect:index.shtml";
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "app_login", method = RequestMethod.POST)
+	public Boolean appLogin(String username,String password){
+		try {
+			Subject user = SecurityUtils.getSubject();
+			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+			try {
+				user.login(token);
+			} catch (AuthenticationException e) {
+				token.clear();
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "app_logout", method = RequestMethod.GET)
+	public Boolean appLogout() {
+		try {
+			SecurityUtils.getSubject().logout();
+		} catch (Exception e) {
+			return false;
+		}
+
+		return true;
+	}
+
 	/**
 	 * @mod Ekko 2015-09-07
 	 * @throws Exception

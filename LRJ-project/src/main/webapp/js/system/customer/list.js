@@ -33,7 +33,7 @@ $(function() {
 				return new Date(data).format("yyyy-MM-dd hh:mm:ss");
 			}
 		}, {
-			colkey : "customer_id",
+			colkey : "customer_phone",
 			name : "操作",
 			renderData : function(rowindex,data, rowdata, column) {
 				return "<a href='javascript:void(0)' onclick='detail("+data+")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='piclist("+data+")' style='color:blue'>资料照片</a>";
@@ -50,11 +50,11 @@ $(function() {
 			data : searchParams
 		});
 	});
-	
+
 	$("#allExport").click("click", function() {// 绑定查询按扭
 		allExport();
 	});
-	
+
 	$("#chooseExport").click("click", function() {// 绑定查询按扭
 		chooseExport();
 	});
@@ -75,7 +75,7 @@ function piclist(data){
 	$("#topli").append(li);
 	var tb = $("#loadhtml");
 	tb.html(CommnUtil.loadingImg());
-	tb.load(rootPath+"/customer/piclist.shtml",{"customer_id":data});
+	tb.load(rootPath+"/customer/piclist.shtml",{"customerPhone":data});
 }
 
 function allExport(){
