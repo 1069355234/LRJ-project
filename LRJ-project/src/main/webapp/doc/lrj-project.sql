@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-12-13 17:26:02
+Date: 2015-12-13 22:38:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,55 +53,11 @@ CREATE TABLE `ly_log` (
   `operTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_log
 -- ----------------------------
-INSERT INTO `ly_log` VALUES ('135', 'admin', '系统管理', '用户管理/组管理-修改权限', '59', '192.168.20.119', '2015-12-04 17:15:59', '执行成功!');
-INSERT INTO `ly_log` VALUES ('136', 'admin', '系统管理', '用户管理/组管理-修改权限', '33', '0:0:0:0:0:0:0:1', '2015-12-05 13:09:49', '执行成功!');
-INSERT INTO `ly_log` VALUES ('137', 'admin', '系统管理', '用户管理-修改用户', '9', '0:0:0:0:0:0:0:1', '2015-12-05 13:16:08', '执行成功!');
-INSERT INTO `ly_log` VALUES ('138', 'admin', '系统管理', '组管理-修改组', '40', '0:0:0:0:0:0:0:1', '2015-12-05 14:32:35', '执行成功!');
-INSERT INTO `ly_log` VALUES ('139', 'admin', '系统管理', '组管理-修改组', '51', '0:0:0:0:0:0:0:1', '2015-12-05 14:32:46', '执行成功!');
-INSERT INTO `ly_log` VALUES ('140', 'admin', '系统管理', '用户管理/组管理-修改权限', '138', '0:0:0:0:0:0:0:1', '2015-12-05 14:33:02', '执行成功!');
-INSERT INTO `ly_log` VALUES ('141', 'admin', '系统管理', '用户管理-新增用户', '99', '0:0:0:0:0:0:0:1', '2015-12-05 14:52:20', '执行成功!');
-INSERT INTO `ly_log` VALUES ('142', 'admin', '系统管理', '组管理-新增组', '57', '0:0:0:0:0:0:0:1', '2015-12-06 16:49:19', '执行成功!');
-INSERT INTO `ly_log` VALUES ('143', 'admin', '系统管理', '组管理-新增组', '13', '0:0:0:0:0:0:0:1', '2015-12-06 16:52:48', '执行成功!');
-INSERT INTO `ly_log` VALUES ('144', 'admin', '系统管理', '组管理-新增组', '134', '0:0:0:0:0:0:0:1', '2015-12-06 17:02:53', '执行成功!');
-INSERT INTO `ly_log` VALUES ('145', 'admin', '系统管理', '组管理-新增组', '51', '0:0:0:0:0:0:0:1', '2015-12-06 17:03:54', '执行成功!');
-INSERT INTO `ly_log` VALUES ('146', 'admin', '系统管理', '组管理-新增组', '50', '0:0:0:0:0:0:0:1', '2015-12-06 17:04:48', '执行成功!');
-INSERT INTO `ly_log` VALUES ('147', 'admin', '系统管理', '组管理-删除组', '40', '0:0:0:0:0:0:0:1', '2015-12-06 17:05:13', '执行成功!');
-INSERT INTO `ly_log` VALUES ('148', 'admin', '系统管理', '组管理-删除组', '7', '0:0:0:0:0:0:0:1', '2015-12-06 17:05:18', '执行成功!');
-INSERT INTO `ly_log` VALUES ('149', 'admin', '系统管理', '用户管理-新增用户', '35', '0:0:0:0:0:0:0:1', '2015-12-06 17:21:34', '执行成功!');
-INSERT INTO `ly_log` VALUES ('150', 'admin', '系统管理', '用户管理-删除用户', '89', '0:0:0:0:0:0:0:1', '2015-12-06 17:23:46', '执行成功!');
-INSERT INTO `ly_log` VALUES ('151', 'admin', '系统管理', '用户管理-删除用户', '21', '0:0:0:0:0:0:0:1', '2015-12-06 17:23:50', '执行成功!');
-INSERT INTO `ly_log` VALUES ('152', 'admin', '系统管理', '用户管理-修改用户', '18', '0:0:0:0:0:0:0:1', '2015-12-06 17:35:26', '执行成功!');
-INSERT INTO `ly_log` VALUES ('153', 'admin', '系统管理', '用户管理/组管理-修改权限', '118', '0:0:0:0:0:0:0:1', '2015-12-08 22:55:49', '执行成功!');
-INSERT INTO `ly_log` VALUES ('154', 'admin', '系统管理', '用户管理-修改密码', '26', '0:0:0:0:0:0:0:1', '2015-12-09 14:45:37', '执行成功!');
-INSERT INTO `ly_log` VALUES ('155', 'admin', '系统管理', '用户管理-修改密码', '22', '0:0:0:0:0:0:0:1', '2015-12-09 14:46:29', '执行成功!');
-INSERT INTO `ly_log` VALUES ('156', 'admin', '系统管理', '用户管理/组管理-修改权限', '58', '0:0:0:0:0:0:0:1', '2015-12-09 16:46:11', '执行成功!');
-INSERT INTO `ly_log` VALUES ('157', 'admin', '系统管理', '用户管理-新增用户', '16', '0:0:0:0:0:0:0:1', '2015-12-09 17:24:13', '执行成功!');
-INSERT INTO `ly_log` VALUES ('158', 'admin', '系统管理', '用户管理-新增用户', '20', '0:0:0:0:0:0:0:1', '2015-12-09 17:25:19', '执行成功!');
-INSERT INTO `ly_log` VALUES ('159', 'admin', '系统管理', '用户管理-新增用户', '97', '0:0:0:0:0:0:0:1', '2015-12-09 20:22:40', '执行成功!');
-INSERT INTO `ly_log` VALUES ('160', 'admin', '系统管理', '用户管理-新增用户', '102', '0:0:0:0:0:0:0:1', '2015-12-09 20:57:31', '执行成功!');
-INSERT INTO `ly_log` VALUES ('161', 'admin', '系统管理', '用户管理-新增用户', '45', '0:0:0:0:0:0:0:1', '2015-12-09 20:57:48', '执行成功!');
-INSERT INTO `ly_log` VALUES ('162', 'admin', '系统管理', '用户管理-新增用户', '158', '0:0:0:0:0:0:0:1', '2015-12-09 21:05:40', '执行成功!');
-INSERT INTO `ly_log` VALUES ('163', 'admin', '系统管理', '用户管理-新增用户', '167', '0:0:0:0:0:0:0:1', '2015-12-09 21:06:22', '执行成功!');
-INSERT INTO `ly_log` VALUES ('164', 'admin', '系统管理', '用户管理-修改用户', '111', '0:0:0:0:0:0:0:1', '2015-12-09 21:08:38', '执行成功!');
-INSERT INTO `ly_log` VALUES ('165', 'admin', '系统管理', '用户管理-修改用户', '10', '0:0:0:0:0:0:0:1', '2015-12-09 21:09:54', '执行成功!');
-INSERT INTO `ly_log` VALUES ('166', 'admin', '系统管理', '用户管理-修改用户', '52', '0:0:0:0:0:0:0:1', '2015-12-09 21:12:57', '执行成功!');
-INSERT INTO `ly_log` VALUES ('167', 'admin', '系统管理', '用户管理-修改用户', '112179', '0:0:0:0:0:0:0:1', '2015-12-09 21:15:13', '执行成功!');
-INSERT INTO `ly_log` VALUES ('168', 'admin', '系统管理', '用户管理-修改用户', '22603', '0:0:0:0:0:0:0:1', '2015-12-09 21:16:23', '执行成功!');
-INSERT INTO `ly_log` VALUES ('169', 'admin', '系统管理', '用户管理-修改用户', '129465', '0:0:0:0:0:0:0:1', '2015-12-09 21:18:49', '执行成功!');
-INSERT INTO `ly_log` VALUES ('170', 'admin', '系统管理', '用户管理-修改用户', '8', '0:0:0:0:0:0:0:1', '2015-12-09 21:19:17', '执行成功!');
-INSERT INTO `ly_log` VALUES ('171', 'admin', '系统管理', '用户管理/组管理-修改权限', '93', '0:0:0:0:0:0:0:1', '2015-12-09 21:46:05', '执行成功!');
-INSERT INTO `ly_log` VALUES ('172', 'admin', '系统管理', '用户管理-修改用户', '99', '0:0:0:0:0:0:0:1', '2015-12-09 22:24:49', '执行成功!');
-INSERT INTO `ly_log` VALUES ('173', 'leader', '系统管理', '用户管理/组管理-修改权限', '46', '0:0:0:0:0:0:0:1', '2015-12-09 22:26:23', '执行成功!');
-INSERT INTO `ly_log` VALUES ('174', 'leader', '系统管理', '用户管理-修改用户', '58', '0:0:0:0:0:0:0:1', '2015-12-09 22:26:38', '执行成功!');
-INSERT INTO `ly_log` VALUES ('175', 'leader', '系统管理', '用户管理/组管理-修改权限', '27', '0:0:0:0:0:0:0:1', '2015-12-09 22:27:29', '执行成功!');
-INSERT INTO `ly_log` VALUES ('176', 'leader', '系统管理', '用户管理-新增用户', '149', '0:0:0:0:0:0:0:1', '2015-12-09 22:27:55', '执行成功!');
-INSERT INTO `ly_log` VALUES ('177', 'boss1', '系统管理', '用户管理/组管理-修改权限', '81', '0:0:0:0:0:0:0:1', '2015-12-13 15:00:20', '执行成功!');
-INSERT INTO `ly_log` VALUES ('178', 'boss1', '系统管理', '用户管理-修改用户', '8', '0:0:0:0:0:0:0:1', '2015-12-13 15:01:30', '执行成功!');
 
 -- ----------------------------
 -- Table structure for `ly_resources`
@@ -125,7 +81,7 @@ CREATE TABLE `ly_resources` (
 -- Records of ly_resources
 -- ----------------------------
 INSERT INTO `ly_resources` VALUES ('1', '系统基础管理', '0', 'system', '0', 'system', '1', 'fa-desktop', '0', '系统基础管理');
-INSERT INTO `ly_resources` VALUES ('2', '用户管理', '1', 'account', '1', '/user/list.shtml', '2', null, '0', null);
+INSERT INTO `ly_resources` VALUES ('2', '员工管理', '1', 'account', '1', '/user/list.shtml', '2', null, '0', null);
 INSERT INTO `ly_resources` VALUES ('3', '角色管理', '1', 'role', '1', '/role/list.shtml', '7', 'fa-list', '0', '组管理');
 INSERT INTO `ly_resources` VALUES ('4', '菜单管理', '1', 'ly_resources', '1', '/resources/list.shtml', '12', 'fa-list-alt', '0', '菜单管理');
 INSERT INTO `ly_resources` VALUES ('5', '新增用户', '2', 'account_add', '2', '/user/addUI.shtml', '3', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;addAccount&quot;&nbsp;class=&quot;btn&nbsp;btn-primary&nbsp;marR10&quot;&gt;新增&lt;/button&gt;');
@@ -248,56 +204,43 @@ INSERT INTO `ly_role_res` VALUES ('1', '37');
 INSERT INTO `ly_role_res` VALUES ('1', '38');
 INSERT INTO `ly_role_res` VALUES ('1', '39');
 INSERT INTO `ly_role_res` VALUES ('1', '40');
-INSERT INTO `ly_role_res` VALUES ('5', '1');
-INSERT INTO `ly_role_res` VALUES ('5', '2');
-INSERT INTO `ly_role_res` VALUES ('5', '3');
-INSERT INTO `ly_role_res` VALUES ('5', '4');
-INSERT INTO `ly_role_res` VALUES ('5', '5');
-INSERT INTO `ly_role_res` VALUES ('5', '6');
-INSERT INTO `ly_role_res` VALUES ('5', '7');
-INSERT INTO `ly_role_res` VALUES ('5', '8');
-INSERT INTO `ly_role_res` VALUES ('5', '9');
-INSERT INTO `ly_role_res` VALUES ('5', '10');
-INSERT INTO `ly_role_res` VALUES ('5', '11');
-INSERT INTO `ly_role_res` VALUES ('5', '25');
-INSERT INTO `ly_role_res` VALUES ('5', '26');
-INSERT INTO `ly_role_res` VALUES ('5', '27');
-INSERT INTO `ly_role_res` VALUES ('5', '28');
-INSERT INTO `ly_role_res` VALUES ('5', '29');
-INSERT INTO `ly_role_res` VALUES ('5', '30');
-INSERT INTO `ly_role_res` VALUES ('5', '31');
-INSERT INTO `ly_role_res` VALUES ('5', '32');
-INSERT INTO `ly_role_res` VALUES ('5', '33');
-INSERT INTO `ly_role_res` VALUES ('5', '34');
-INSERT INTO `ly_role_res` VALUES ('5', '35');
+INSERT INTO `ly_role_res` VALUES ('4', '36');
+INSERT INTO `ly_role_res` VALUES ('4', '37');
+INSERT INTO `ly_role_res` VALUES ('4', '39');
+INSERT INTO `ly_role_res` VALUES ('4', '40');
 INSERT INTO `ly_role_res` VALUES ('5', '36');
 INSERT INTO `ly_role_res` VALUES ('5', '37');
 INSERT INTO `ly_role_res` VALUES ('5', '38');
-INSERT INTO `ly_role_res` VALUES ('8', '1');
-INSERT INTO `ly_role_res` VALUES ('8', '2');
-INSERT INTO `ly_role_res` VALUES ('8', '3');
-INSERT INTO `ly_role_res` VALUES ('8', '4');
-INSERT INTO `ly_role_res` VALUES ('8', '5');
-INSERT INTO `ly_role_res` VALUES ('8', '6');
-INSERT INTO `ly_role_res` VALUES ('8', '7');
-INSERT INTO `ly_role_res` VALUES ('8', '8');
-INSERT INTO `ly_role_res` VALUES ('8', '9');
-INSERT INTO `ly_role_res` VALUES ('8', '10');
-INSERT INTO `ly_role_res` VALUES ('8', '11');
-INSERT INTO `ly_role_res` VALUES ('8', '25');
-INSERT INTO `ly_role_res` VALUES ('8', '26');
-INSERT INTO `ly_role_res` VALUES ('8', '27');
-INSERT INTO `ly_role_res` VALUES ('8', '28');
-INSERT INTO `ly_role_res` VALUES ('8', '29');
-INSERT INTO `ly_role_res` VALUES ('8', '30');
-INSERT INTO `ly_role_res` VALUES ('8', '31');
-INSERT INTO `ly_role_res` VALUES ('8', '32');
-INSERT INTO `ly_role_res` VALUES ('8', '33');
-INSERT INTO `ly_role_res` VALUES ('8', '34');
-INSERT INTO `ly_role_res` VALUES ('8', '35');
+INSERT INTO `ly_role_res` VALUES ('5', '39');
+INSERT INTO `ly_role_res` VALUES ('5', '40');
+INSERT INTO `ly_role_res` VALUES ('6', '1');
+INSERT INTO `ly_role_res` VALUES ('6', '2');
+INSERT INTO `ly_role_res` VALUES ('6', '3');
+INSERT INTO `ly_role_res` VALUES ('6', '5');
+INSERT INTO `ly_role_res` VALUES ('6', '6');
+INSERT INTO `ly_role_res` VALUES ('6', '7');
+INSERT INTO `ly_role_res` VALUES ('6', '8');
+INSERT INTO `ly_role_res` VALUES ('6', '9');
+INSERT INTO `ly_role_res` VALUES ('6', '10');
+INSERT INTO `ly_role_res` VALUES ('6', '11');
+INSERT INTO `ly_role_res` VALUES ('6', '25');
+INSERT INTO `ly_role_res` VALUES ('6', '26');
+INSERT INTO `ly_role_res` VALUES ('6', '34');
+INSERT INTO `ly_role_res` VALUES ('6', '36');
+INSERT INTO `ly_role_res` VALUES ('6', '37');
+INSERT INTO `ly_role_res` VALUES ('6', '38');
+INSERT INTO `ly_role_res` VALUES ('6', '39');
+INSERT INTO `ly_role_res` VALUES ('6', '40');
+INSERT INTO `ly_role_res` VALUES ('7', '36');
+INSERT INTO `ly_role_res` VALUES ('7', '37');
+INSERT INTO `ly_role_res` VALUES ('7', '38');
+INSERT INTO `ly_role_res` VALUES ('7', '39');
+INSERT INTO `ly_role_res` VALUES ('7', '40');
 INSERT INTO `ly_role_res` VALUES ('8', '36');
 INSERT INTO `ly_role_res` VALUES ('8', '37');
 INSERT INTO `ly_role_res` VALUES ('8', '38');
+INSERT INTO `ly_role_res` VALUES ('8', '39');
+INSERT INTO `ly_role_res` VALUES ('8', '40');
 
 -- ----------------------------
 -- Table structure for `ly_server_info`
@@ -393,168 +336,11 @@ CREATE TABLE `ly_userlogin` (
   `loginIP` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ly_user_loginlist` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=300 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_userlogin
 -- ----------------------------
-INSERT INTO `ly_userlogin` VALUES ('143', '3', 'admin', '2015-12-04 10:00:04', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('144', '3', 'admin', '2015-12-04 10:12:20', '192.168.20.158');
-INSERT INTO `ly_userlogin` VALUES ('145', '3', 'admin', '2015-12-04 10:48:00', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('146', '3', 'admin', '2015-12-04 15:13:42', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('147', '3', 'admin', '2015-12-04 16:44:25', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('148', '3', 'admin', '2015-12-04 16:45:11', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('149', '3', 'admin', '2015-12-04 17:10:48', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('150', '3', 'admin', '2015-12-04 17:12:11', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('151', '3', 'admin', '2015-12-04 17:16:18', '192.168.20.119');
-INSERT INTO `ly_userlogin` VALUES ('152', '3', 'admin', '2015-12-05 13:05:28', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('153', '3', 'admin', '2015-12-05 13:09:28', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('154', '3', 'admin', '2015-12-05 13:15:59', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('155', '3', 'admin', '2015-12-05 13:24:52', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('156', '3', 'admin', '2015-12-05 13:25:17', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('157', '3', 'admin', '2015-12-05 14:18:19', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('158', '3', 'admin', '2015-12-05 14:19:32', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('159', '3', 'admin', '2015-12-05 14:21:12', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('160', '3', 'admin', '2015-12-05 14:22:14', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('161', '3', 'admin', '2015-12-05 14:22:46', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('162', '3', 'admin', '2015-12-05 14:24:45', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('163', '3', 'admin', '2015-12-05 14:26:25', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('164', '3', 'admin', '2015-12-05 14:27:21', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('165', '3', 'admin', '2015-12-05 14:28:41', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('166', '3', 'admin', '2015-12-05 14:29:27', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('167', '3', 'admin', '2015-12-05 14:31:55', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('168', '3', 'admin', '2015-12-05 14:33:29', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('169', '4', 'zhangdf', '2015-12-05 14:52:36', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('170', '4', 'zhangdf', '2015-12-05 14:55:39', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('171', '4', 'zhangdf', '2015-12-06 11:46:04', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('172', '4', 'zhangdf', '2015-12-06 13:49:20', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('173', '4', 'zhangdf', '2015-12-06 13:54:35', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('174', '4', 'zhangdf', '2015-12-06 13:56:29', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('175', '4', 'zhangdf', '2015-12-06 14:11:44', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('176', '3', 'admin', '2015-12-06 14:12:36', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('177', '3', 'admin', '2015-12-06 16:48:09', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('178', '3', 'admin', '2015-12-06 17:20:43', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('179', '3', 'admin', '2015-12-06 17:23:30', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('180', '3', 'admin', '2015-12-08 22:39:51', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('181', '3', 'admin', '2015-12-08 22:52:13', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('182', '3', 'admin', '2015-12-08 22:56:01', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('183', '3', 'admin', '2015-12-08 23:20:56', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('184', '3', 'admin', '2015-12-08 23:51:11', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('185', '3', 'admin', '2015-12-09 12:25:19', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('186', '3', 'admin', '2015-12-09 12:33:33', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('187', '3', 'admin', '2015-12-09 12:39:27', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('188', '3', 'admin', '2015-12-09 14:45:17', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('189', '3', 'admin', '2015-12-09 14:45:45', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('190', '3', 'admin', '2015-12-09 14:46:14', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('191', '3', 'admin', '2015-12-09 14:54:14', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('192', '3', 'admin', '2015-12-09 15:00:48', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('193', '3', 'admin', '2015-12-09 15:37:26', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('194', '3', 'admin', '2015-12-09 16:45:55', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('195', '3', 'admin', '2015-12-09 16:46:19', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('196', '3', 'admin', '2015-12-09 16:56:23', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('197', '3', 'admin', '2015-12-09 17:04:53', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('198', '3', 'admin', '2015-12-09 17:23:30', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('199', '3', 'admin', '2015-12-09 17:27:50', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('200', '3', 'admin', '2015-12-09 19:15:35', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('201', '3', 'admin', '2015-12-09 19:28:01', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('202', '3', 'admin', '2015-12-09 19:29:48', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('203', '3', 'admin', '2015-12-09 19:36:49', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('204', '3', 'admin', '2015-12-09 19:42:59', '192.168.1.102');
-INSERT INTO `ly_userlogin` VALUES ('205', '3', 'admin', '2015-12-09 19:48:22', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('206', '3', 'admin', '2015-12-09 19:55:36', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('207', '3', 'admin', '2015-12-09 19:58:17', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('208', '3', 'admin', '2015-12-09 20:00:46', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('209', '3', 'admin', '2015-12-09 20:03:34', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('210', '3', 'admin', '2015-12-09 20:05:43', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('211', '3', 'admin', '2015-12-09 20:10:04', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('212', '3', 'admin', '2015-12-09 20:15:03', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('213', '3', 'admin', '2015-12-09 20:37:14', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('214', '3', 'admin', '2015-12-09 20:42:03', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('215', '3', 'admin', '2015-12-09 20:45:04', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('216', '3', 'admin', '2015-12-09 20:54:05', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('217', '3', 'admin', '2015-12-09 20:54:40', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('218', '3', 'admin', '2015-12-09 20:56:18', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('219', '3', 'admin', '2015-12-09 21:12:48', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('220', '3', 'admin', '2015-12-09 21:19:03', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('221', '3', 'admin', '2015-12-09 21:41:15', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('222', '3', 'admin', '2015-12-09 21:46:16', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('223', '3', 'admin', '2015-12-09 22:19:32', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('224', '3', 'admin', '2015-12-09 22:23:06', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('225', '6', 'leader', '2015-12-09 22:24:18', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('226', '3', 'admin', '2015-12-09 22:24:28', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('227', '6', 'leader', '2015-12-09 22:25:17', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('228', '13', 'boss1', '2015-12-09 22:28:30', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('229', '13', 'boss1', '2015-12-09 22:45:36', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('230', '13', 'boss1', '2015-12-09 22:54:28', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('231', '13', 'boss1', '2015-12-09 23:07:09', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('232', '13', 'boss1', '2015-12-09 23:43:41', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('233', '3', 'admin', '2015-12-10 10:06:31', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('234', '3', 'admin', '2015-12-10 12:20:45', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('235', '3', 'admin', '2015-12-10 14:40:06', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('236', '3', 'admin', '2015-12-10 14:59:57', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('237', '3', 'admin', '2015-12-10 15:01:54', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('238', '3', 'admin', '2015-12-10 16:45:40', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('239', '3', 'admin', '2015-12-10 17:21:26', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('240', '3', 'admin', '2015-12-10 17:22:21', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('241', '3', 'admin', '2015-12-10 17:25:00', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('242', '3', 'admin', '2015-12-10 17:28:15', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('243', '3', 'admin', '2015-12-10 17:29:46', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('244', '3', 'admin', '2015-12-10 17:38:07', '192.168.20.111');
-INSERT INTO `ly_userlogin` VALUES ('245', '3', 'admin', '2015-12-10 17:41:31', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('246', '3', 'admin', '2015-12-10 19:42:39', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('247', '3', 'admin', '2015-12-12 16:09:37', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('248', '3', 'admin', '2015-12-12 16:54:17', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('249', '13', 'boss1', '2015-12-12 16:54:32', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('250', '13', 'boss1', '2015-12-12 17:12:56', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('251', '13', 'boss1', '2015-12-12 17:31:50', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('252', '13', 'boss1', '2015-12-12 20:10:12', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('253', '13', 'boss1', '2015-12-12 20:21:58', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('254', '13', 'boss1', '2015-12-12 20:22:43', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('255', '13', 'boss1', '2015-12-12 20:24:55', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('256', '13', 'boss1', '2015-12-12 20:30:23', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('257', '3', 'admin', '2015-12-12 21:49:47', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('258', '3', 'admin', '2015-12-12 22:12:36', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('259', '3', 'admin', '2015-12-12 22:38:50', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('260', '3', 'admin', '2015-12-12 22:44:22', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('261', '3', 'admin', '2015-12-12 22:47:49', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('262', '3', 'admin', '2015-12-12 22:52:39', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('263', '3', 'admin', '2015-12-12 22:56:38', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('264', '13', 'boss1', '2015-12-12 22:57:58', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('265', '3', 'admin', '2015-12-12 23:12:19', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('266', '13', 'boss1', '2015-12-12 23:12:32', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('267', '3', 'admin', '2015-12-12 23:15:22', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('268', '13', 'boss1', '2015-12-12 23:15:30', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('269', '3', 'admin', '2015-12-13 13:14:42', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('270', '13', 'boss1', '2015-12-13 13:14:53', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('271', '13', 'boss1', '2015-12-13 13:18:50', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('272', '13', 'boss1', '2015-12-13 13:20:11', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('273', '13', 'boss1', '2015-12-13 13:27:54', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('274', '13', 'boss1', '2015-12-13 13:43:26', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('275', '13', 'boss1', '2015-12-13 13:53:15', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('276', '13', 'boss1', '2015-12-13 15:00:30', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('277', '13', 'boss1', '2015-12-13 15:01:36', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('278', '13', 'boss1', '2015-12-13 15:03:41', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('279', '13', 'boss1', '2015-12-13 15:06:09', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('280', '13', 'boss1', '2015-12-13 15:08:37', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('281', '13', 'boss1', '2015-12-13 15:47:27', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('282', '13', 'boss1', '2015-12-13 15:53:25', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('283', '13', 'boss1', '2015-12-13 16:02:41', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('284', '13', 'boss1', '2015-12-13 16:10:04', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('285', '13', 'boss1', '2015-12-13 16:17:01', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('286', '13', 'boss1', '2015-12-13 16:18:45', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('287', '13', 'boss1', '2015-12-13 16:46:18', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('288', '13', 'boss1', '2015-12-13 16:47:24', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('289', '13', 'boss1', '2015-12-13 16:49:22', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('290', '13', 'boss1', '2015-12-13 16:51:24', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('291', '13', 'boss1', '2015-12-13 16:54:00', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('292', '13', 'boss1', '2015-12-13 17:00:12', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('293', '13', 'boss1', '2015-12-13 17:04:07', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('294', '13', 'boss1', '2015-12-13 17:06:29', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('295', '13', 'boss1', '2015-12-13 17:08:43', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('296', '3', 'admin', '2015-12-13 17:10:00', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('297', '13', 'boss1', '2015-12-13 17:10:24', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('298', '13', 'boss1', '2015-12-13 17:17:44', '0:0:0:0:0:0:0:1');
-INSERT INTO `ly_userlogin` VALUES ('299', '13', 'boss1', '2015-12-13 17:21:26', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for `ly_user_role`
@@ -579,7 +365,6 @@ INSERT INTO `ly_user_role` VALUES ('9', '4');
 INSERT INTO `ly_user_role` VALUES ('10', '4');
 INSERT INTO `ly_user_role` VALUES ('11', '4');
 INSERT INTO `ly_user_role` VALUES ('12', '4');
-INSERT INTO `ly_user_role` VALUES ('13', '1');
 INSERT INTO `ly_user_role` VALUES ('13', '8');
 
 -- ----------------------------
@@ -629,13 +414,24 @@ CREATE TABLE `tb_customer` (
   `borrowFriendsName` varchar(20) DEFAULT NULL COMMENT '贷友姓名',
   `borrowFriendsPhoneNumber` varchar(20) DEFAULT NULL COMMENT '贷友手机号码',
   `createTime` varchar(32) DEFAULT NULL COMMENT '创建时间',
+  `applyloanKey` varchar(30) DEFAULT NULL COMMENT '标流水号',
+  `applyloanBlx` varchar(20) DEFAULT NULL COMMENT '标类型',
+  `applyloanJkje` varchar(20) DEFAULT NULL COMMENT '借款金额',
+  `applyloanJkqx` varchar(20) DEFAULT NULL COMMENT '借款期限',
+  `applyloanZgnll` varchar(20) DEFAULT NULL COMMENT '最高年利率',
+  `applyloanHkfs` varchar(20) DEFAULT NULL COMMENT '还宽方式',
+  `applyloanJklx` varchar(20) DEFAULT NULL COMMENT '借款类型',
+  `applyloanJkQy` varchar(20) DEFAULT NULL COMMENT '借款区域',
+  `applyloanJkmd` varchar(255) DEFAULT NULL COMMENT '借款目的',
+  `applyloanMsxx` varchar(255) DEFAULT NULL COMMENT '描述信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_customer
 -- ----------------------------
-INSERT INTO `tb_customer` VALUES ('1', 'salesman1', '张三', '男', '34', '汉', '13062505804', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23');
+INSERT INTO `tb_customer` VALUES ('1', 'salesman1', '张三', '男', '34', '汉', '13062505804', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23', '1354651325', '翼农贷', '10000', '30天', '10.0', '还本付息', '个人消费', '江苏南京', '买房买车', '本人资金周转用车辆抵押贷款在南京运营中心保证按时还款');
+INSERT INTO `tb_customer` VALUES ('2', 'salesman2', '李四', '女', '34', '汉', '13062505803', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23', '1354651328', '翼农贷', '10000', '30天', '10.0', '还本付息', '个人消费', '江苏南京', '买房买车', '本人资金周转用车辆抵押贷款在南京运营中心保证按时还款');
 
 -- ----------------------------
 -- Table structure for `tb_custom_pic`

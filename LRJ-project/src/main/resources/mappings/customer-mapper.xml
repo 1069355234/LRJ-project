@@ -18,6 +18,12 @@
         <if test="salesman != null and salesman != ''">
           and salesman like '%${salesman}%'
         </if>
+        <if test="applyloanJkQy != null and applyloanJkQy != ''">
+          and applyloanJkQy like '%${applyloanJkQy}%'
+        </if>
+        <if test="applyloanJkje != null and applyloanJkje != ''">
+          and applyloanJkje = '${applyloanJkje}'
+        </if>
         <if test="begin != null and begin != '' and (end == null or end == '')">
           <![CDATA[ and createTime >= '${begin}']]>
         </if>

@@ -12,16 +12,16 @@ $(function() {
 			name : "客户名",
 			isSort:true,
 		}, {
-			colkey : "sex",
-			name : "性别",
-			isSort:true,
-		}, {
-			colkey : "age",
-			name : "年龄",
-			isSort:true,
-		}, {
 			colkey : "salesman",
-			name : "业务员"
+			name : "所属业务员",
+			isSort:true,
+		}, {
+			colkey : "applyloanJkQy",
+			name : "借款区域",
+			isSort:true,
+		}, {
+			colkey : "applyloanJkje",
+			name : "借款金额"
 		}, {
 			colkey : "createTime",
 			name : "创建时间",

@@ -46,39 +46,31 @@
 	</tr>
 	<tr>
 		<td class="small-title">标流水号</td>
-		<td>14438524824</td>
-		<td class="small-title">标题</td>
-		<td>车辆抵押贷款</td>
-		<td class="small-title">借款人</td>
-		<td>杜美玉</td>
+		<td>${customer.applyloanKey }</td>
+		<td class="small-title">标类型</td>
+		<td>${customer.applyloanBlx }</td>
+		<td class="small-title">借款金额</td>
+		<td>${customer.applyloanJkje }</td>
 	</tr>
 	<tr>
-		<td class="small-title">金额</td>
-		<td>40000.0</td>
-		<td class="small-title">年利率</td>
-		<td>14.0%</td>
-		<td class="small-title">期数</td>
-		<td>3</td>
+		<td class="small-title">借款期限</td>
+		<td>${customer.applyloanJkqx }</td>
+		<td class="small-title">最高年利率</td>
+		<td>${customer.applyloanZgnll }</td>
+		<td class="small-title">还款方式</td>
+		<td>${customer.applyloanHkfs }</td>
 	</tr>
 	<tr>
 		<td class="small-title">借款类型</td>
-		<td>宜车贷</td>
-		<td class="small-title">标模式</td>
-		<td>满标</td>
-		<td class="small-title">还款方式</td>
-		<td>还本付息</td>
+		<td>${customer.applyloanJklx }</td>
+		<td class="small-title">借款区域</td>
+		<td>${customer.applyloanJkQy }</td>
+		<td class="small-title">借款目的</td>
+		<td>${customer.applyloanJkmd }</td>
 	</tr>
 	<tr>
-		<td class="small-title">完成进度</td>
-		<td>90.0</td>
-		<td class="small-title">发布时间</td>
-		<td>2015-12-09 12:23:34</td>
-		<td class="small-title">结束时间</td>
-		<td>2015-12-09 12:23:34</td>
-	</tr>
-	<tr>
-		<td class="small-title">详细描述</td>
-		<td colspan="6">本人资金周转用车辆抵押贷款在南京运营中心保证按时还款</td>
+		<td class="small-title">描述信息</td>
+		<td colspan="5">${customer.applyloanMsxx }</td>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">个人信息</td>

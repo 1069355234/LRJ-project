@@ -16,17 +16,28 @@
 					class="h6 font-thin v-middle">所属业务员:</span></label> <input
 					class="input-medium ui-autocomplete-input" placeholder="请输入业务员帐号" id=""
 					name="customerFormMap.salesman">
-
+					
+				<label class="control-label"> <span
+					class="h6 font-thin v-middle">借款区域:</span></label> <input
+					class="input-medium ui-autocomplete-input" placeholder="请输入区域" id=""
+					name="customerFormMap.applyloanJkQy">
+					
+				<label class="control-label"> <span
+					class="h6 font-thin v-middle">借款金额:</span></label> <input
+					class="input-medium ui-autocomplete-input" placeholder="请输入借款金额" id=""
+					name="customerFormMap.applyloanJkje">
+				<br/><br/>
 				<label class="control-label"> <span
 					class="h6 font-thin v-middle">创建时间:</span></label>
 				<input class="Wdate" name="customerFormMap.begin" placeholder="起始时间" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">~
 				<input class="Wdate" name="customerFormMap.end" placeholder="结束时间" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
 			</div>
-			<a href="javascript:void(0)" class="btn btn-default" id="search">查询</a>
+			
 		</form>
 	</div>
 	<header class="panel-heading">
 	<div class="doc-buttons">
+	<a href="javascript:void(0)" class="btn btn-default" id="search">查询</a>
 		<c:forEach items="${res}" var="key">
 			${key.description}
 		</c:forEach>
