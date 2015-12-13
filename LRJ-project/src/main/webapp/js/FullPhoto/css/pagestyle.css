@@ -1,0 +1,21 @@
+
+.image {
+	background-color: #eee;
+    display: inline-block;
+    float: left;
+    height: 190px;
+    margin-right: 5px;
+    padding-top: 7px;
+    text-align: center;
+    vertical-align: top;
+    width: 162px;
+    margin-bottom: 10px;
+}
+
+.caption {
+	font-family: "ËÎÌו";
+	font-size: 12px;
+	text-align: center;
+	height: 50;
+	line-height: 50px;
+}
