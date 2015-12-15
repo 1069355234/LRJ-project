@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-12-13 22:38:06
+Date: 2015-12-16 00:16:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,7 +53,7 @@ CREATE TABLE `ly_log` (
   `operTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_log
@@ -336,11 +336,23 @@ CREATE TABLE `ly_userlogin` (
   `loginIP` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ly_user_loginlist` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_userlogin
 -- ----------------------------
+INSERT INTO `ly_userlogin` VALUES ('1', '13', 'boss1', '2015-12-15 23:11:06', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('2', '13', 'boss1', '2015-12-15 23:13:32', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('3', '13', 'boss1', '2015-12-15 23:26:52', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('4', '13', 'boss1', '2015-12-15 23:29:54', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('5', '13', 'boss1', '2015-12-15 23:36:29', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('6', '13', 'boss1', '2015-12-15 23:59:45', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('7', '13', 'boss1', '2015-12-16 00:01:55', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('8', '13', 'boss1', '2015-12-16 00:03:41', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('9', '13', 'boss1', '2015-12-16 00:04:41', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('10', '13', 'boss1', '2015-12-16 00:05:55', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('11', '13', 'boss1', '2015-12-16 00:08:54', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('12', '13', 'boss1', '2015-12-16 00:14:48', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for `ly_user_role`
@@ -368,12 +380,12 @@ INSERT INTO `ly_user_role` VALUES ('12', '4');
 INSERT INTO `ly_user_role` VALUES ('13', '8');
 
 -- ----------------------------
--- Table structure for `tb_customer`
+-- Table structure for `tb_customer_basic`
 -- ----------------------------
-DROP TABLE IF EXISTS `tb_customer`;
-CREATE TABLE `tb_customer` (
+DROP TABLE IF EXISTS `tb_customer_basic`;
+CREATE TABLE `tb_customer_basic` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `salesman` varchar(20) NOT NULL COMMENT '对应的业务员',
+  `idCard` varchar(20) NOT NULL COMMENT '身份证号码',
   `name` varchar(20) DEFAULT NULL COMMENT '客户姓名',
   `sex` varchar(2) DEFAULT NULL COMMENT '性别',
   `age` varchar(20) DEFAULT NULL COMMENT '年龄',
@@ -404,7 +416,7 @@ CREATE TABLE `tb_customer` (
   `relativesName` varchar(20) DEFAULT NULL COMMENT '亲属姓名',
   `relativesPhoneNumber` varchar(20) DEFAULT NULL COMMENT '亲属手机',
   `socialFriendsName` varchar(20) DEFAULT NULL COMMENT '社会朋友姓名',
-  `socialFriendsPhoneNumber` varchar(20) DEFAULT NULL,
+  `socialFriendsPhoneNumber` varchar(20) DEFAULT NULL COMMENT '社会朋友电话',
   `classmatesName` varchar(20) DEFAULT NULL COMMENT '同学姓名',
   `classmatesPhoneNubmer` varchar(20) DEFAULT NULL COMMENT '同学手机号码',
   `colleaguesName` varchar(20) DEFAULT NULL COMMENT '同事姓名',
@@ -413,6 +425,25 @@ CREATE TABLE `tb_customer` (
   `simpleFriendPhoneNumber` varchar(20) DEFAULT NULL COMMENT '普通朋友手机号码',
   `borrowFriendsName` varchar(20) DEFAULT NULL COMMENT '贷友姓名',
   `borrowFriendsPhoneNumber` varchar(20) DEFAULT NULL COMMENT '贷友手机号码',
+  `createTime` varchar(32) DEFAULT NULL COMMENT '创建时间',
+  `updateTime` varchar(32) DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_customer_basic
+-- ----------------------------
+INSERT INTO `tb_customer_basic` VALUES ('1', '320322', '张三', '男', '34', '汉', '13062505804', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23', '1354651325');
+INSERT INTO `tb_customer_basic` VALUES ('2', '320323', '李四', '女', '34', '汉', '13062505803', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23', '1354651328');
+
+-- ----------------------------
+-- Table structure for `tb_customer_loan`
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_customer_loan`;
+CREATE TABLE `tb_customer_loan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `salesman` varchar(20) NOT NULL COMMENT '对应的业务员',
+  `idCard` varchar(20) NOT NULL COMMENT '客户身份证号码',
   `createTime` varchar(32) DEFAULT NULL COMMENT '创建时间',
   `applyloanKey` varchar(30) DEFAULT NULL COMMENT '标流水号',
   `applyloanBlx` varchar(20) DEFAULT NULL COMMENT '标类型',
@@ -425,13 +456,14 @@ CREATE TABLE `tb_customer` (
   `applyloanJkmd` varchar(255) DEFAULT NULL COMMENT '借款目的',
   `applyloanMsxx` varchar(255) DEFAULT NULL COMMENT '描述信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tb_customer
+-- Records of tb_customer_loan
 -- ----------------------------
-INSERT INTO `tb_customer` VALUES ('1', 'salesman1', '张三', '男', '34', '汉', '13062505804', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23', '1354651325', '翼农贷', '10000', '30天', '10.0', '还本付息', '个人消费', '江苏南京', '买房买车', '本人资金周转用车辆抵押贷款在南京运营中心保证按时还款');
-INSERT INTO `tb_customer` VALUES ('2', 'salesman2', '李四', '女', '34', '汉', '13062505803', '10695523', '江苏南京', '江苏徐州', '江苏南京建邺区', '南京凌睿吉', '南京晓庄', '025-135465615', 'aslkdjflaskfjl', '5年', '有', '工程师', '10年', '100万', 'asdfsa', '10000', 'sadfasdfdsaf', '23', '博士', '工程师', '未贷款', '10万', 'sdgsfsdf', 'fgdfgdfg', '5345435', 'dfgdfg', 'ertret', 'rtytrytr', 'etert', 'ete', 'ertert', 'rtytr', 'wetert', 'ertr', 'et', '2015-12-12 20:12:23', '1354651328', '翼农贷', '10000', '30天', '10.0', '还本付息', '个人消费', '江苏南京', '买房买车', '本人资金周转用车辆抵押贷款在南京运营中心保证按时还款');
+INSERT INTO `tb_customer_loan` VALUES ('1', 'salesman1', '320322', '2015-12-12 20:12:23', '1354651325', '翼农贷', '10000', '30天', '10.0', '还本付息', '个人消费', '江苏南京', '买房买车', '本人资金周转用车辆抵押贷款在南京运营中心保证按时还款');
+INSERT INTO `tb_customer_loan` VALUES ('2', 'salesman2', '320322', '2015-12-12 20:12:23', '1354651328', '翼商贷', '10000', '30天', '10.0', '还本付息', '个人消费', '江苏南京', '买房买车', '本人资金周转用车辆抵押贷款在南京运营中心保证按时还款');
+INSERT INTO `tb_customer_loan` VALUES ('3', 'salesman3', '320323', '2015-12-15 12:23:12', '20151215122312', '车贷', '200000', '60天', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `tb_custom_pic`
@@ -443,20 +475,20 @@ CREATE TABLE `tb_custom_pic` (
   `filepath` varchar(255) DEFAULT NULL COMMENT '文件路径',
   `fileleng` int(10) DEFAULT NULL COMMENT '文件大小',
   `filetype` varchar(20) NOT NULL COMMENT '拍照类型',
-  `credittype` varchar(20) DEFAULT NULL COMMENT '贷款类型',
+  `applyloanKey` varchar(20) DEFAULT NULL COMMENT '标流水号',
   `username` varchar(20) NOT NULL COMMENT '业务员帐号',
-  `custname` varchar(20) NOT NULL COMMENT '客户名字（客户的手机号码）',
-  `time` varchar(32) DEFAULT NULL COMMENT '保存时间(yyyy-MM-dd HH:mm:ss)',
+  `idCard` varchar(20) NOT NULL COMMENT '客户身份证号码',
+  `createTime` varchar(32) DEFAULT NULL COMMENT '保存时间(yyyy-MM-dd HH:mm:ss)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_custom_pic
 -- ----------------------------
-INSERT INTO `tb_custom_pic` VALUES ('1', '身份证1', '/uploadFile/张三20151211110323/翼农贷/身份证/cc.jpg', '12235', '身份证', '翼农贷', 'salesman1', '13062505804', '2015-12-11 11:09:12');
-INSERT INTO `tb_custom_pic` VALUES ('2', '房产2', '/uploadFile/张三20151211110323/翼农贷/驾照/bb.jpg', '12235', '房产', '翼农贷', 'salesman1', '13062505804', '2015-12-11 11:09:12');
-INSERT INTO `tb_custom_pic` VALUES ('3', '身份证2', '/uploadFile/张三20151211110323/翼农贷/身份证/cc.jpg', '12235', '身份证', '翼农贷', 'salesman1', '13062505804', '2015-12-11 11:09:12');
-INSERT INTO `tb_custom_pic` VALUES ('4', '房产1', '/uploadFile/张三20151211110323/翼农贷/房产/aa.jpg', '12235', '房产', '翼农贷', 'salesman1', '13062505804', '2015-12-11 11:09:12');
+INSERT INTO `tb_custom_pic` VALUES ('1', '身份证1', '/uploadFile/张三20151211110323/翼农贷/身份证/cc.jpg', '12235', '身份证', '1354651325', 'salesman1', '13062505804', '2015-12-11 11:09:12');
+INSERT INTO `tb_custom_pic` VALUES ('2', '房产2', '/uploadFile/张三20151211110323/翼农贷/驾照/bb.jpg', '12235', '房产', '1354651325', 'salesman1', '13062505804', '2015-12-11 11:09:12');
+INSERT INTO `tb_custom_pic` VALUES ('3', '身份证2', '/uploadFile/张三20151211110323/翼农贷/身份证/cc.jpg', '12235', '身份证', '1354651325', 'salesman1', '13062505804', '2015-12-11 11:09:12');
+INSERT INTO `tb_custom_pic` VALUES ('4', '房产1', '/uploadFile/张三20151211110323/翼农贷/房产/aa.jpg', '12235', '房产', '1354651325', 'salesman1', '13062505804', '2015-12-11 11:09:12');
 
 -- ----------------------------
 -- Table structure for `tb_user_location`

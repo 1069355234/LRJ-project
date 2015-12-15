@@ -27,7 +27,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.alibaba.fastjson.JSONObject;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
-import com.lrj.entity.CustomerFormMap;
+import com.lrj.entity.CustomerBasicFormMap;
+import com.lrj.entity.CustomerLoanFormMap;
 import com.lrj.entity.CustomerPicFormMap;
 import com.lrj.entity.RoleFormMap;
 import com.lrj.entity.UserFormMap;
@@ -84,7 +85,7 @@ public class CustomerController extends BaseController {
 	@RequestMapping("findByPage")
 	public PageView findByPage( String pageNow,
 			String pageSize,String column,String sort) throws Exception {
-		CustomerFormMap customerFormMap = getFormMap(CustomerFormMap.class);
+		CustomerLoanFormMap customerFormMap = getFormMap(CustomerLoanFormMap.class);
 		customerFormMap=toFormMap(customerFormMap, pageNow, pageSize,customerFormMap.getStr("orderby"));
 		customerFormMap.put("column", column);
 		customerFormMap.put("sort", sort);
@@ -147,10 +148,11 @@ public class CustomerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("detail")
-	public String detail(Model model,String phoneNumber){
-		CustomerFormMap customerFormMap = customerMapper.findbyFrist("phoneNumber", phoneNumber, CustomerFormMap.class);
-//		System.out.println(JSONObject.toJSONString(customerFormMap));
-		model.addAttribute("customer", customerFormMap);
+	public String detail(Model model,String applyloanKey){
+		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist("idCard", customerLoanFormMap.get("idCard").toString(), CustomerBasicFormMap.class);
+		model.addAttribute("customerBasic", customerBasicFormMap);
+		model.addAttribute("customerLoan", customerLoanFormMap);
 		return Common.BACKGROUND_PATH + "/system/customer/detail";
 	}
 
@@ -166,9 +168,9 @@ public class CustomerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("piclist")
-	public String picList(Model model,String phoneNumber){
+	public String picList(Model model,String applyloanKey){
 		CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
-		customerPicFormMap.put("custname", phoneNumber);
+		customerPicFormMap.put("applyloanKey", applyloanKey);
 
 		List<CustomerPicFormMap> findByNames = customerMapper.findByNames(customerPicFormMap);
 
@@ -222,32 +224,54 @@ public class CustomerController extends BaseController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/exportBaseInfo")
-	public void exportBaseInfo(String customerIds,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void exportBaseInfo(String loanIds,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String fileName = "客户信息";
 		
-		List<Map<String, String>> columnInfos = customerMapper.showTableInfo();
+		List<Map<String, String>> cusBasicInfos = customerMapper.showCusBasicInfo();
 		
-		String exportData = "[";
+		List<Map<String, String>> cusLoanInfos = customerMapper.showCusLoanInfo();
 		
-		for(Map<String,String> ci : columnInfos){
-			exportData += "{\"colkey\":\""+ci.get("Field").toString()+"\",\"name\":\""+ci.get("Comment").toString()+"\",\"hide\":false},";
+		String exportBasicData = "[";
+		String exportLoanData = "[";
+		
+		for(Map<String,String> ci : cusBasicInfos){
+			exportBasicData += "{\"colkey\":\""+ci.get("Field").toString()+"\",\"name\":\""+ci.get("Comment").toString()+"\",\"hide\":false},";
 		}
 		
-		exportData = Common.trimComma(exportData);
+		for(Map<String,String> ci : cusLoanInfos){
+			exportLoanData += "{\"colkey\":\""+ci.get("Field").toString()+"\",\"name\":\""+ci.get("Comment").toString()+"\",\"hide\":false},";
+		}
 		
-		exportData += "]";
+		exportBasicData = Common.trimComma(exportBasicData);
+		exportLoanData = Common.trimComma(exportLoanData);
 		
-		List<Map<String, Object>> listMap = JsonUtils.parseJSONList(exportData);
+		exportBasicData += "]";
+		exportLoanData += "]";
+		
+		List<Map<String, Object>> listBasicMap = JsonUtils.parseJSONList(exportBasicData);
+		List<Map<String, Object>> listLoanMap = JsonUtils.parseJSONList(exportLoanData);
 
-		List<CustomerFormMap> customerFormMaps = null;
-		if(StringUtils.isEmpty(customerIds)){
-			customerFormMaps = customerMapper.findByNames(new CustomerFormMap());
+		List<CustomerBasicFormMap> customerBasicFormMaps = new ArrayList<>();
+		List<CustomerLoanFormMap> customerLoanFormMaps = null;
+		
+		if(StringUtils.isEmpty(loanIds)){
+			customerLoanFormMaps = customerMapper.findByNames(new CustomerLoanFormMap());
 		}else{
-			CustomerFormMap params = new CustomerFormMap();
-			params.put("where", "where id in (" + customerIds + ")");
-			customerFormMaps = customerMapper.findByWhere(params);
+			CustomerLoanFormMap paramsLoan = new CustomerLoanFormMap();
+			paramsLoan.put("where", "where id in (" + loanIds + ")");
+			customerLoanFormMaps = customerMapper.findByWhere(paramsLoan);
 		}
-		POIUtils.exportToExcel(response, listMap, customerFormMaps, fileName);
+		
+		Map<String,String> idCards = new HashMap<>();
+		
+		for(CustomerLoanFormMap clf : customerLoanFormMaps){
+			idCards.put(clf.get("idCard").toString(), "");
+		}
+		
+		for(Map.Entry<String, String> entry : idCards.entrySet()){
+			customerBasicFormMaps.add(customerMapper.findbyFrist("idCard", entry.getKey(),CustomerBasicFormMap.class));
+		}
+		POIUtils.exportToExcel(response, listLoanMap, customerLoanFormMaps,listBasicMap, customerBasicFormMaps, fileName);
 
 	}
 
@@ -268,7 +292,7 @@ public class CustomerController extends BaseController {
 	@Transactional(readOnly=false)//需要事务操作必须加入此注解
 	public String addCusInfo(String cusInfo){
 		String param = "{\"name\":\"testinterface\",\"phoneNumber\":\"12345677\"}";
-		CustomerFormMap customerFormMap = JSONObject.parseObject(param, CustomerFormMap.class);
+		CustomerBasicFormMap customerFormMap = JSONObject.parseObject(param, CustomerBasicFormMap.class);
 		try {
 			customerMapper.addEntity(customerFormMap);
 		} catch (Exception e) {

@@ -28,12 +28,12 @@ public class POIUtils {
 	 *
 	 */
 	public static void exportToExcel(HttpServletResponse response,
-			List<Map<String, Object>> exportData, List<?> lis, String fileName) {
+			List<Map<String, Object>> exportData, List<?> lis,List<Map<String, Object>> exportData2, List<?> lis2, String fileName) {
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
 		try {
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
-			ExcelUtil.createWorkBook(exportData, lis).write(os);
+			ExcelUtil.createWorkBook(exportData, lis,exportData2, lis2).write(os);
 			byte[] content = os.toByteArray();
 			InputStream is = new ByteArrayInputStream(content);
 			// 设置response参数，可以打开下载页面

@@ -8,6 +8,14 @@ $(function() {
 			name : "id",
 			hide : true
 		}, {
+			colkey : "applyloanKey",
+			name : "标流水号",
+			isSort:true,
+		}, {
+			colkey : "applyloanBlx",
+			name : "标类型",
+			isSort:true,
+		}, {
 			colkey : "name",
 			name : "客户名",
 			isSort:true,
@@ -27,7 +35,7 @@ $(function() {
 			name : "创建时间",
 			isSort:true
 		}, {
-			colkey : "phoneNumber",
+			colkey : "applyloanKey",
 			name : "操作",
 			renderData : function(rowindex,data, rowdata, column) {
 				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='piclist(\""+data+"\")' style='color:blue'>资料照片</a>";
@@ -61,7 +69,7 @@ function detail(data){
 	$("#topli").append(li);
 	var tb = $("#loadhtml");
 	tb.html(CommnUtil.loadingImg());
-	tb.load(rootPath+"/customer/detail.shtml",{"phoneNumber":data});
+	tb.load(rootPath+"/customer/detail.shtml",{"applyloanKey":data});
 }
 
 function piclist(data){
@@ -69,7 +77,7 @@ function piclist(data){
 	$("#topli").append(li);
 	var tb = $("#loadhtml");
 	tb.html(CommnUtil.loadingImg());
-	tb.load(rootPath+"/customer/piclist.shtml",{"phoneNumber":data});
+	tb.load(rootPath+"/customer/piclist.shtml",{"applyloanKey":data});
 }
 
 function allExport(){
@@ -79,8 +87,8 @@ function allExport(){
 function chooseExport(){
 	var cbox = grid.getSelectedCheckbox();
 	if (cbox == "") {
-		layer.msg("请选择要导出的客户！");
+		layer.msg("请选择要导出的记录！");
 		return;
 	}
-	window.location.href = rootPath + "/customer/exportBaseInfo.shtml?customerIds="+cbox.join(",");
+	window.location.href = rootPath + "/customer/exportBaseInfo.shtml?loanIds="+cbox.join(",");
 }

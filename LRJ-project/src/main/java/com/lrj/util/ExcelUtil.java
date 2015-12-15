@@ -22,11 +22,13 @@ public class ExcelUtil {
      * @param keys list中map的key数组集合
      * @param columnNames excel的列名
      * */
-    public static Workbook createWorkBook(List<Map<String, Object>> listMap,List<?> list) {
+    public static Workbook createWorkBook(List<Map<String, Object>> listMap,List<?> list,List<Map<String, Object>> listMap2,List<?> list2) {
         // 创建excel工作簿
         Workbook wb = new HSSFWorkbook();
         // 创建第一个sheet（页），并命名
-        Sheet sheet = wb.createSheet("数据");
+        Sheet sheet = wb.createSheet("客户贷款信息");
+     // 创建第二个sheet（页），并命名
+        Sheet sheet2 = wb.createSheet("客户基本信息");
         // 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
        /* for(int i=0;i<keys.length;i++){
             sheet.setColumnWidth((short) i, (short) (35.7 * 150));
@@ -34,6 +36,7 @@ public class ExcelUtil {
 
         // 创建第一行
         Row row = sheet.createRow((short) 0);
+        Row row2 = sheet2.createRow((short) 0);
 
         // 创建两种单元格格式
         CellStyle cs = wb.createCellStyle();
@@ -76,10 +79,20 @@ public class ExcelUtil {
         		listMap.remove(listMap.get(i));
         	}
         }
+        for(int i=0;i<listMap2.size();i++){
+        	if(Boolean.parseBoolean(listMap2.get(i).get("hide")+"")){
+        		listMap2.remove(listMap2.get(i));
+        	}
+        }
         //设置列名
         for(int i=0;i<listMap.size();i++){
             Cell cell = row.createCell(i);
             cell.setCellValue(listMap.get(i).get("name")+"");
+            cell.setCellStyle(cs);
+        }
+        for(int i=0;i<listMap2.size();i++){
+            Cell cell = row2.createCell(i);
+            cell.setCellValue(listMap2.get(i).get("name")+"");
             cell.setCellStyle(cs);
         }
         //设置每行每列的值
@@ -93,6 +106,19 @@ public class ExcelUtil {
                 Cell cell = row1.createCell(j);
                 Map<String, Object> map =(Map<String, Object>) list.get(i);
                 cell.setCellValue(map.get(listMap.get(j).get("colkey")) == null?" ": map.get(listMap.get(j).get("colkey")).toString());
+                cell.setCellStyle(cs2);
+            }
+        }
+        for (short i = 0; i < list2.size(); i++) {
+            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+            // 创建一行，在页sheet上
+            Row row1 = sheet2.createRow((short) i+1);
+            // 在row行上创建一个方格
+
+            for(int j=0;j<listMap2.size();j++){
+                Cell cell = row1.createCell(j);
+                Map<String, Object> map =(Map<String, Object>) list2.get(i);
+                cell.setCellValue(map.get(listMap2.get(j).get("colkey")) == null?" ": map.get(listMap2.get(j).get("colkey")).toString());
                 cell.setCellStyle(cs2);
             }
         }

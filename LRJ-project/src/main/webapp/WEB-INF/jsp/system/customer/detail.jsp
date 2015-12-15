@@ -46,125 +46,129 @@
 	</tr>
 	<tr>
 		<td class="small-title">标流水号</td>
-		<td>${customer.applyloanKey }</td>
+		<td>${customerLoan.applyloanKey }</td>
 		<td class="small-title">标类型</td>
-		<td>${customer.applyloanBlx }</td>
+		<td>${customerLoan.applyloanBlx }</td>
 		<td class="small-title">借款金额</td>
-		<td>${customer.applyloanJkje }</td>
+		<td>${customerLoan.applyloanJkje }</td>
 	</tr>
 	<tr>
 		<td class="small-title">借款期限</td>
-		<td>${customer.applyloanJkqx }</td>
+		<td>${customerLoan.applyloanJkqx }</td>
 		<td class="small-title">最高年利率</td>
-		<td>${customer.applyloanZgnll }</td>
+		<td>${customerLoan.applyloanZgnll }</td>
 		<td class="small-title">还款方式</td>
-		<td>${customer.applyloanHkfs }</td>
+		<td>${customerLoan.applyloanHkfs }</td>
 	</tr>
 	<tr>
 		<td class="small-title">借款类型</td>
-		<td>${customer.applyloanJklx }</td>
+		<td>${customerLoan.applyloanJklx }</td>
 		<td class="small-title">借款区域</td>
-		<td>${customer.applyloanJkQy }</td>
+		<td>${customerLoan.applyloanJkQy }</td>
 		<td class="small-title">借款目的</td>
-		<td>${customer.applyloanJkmd }</td>
+		<td>${customerLoan.applyloanJkmd }</td>
 	</tr>
 	<tr>
+		<td class="small-title">所属业务员</td>
+		<td>${customerLoan.salesman }</td>
 		<td class="small-title">描述信息</td>
-		<td colspan="5">${customer.applyloanMsxx }</td>
+		<td colspan="3">${customerLoan.applyloanMsxx }</td>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">个人信息</td>
 	</tr>
 	<tr>
 		<td class="small-title">姓名</td>
-		<td>${customer.name }</td>
+		<td>${customerBasic.name }</td>
 		<td class="small-title">手机号码</td>
-		<td>${customer.phoneNumber }</td>
+		<td>${customerBasic.phoneNumber }</td>
 		<td class="small-title">年龄</td>
-		<td>${customer.age }</td>
+		<td>${customerBasic.age }</td>
 	</tr>
 	<tr>
 		<td class="small-title">性别</td>
-		<td>${customer.sex }</td>
-		<td class="small-title">户籍所在地</td>
-		<td>${customer.censusSeat }</td>
+		<td>${customerBasic.sex }</td>
+		<td class="small-title">身份证号码</td>
+		<td>${customerLoan.idCard }</td>
 		<td class="small-title">QQ号码</td>
-		<td>${customer.qqPhone }</td>
+		<td>${customerBasic.qqPhone }</td>
 	</tr>
 	<tr>
 		<td class="small-title">单位电话</td>
-		<td>${customer.unitPhone }</td>
+		<td>${customerBasic.unitPhone }</td>
 		<td class="small-title">单位名称</td>
-		<td>${customer.unitName }</td>
+		<td>${customerBasic.unitName }</td>
 		<td class="small-title">单位地址</td>
-		<td>${customer.unitAddress }</td>
+		<td>${customerBasic.unitAddress }</td>
 	</tr>
 	<tr>
 		<td class="small-title">民族</td>
-		<td>${customer.national }</td>
+		<td>${customerBasic.national }</td>
 		<td class="small-title">现居住地</td>
-		<td>${customer.nowliveAddress }</td>
+		<td>${customerBasic.nowliveAddress }</td>
 		<td class="small-title">父母所在地</td>
-		<td>${customer.parentsSeat }</td>
+		<td>${customerBasic.parentsSeat }</td>
 	</tr>
 	<tr>
 		<td class="small-title">婚姻状况</td>
-		<td>${customer.maritalStatus }</td>
+		<td>${customerBasic.maritalStatus }</td>
+		<td class="small-title">户籍所在地</td>
+		<td>${customerBasic.censusSeat }</td>
 		<td class="small-title">个人描述</td>
-		<td colspan="3">${customer.descriPtion }</td>
+		<td>${customerBasic.descriPtion }</td>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">信用信息</td>
 	</tr>
 	<tr>
 		<td class="small-title">工作年限</td>
-		<td>${customer.workYear }</td>
+		<td>${customerBasic.workYear }</td>
 		<td class="small-title">商业保险</td>
-		<td>${customer.commercial }</td>
+		<td>${customerBasic.commercial }</td>
 		<td class="small-title">职称</td>
-		<td>${customer.nickName }</td>
+		<td>${customerBasic.nickName }</td>
 	</tr>
 	<tr>
 		<td class="small-title">社保年限</td>
-		<td>${customer.socialYear }</td>
+		<td>${customerBasic.socialYear }</td>
 		<td class="small-title">长期居住地</td>
-		<td>${customer.longLive }</td>
+		<td>${customerBasic.longLive }</td>
 		<td class="small-title">房产</td>
-		<td>${customer.houserProperty }</td>
+		<td>${customerBasic.houserProperty }</td>
 	</tr>
 	<tr>
 		<td class="small-title">征信报告</td>
-		<td>${customer.creditReport }</td>
+		<td>${customerBasic.creditReport }</td>
 		<td class="small-title">年收入</td>
-		<td>${customer.annualIncome }</td>
+		<td>${customerBasic.annualIncome }</td>
 		<td class="small-title">教育程度</td>
-		<td>${customer.educationDegree }</td>
+		<td>${customerBasic.educationDegree }</td>
 	</tr>
 	<tr>
 		<td class="small-title">贷款记录</td>
-		<td>${customer.loanRecords }</td>
+		<td>${customerBasic.loanRecords }</td>
 		<td class="small-title">信用卡额度</td>
-		<td>${customer.creditCards }</td>
+		<td>${customerBasic.creditCards }</td>
 		<td class="small-title">职业</td>
-		<td>${customer.professional }</td>
+		<td>${customerBasic.professional }</td>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">紧急联系人</td>
 	</tr>
 	<tr>
-		<td class="small-title">亲人：${customer.relativesName }</td>
-		<td>${customer.relativesPhoneNumber }</td>
-		<td class="small-title">社会朋友：${customer.socialFriendsName }</td>
-		<td>${customer.socialFriendsPhoneNumber }</td>
-		<td class="small-title">同学：${customer.classmatesName }</td>
-		<td>${customer.classmatesPhoneNubmer }</td>
+		<td class="small-title">亲人：${customerBasic.relativesName }</td>
+		<td>${customerBasic.relativesPhoneNumber }</td>
+		<td class="small-title">社会朋友：${customerBasic.socialFriendsName }</td>
+		<td>${customerBasic.socialFriendsPhoneNumber }</td>
+		<td class="small-title">同学：${customerBasic.classmatesName }</td>
+		<td>${customerBasic.classmatesPhoneNubmer }</td>
 	</tr>
 	<tr>
-		<td class="small-title">同事：${customer.colleaguesName }</td>
-		<td>${customer.colleaguesPhoneNumber }</td>
-		<td class="small-title">普通朋友：${customer.simpleFriend }</td>
-		<td>${customer.simpleFriendPhoneNumber }</td>
-		<td class="small-title">贷友：${customer.borrowFriendsName }</td>
-		<td>${customer.borrowFriendsPhoneNumber }</td>
+		<td class="small-title">同事：${customerBasic.colleaguesName }</td>
+		<td>${customerBasic.colleaguesPhoneNumber }</td>
+		<td class="small-title">普通朋友：${customerBasic.simpleFriend }</td>
+		<td>${customerBasic.simpleFriendPhoneNumber }</td>
+		<td class="small-title">贷友：${customerBasic.borrowFriendsName }</td>
+		<td>${customerBasic.borrowFriendsPhoneNumber }</td>
 	</tr>
 </table>
