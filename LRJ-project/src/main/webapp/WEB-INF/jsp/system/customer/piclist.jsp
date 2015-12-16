@@ -86,14 +86,14 @@ $(function(){
 </style> -->
 
 <script type="text/javascript">
-function exportAll(){
-	window.location.href = "${pageContext.request.contextPath}/customer/exportAll.shtml";
+function exportAll(applyloanKey){
+	window.location.href = "${pageContext.request.contextPath}/customer/exportAll.shtml?applyloanKey="+applyloanKey;
 }
 </script>
 
 <div class="doc-buttons" style="text-align: right;">
 	<c:if test="${customerPics.size() != 0 }">
-		<button class="btn btn-primary marR10" type="button" onclick="exportAll()">全部导出</button>
+		<button class="btn btn-primary marR10" type="button" onclick="exportAll('${applyloanKey}')">全部导出</button>
 	</c:if>
 </div>
 <div>

@@ -135,7 +135,7 @@ public class UserController extends BaseController {
 		List<Map<String, Object>> listMap = JsonUtils.parseJSONList(exportData);
 
 		List<UserFormMap> lis = userMapper.findUserPage(userFormMap);
-		POIUtils.exportToExcel(response, listMap, lis, fileName);
+//		POIUtils.exportToExcel(response, listMap, lis, fileName);
 	}
 
 	@RequestMapping("addUI")

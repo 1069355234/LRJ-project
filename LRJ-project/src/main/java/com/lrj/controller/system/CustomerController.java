@@ -2,10 +2,14 @@ package com.lrj.controller.system;
 
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -188,6 +192,7 @@ public class CustomerController extends BaseController {
 		}
 
 		model.addAttribute("customerPics", customerPics);
+		model.addAttribute("applyloanKey", applyloanKey);
 		return Common.BACKGROUND_PATH + "/system/customer/piclist";
 	}
 
@@ -203,11 +208,18 @@ public class CustomerController extends BaseController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/exportAll")
-	public void exportAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String filePath = request.getServletContext().getRealPath("/uploadFile/张三20151211110323");
+	public void exportAll(HttpServletRequest request, HttpServletResponse response,String applyloanKey) throws IOException {
+		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+		
+		String picPath = customerLoanFormMap.get("picPath").toString();
+		String idCard = customerLoanFormMap.get("idCard").toString();
+		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist("idCard", idCard, CustomerBasicFormMap.class);
+		String custName = customerBasicFormMap.get("name").toString();
+		
+		String filePath = request.getServletContext().getRealPath(picPath);
 
-		File zip = ZipUtil.zip(filePath);
-
+		File zip = ZipUtil.zip(filePath,custName);
+		
 		DownloadUtils.downloadFile(zip,response);
 	}
 
@@ -290,14 +302,59 @@ public class CustomerController extends BaseController {
 	@RequestMapping(value="addCusInfo", method = RequestMethod.POST)
 	@SystemLog(module="客户管理",methods="客户管理-新增客户")//凡需要处理业务逻辑的.都需要记录操作日志
 	@Transactional(readOnly=false)//需要事务操作必须加入此注解
-	public String addCusInfo(String cusInfo){
-		String param = "{\"name\":\"testinterface\",\"phoneNumber\":\"12345677\"}";
-		CustomerBasicFormMap customerFormMap = JSONObject.parseObject(param, CustomerBasicFormMap.class);
+	public String addCusInfo(HttpServletRequest request,String cusInfo){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat formatPath = new SimpleDateFormat("yyyyMMddHH:mm:ss");
+		String time = format.format(new Date());
+		
+		String param = "{\"basic\":{\"idCard\":\"320322154802041156\",\"name\":\"张三\",\"sex\":\"男\",\"age\":\"32\",\"national\":\"汉\",\"phoneNumber\":\"13062505804\",\"qqPhone\":\"105523225\",\"censusSeat\":\"江苏南京\",\"parentSeat\":\"江苏徐州\",\"nowliveAddress\":\"江苏南京建邺区\",\"unitName\":\"南京凌睿吉\",\"unitAddress\":\"南京晓庄\",\"unitPhone\":\"025-110110110\",\"descriPtion\":\"描述信息\",\"workYear\":\"3-5年\",\"commericial\":\"有\",\"nickName\":\"工程师\",\"socialYear\":\"10年\",\"houserProperty\":\"100万\",\"longLive\":\"江苏南京\",\"annualIncome\":\"20万\",\"maritalStatus\":\"已婚\",\"cusAge\":\"32岁\",\"educationDegree\":\"本科\",\"professional\":\"工程师\",\"loanRecords\":\"无贷款记录\",\"creditCards\":\"8000\",\"creditReport\":\"诚信良好\",\"relativesName\":\"王斌\",\"relativesPhoneNumber\":\"111111111\",\"socialFriendsName\":\"李治国\",\"socialFriendsPhoneNumber\":\"222222222\",\"classmatesName\":\"陈忠\",\"classmatesPhoneNubmer\":\"3333333\",\"colleaguesName\":\"王婷婷\",\"colleaguesPhoneNumber\":\"645135165\",\"simpleFriend\":\"赵柳\",\"simpleFriendPhoneNumber\":\"2131\",\"borrowFriendsName\":\"王琪\",\"borrowFriendsPhoneNumber\":\"9865465\"},\"loan\":{\"salesman\":\"lisi\",\"idCard\":\"320322154802041156\",\"applyloanKey\":\"20151216224822\",\"applyloanBlx\":\"翼农贷\",\"applyloanJkje\":\"100000\",\"applyloanJkqx\":\"40天\",\"applyloanZgnll\":\"10.0%\",\"applyloanHkfs\":\"还本付息\",\"applyloanJklx\":\"个人消费\",\"applyloanJkQy\":\"江苏南京\",\"applyloanJkmd\":\"房贷\",\"applyloanMsxx\":\"描述信息\"}}";
+		
+		JSONObject jsonInfo = JSONObject.parseObject(param);
+		
+		JSONObject basic = jsonInfo.getJSONObject("basic");
+		JSONObject loan = jsonInfo.getJSONObject("loan");
+		
+		String idCard = basic.get("idCard").toString();
+		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist("idCard", idCard, CustomerBasicFormMap.class);
+		if(null == customerBasicFormMap){
+			basic.put("createTime", time);
+			basic.put("updateTime", time);
+			try {
+				customerMapper.addEntity(JSONObject.toJavaObject(basic, CustomerBasicFormMap.class));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else{
+			int id = Integer.parseInt(customerBasicFormMap.get("id").toString());
+			basic.put("updateTime", time);
+			basic.put("id", id);
+			
+			try {
+				customerMapper.editEntity(JSONObject.toJavaObject(basic, CustomerBasicFormMap.class));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		String name = basic.get("name").toString();
+		
+		String picPath = "/uploadFile/"+name+formatPath.format(new Date());
+		String picHolePath = request.getServletContext().getRealPath(picPath);
+		File picFile = new File(picHolePath);
+		
+		if(!picFile.exists()){
+			picFile.mkdirs();
+		}
+		
+		loan.put("picPath", picPath);
+		loan.put("createTime", time);
+		
 		try {
-			customerMapper.addEntity(customerFormMap);
+			customerMapper.addEntity(JSONObject.toJavaObject(loan, CustomerLoanFormMap.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return "success";
 	}
 
@@ -305,44 +362,32 @@ public class CustomerController extends BaseController {
 	@RequestMapping(value="addCusPic", method = RequestMethod.POST)
 	@SystemLog(module="客户管理",methods="客户管理-上传图片")//凡需要处理业务逻辑的.都需要记录操作日志
 	@Transactional(readOnly=false)//需要事务操作必须加入此注解
-	public String addCusPic(byte[] picFile, String picInfo) {
-
+	public String addCusPic(File picFile, String picInfo) {
 		CustomerPicFormMap customerPicFormMap = JSONObject.parseObject(picInfo, CustomerPicFormMap.class);
 
 		String filePath = customerPicFormMap.get("filepath").toString();
 		String fileName = customerPicFormMap.get("filename").toString();
+		String applyloanKey = customerPicFormMap.get("applyloanKey").toString();
 
-		BufferedOutputStream bos = null;
-		FileOutputStream fos = null;
-		File file = null;
-		try {
-			File dir = new File(filePath);
-			if (!dir.exists() && dir.isDirectory()) {// 判断文件目录是否存在
-				dir.mkdirs();
-			}
-			file = new File(filePath + "\\" + fileName);
-			fos = new FileOutputStream(file);
-			bos = new BufferedOutputStream(fos);
-			bos.write(picFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (bos != null) {
-				try {
-					bos.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-			if (fos != null) {
-				try {
-					fos.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
+		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+		String picPath = customerLoanFormMap.get("picPath").toString();
+		
 		return "success";
+	}
+	
+	public static void main(String[] args) {
+		
+		
+		try {  
+			File afile = new File("F:/bb/a.txt");  
+            if (afile.renameTo(new File("F:/aa/" + afile.getName()))) {  
+                System.out.println("File is moved successful!");  
+            } else {  
+                System.out.println("File is failed to move!");  
+            }  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
 	}
 
 	
