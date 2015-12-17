@@ -49,9 +49,10 @@ label[class^="btn btn-default"]{
 				<label class="col-sm-3 control-label">父级角色</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control checkacc"
-						placeholder="请选择父级角色" name="roleFormMap.parentId" id="parentId">
+						placeholder="请选择父级角色" name="" readonly="readonly" style="cursor: default;" id="parentId" onclick="showZtree()">
+					<input type="hidden" name="roleFormMap.parentId" id="parentIdVal"/>
 				</div>
-				<ul id="treeDemo" class="ztree" style="width:100px;height:100px;"></ul>
+				<ul id="treeDemo" class="ztree form-control checkacc" style="width: 452px; height: 100px;margin-left: 100px; overflow: auto;display: none;"></ul>
 			</div>
 			<div class="line line-dashed line-lg pull-in"></div>
 			<div class="form-group">

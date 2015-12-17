@@ -1,42 +1,8 @@
-var setting = {
-        isSimpleData: true,
-        treeNodeKey: "id",
-        treeNodeParentKey: "pId",
-        callback: {
-            click: zTreeOnClick
-        }
-    };
-
-		var zNodes =[
-			{id:1, pId:0, name:"北京"},
-			{id:2, pId:0, name:"天津"},
-			{id:3, pId:0, name:"上海"},
-			{id:6, pId:0, name:"重庆"},
-			{id:4, pId:0, name:"河北省", open:true},
-			{id:41, pId:4, name:"石家庄"},
-			{id:42, pId:4, name:"保定"},
-			{id:43, pId:4, name:"邯郸"},
-			{id:44, pId:4, name:"承德"},
-			{id:5, pId:0, name:"广东省", open:true},
-			{id:51, pId:5, name:"广州"},
-			{id:52, pId:5, name:"深圳"},
-			{id:53, pId:5, name:"东莞"},
-			{id:54, pId:5, name:"佛山"},
-			{id:6, pId:0, name:"福建省", open:true},
-			{id:61, pId:6, name:"福州"},
-			{id:62, pId:6, name:"厦门"},
-			{id:63, pId:6, name:"泉州"},
-			{id:64, pId:6, name:"三明"}
-		 ];
-
 //单独验证某一个input  class="checkpass"
 	 jQuery.validator.addMethod("checkRole", function(value, element) {
 	 	 return this.optional(element) || ((value.length <= 10) && (value.length>=3));
 	 }, "角色名由3至10位字符组合构成");
 	 $(function() {
-		 alert(setting);
-		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-
 	 	$("form").validate({
 	 		submitHandler : function(form) {//必须写在验证前面，否则无法ajax提交
 	 			ly.ajaxSubmit(form,{//验证新增是否成功
@@ -66,11 +32,27 @@ var setting = {
 	 		}
 	 	});
 	 });
-	 function zTreeOnClick(event, treeId, treeNode) {
-		 alert(treeId);
-//	        if (treeNode) {
-//	            var cityObj = $("#citySel");
-//	            cityObj.attr("value", treeNode.name);
-//	            hideMenu();
-//	        }
-	    }
+	 function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			nodes = zTree.getSelectedNodes();
+			$("#parentId").val(nodes[0].name);
+			$("#parentIdVal").val(nodes[0].id);
+	}
+	 
+	 var setting = {
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				callback: {
+		        	onClick: onClick
+		        }
+			};
+	 
+	 function showZtree(){
+		 var zNodes = CommnUtil.ajax(rootPath+"/role/roleTree.shtml",{},"json");
+		 alert(JSON.stringify(zNodes));
+		 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		 $("#treeDemo").slideToggle();
+	 }

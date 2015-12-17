@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
 import com.lrj.entity.RoleFormMap;
@@ -117,6 +120,21 @@ public class RoleController extends BaseController {
 		List<RoleFormMap> roles = roleMapper.findByWhere(roleFormMap);
 		model.addAttribute("role", roles);
 		return Common.BACKGROUND_PATH + "/system/user/roleSelect";
+	}
+	
+	@ResponseBody
+	@RequestMapping("roleTree")
+	public JSONArray roleTree(){
+		List<RoleFormMap> roles = roleMapper.findByNames(new RoleFormMap());
+		JSONArray result = new JSONArray();
+		for(RoleFormMap r : roles){
+			JSONObject json = new JSONObject();
+			json.put("id", r.get("id"));
+			json.put("pId", r.get("parentId"));
+			json.put("name", r.get("name"));
+			result.add(json);
+		}
+		return result;
 	}
 
 }

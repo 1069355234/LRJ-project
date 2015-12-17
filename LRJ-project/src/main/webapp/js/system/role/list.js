@@ -75,7 +75,7 @@ function addRole() {
 	pageii = layer.open({
 		title : "新增",
 		type : 2,
-		area : [ "100%", "100%" ],
+		area : [ "600px;", "60%" ],
 		content : rootPath + '/role/addUI.shtml'
 	});
 }
