@@ -4,6 +4,8 @@
 <html>
 <head>
 <%@include file="/common/common.jspf" %>
+<link rel="stylesheet" href="${ctx}/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="${ctx}/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript" src="${ctx}/js/system/role/add.js">
 </script>
 <style type="text/css">
@@ -44,6 +46,15 @@ label[class^="btn btn-default"]{
 			</div>
 			<div class="line line-dashed line-lg pull-in"></div>
 			<div class="form-group">
+				<label class="col-sm-3 control-label">父级角色</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control checkacc"
+						placeholder="请选择父级角色" name="roleFormMap.parentId" id="parentId">
+				</div>
+				<ul id="treeDemo" class="ztree" style="width:100px;height:100px;"></ul>
+			</div>
+			<div class="line line-dashed line-lg pull-in"></div>
+			<div class="form-group">
 				<label class="col-sm-3 control-label">描述</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control" placeholder="请输入账号描述"
@@ -72,7 +83,7 @@ label[class^="btn btn-default"]{
 		</div>
 		<footer class="panel-footer text-right bg-light lter">
 			<button type="submit" class="btn btn-success btn-s-xs">提交</button>
-		</footer> 
+		</footer>
 		</section>
 	</form>
 </body>

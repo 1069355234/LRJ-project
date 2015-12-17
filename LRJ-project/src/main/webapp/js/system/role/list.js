@@ -75,7 +75,7 @@ function addRole() {
 	pageii = layer.open({
 		title : "新增",
 		type : 2,
-		area : [ "600px", "60%" ],
+		area : [ "100%", "100%" ],
 		content : rootPath + '/role/addUI.shtml'
 	});
 }
@@ -85,7 +85,7 @@ function delRole() {
 		layer.msg("请选择删除项！！");
 		return;
 	}
-	layer.confirm('是否删除？', function(index) {
+	layer.confirm('删除角色后，和该角色关联的信息将一起删除！是否删除？', function(index) {
 		var url = rootPath + '/role/deleteEntity.shtml';
 		var s = CommnUtil.ajax(url, {
 			ids : cbox.join(",")

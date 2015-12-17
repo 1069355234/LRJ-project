@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
 import com.lrj.entity.RoleFormMap;
+import com.lrj.entity.RoleResFormMap;
+import com.lrj.entity.UserRoleFormMap;
 import com.lrj.mapper.RoleMapper;
 import com.lrj.plugin.PageView;
 import com.lrj.util.Common;
@@ -69,6 +71,8 @@ public class RoleController extends BaseController {
 		String[] ids = getParaValues("ids");
 		for (String id : ids) {
 			roleMapper.deleteByAttribute("id", id, RoleFormMap.class);
+			roleMapper.deleteByAttribute("role_id", id, RoleResFormMap.class);
+			roleMapper.deleteByAttribute("roleId", id, UserRoleFormMap.class);
 		}
 		return "success";
 	}

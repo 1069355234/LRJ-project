@@ -44,7 +44,7 @@ import com.lrj.util.PasswordHelper;
 public class UserController extends BaseController {
 	@Inject
 	private UserMapper userMapper;
-	
+
 	@Inject
 	private RoleMapper roleMapper;
 
@@ -94,7 +94,7 @@ public class UserController extends BaseController {
 		model.addAttribute("users", users);
 		return Common.BACKGROUND_PATH + "/system/user/userSelect";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("assignUsers")
 	@Transactional(readOnly=false)//需要事务操作必须加入此注解
@@ -180,6 +180,7 @@ public class UserController extends BaseController {
 			userMapper.deleteByAttribute("userId", id, UserGroupsFormMap.class);
 			userMapper.deleteByAttribute("userId", id, ResUserFormMap.class);
 			userMapper.deleteByAttribute("id", id, UserFormMap.class);
+			userMapper.deleteByAttribute("userId", id, UserRoleFormMap.class);
 		}
 		return "success";
 	}
@@ -252,5 +253,5 @@ public class UserController extends BaseController {
 		userMapper.editEntity(userFormMap);
 		return "success";
 	}
-	
+
 }

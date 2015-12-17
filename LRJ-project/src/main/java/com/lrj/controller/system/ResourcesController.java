@@ -203,6 +203,7 @@ public class ResourcesController extends BaseController {
 		String[] ids = getParaValues("ids");
 		for (String id : ids) {
 			resourcesMapper.deleteByAttribute("id", id, ResFormMap.class);
+			resourcesMapper.deleteByAttribute("res_id", id, RoleResFormMap.class);
 		};
 		return "success";
 	}
