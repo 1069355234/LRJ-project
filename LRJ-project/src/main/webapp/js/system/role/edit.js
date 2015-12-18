@@ -32,3 +32,27 @@
 	 	});
 	 });
 
+	 function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			nodes = zTree.getSelectedNodes();
+			$("#parentId").val(nodes[0].name);
+			$("#parentIdVal").val(nodes[0].id);
+			$("#treeDemo").slideToggle();
+	}
+
+	 var setting = {
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				callback: {
+		        	onClick: onClick
+		        }
+			};
+
+	 function showZtree(){
+		 var zNodes = CommnUtil.ajax(rootPath+"/role/roleTree.shtml",{},"json");
+		 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		 $("#treeDemo").slideToggle();
+	 }

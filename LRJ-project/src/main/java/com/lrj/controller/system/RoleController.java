@@ -47,7 +47,7 @@ public class RoleController extends BaseController {
 			String pageSize) throws Exception {
 		RoleFormMap roleFormMap = getFormMap(RoleFormMap.class);
 		roleFormMap=toFormMap(roleFormMap, pageNow, pageSize,roleFormMap.getStr("orderby"));
-        pageView.setRecords(roleMapper.findByPage(roleFormMap));
+        pageView.setRecords(roleMapper.findRolePage(roleFormMap));
 		return pageView;
 	}
 
@@ -84,7 +84,9 @@ public class RoleController extends BaseController {
 	public String editUI(Model model) throws Exception {
 		String id = getPara("id");
 		if(Common.isNotEmpty(id)){
-			model.addAttribute("role", roleMapper.findbyFrist("id", id, RoleFormMap.class));
+			RoleFormMap roleFormMap = new RoleFormMap();
+			roleFormMap.put("id", id);
+			model.addAttribute("role", roleMapper.findRoleById(roleFormMap));
 		}
 		return Common.BACKGROUND_PATH + "/system/role/edit";
 	}
@@ -121,7 +123,7 @@ public class RoleController extends BaseController {
 		model.addAttribute("role", roles);
 		return Common.BACKGROUND_PATH + "/system/user/roleSelect";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("roleTree")
 	public JSONArray roleTree(){
@@ -132,9 +134,23 @@ public class RoleController extends BaseController {
 			json.put("id", r.get("id"));
 			json.put("pId", r.get("parentId"));
 			json.put("name", r.get("name"));
+			json.put("open", true);
 			result.add(json);
 		}
 		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping("isHaveChild")
+	public boolean isHaveChild() throws Exception {
+		String[] ids = getParaValues("ids");
+		for (String id : ids) {
+			RoleFormMap roleChild = roleMapper.findbyFrist("parentId", id, RoleFormMap.class);
+			if(null != roleChild){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -5,19 +5,28 @@ $(function() {
 		id : 'paging',
 		l_column : [ {
 			colkey : "id",
-			name : "id",
+			name : "主键",
 			width : "50px",
 			hide : true
 		}, {
 			colkey : "name",
 			name : "角色名"
 		}, {
+			colkey : "parentName",
+			name : "父级角色",
+			renderData : function(rowindex,data, rowdata, column) {
+				if("" == data){
+					return "-";
+				}
+				return data;
+			}
+		}, {
 			colkey : "state",
 			name : "状态",
 			width : "100px",
 		}, {
 			colkey : "roleKey",
-			name : "roleKey"
+			name : "关键字"
 		}, {
 			colkey : "description",
 			name : "描述"
@@ -85,6 +94,13 @@ function delRole() {
 		layer.msg("请选择删除项！！");
 		return;
 	}
+
+	var isHaveChild = CommnUtil.ajax(rootPath+"/role/isHaveChild.shtml", {ids : cbox.join(",")}, "json");
+	if(isHaveChild){
+		layer.msg("选中的角色包含子角色，请先删除子角色！");
+		return;
+	}
+
 	layer.confirm('删除角色后，和该角色关联的信息将一起删除！是否删除？', function(index) {
 		var url = rootPath + '/role/deleteEntity.shtml';
 		var s = CommnUtil.ajax(url, {

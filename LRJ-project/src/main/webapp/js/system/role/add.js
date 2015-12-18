@@ -37,8 +37,9 @@
 			nodes = zTree.getSelectedNodes();
 			$("#parentId").val(nodes[0].name);
 			$("#parentIdVal").val(nodes[0].id);
+			$("#treeDemo").slideToggle();
 	}
-	 
+
 	 var setting = {
 				data: {
 					simpleData: {
@@ -49,10 +50,9 @@
 		        	onClick: onClick
 		        }
 			};
-	 
+
 	 function showZtree(){
 		 var zNodes = CommnUtil.ajax(rootPath+"/role/roleTree.shtml",{},"json");
-		 alert(JSON.stringify(zNodes));
 		 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
 		 $("#treeDemo").slideToggle();
 	 }

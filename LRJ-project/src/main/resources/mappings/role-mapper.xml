@@ -12,8 +12,24 @@
 		state,
 		name,
 		roleKey,
+		parentId,
+		(select name from ly_role r where id = ly_role.parentId) parentName,
 		description
 	</sql>
+
+	<select id="findRolePage" resultType="com.lrj.entity.RoleFormMap">
+		select
+		<include refid="selectId" />
+		from ly_role
+		where 1 = 1
+		<if test="name != null and name != ''">
+			and name like '%${name}%'
+		</if>
+		<if test="column != null">
+			order by ${column} ${sort}
+		</if>
+	</select>
+
 	<select id="seletUserRole" resultType="com.lrj.entity.RoleFormMap">
 	select
 	<include refid="selectId"/>
@@ -21,5 +37,12 @@
 		where ly_role.id
 		in (SELECT roleId FROM ly_user_role WHERE
 		userId=#{userId})
+	</select>
+
+	<select id="findRoleById" resultType="com.lrj.entity.RoleFormMap">
+		select
+		<include refid="selectId" />
+		from ly_role
+		where id = ${id}
 	</select>
 </mapper>

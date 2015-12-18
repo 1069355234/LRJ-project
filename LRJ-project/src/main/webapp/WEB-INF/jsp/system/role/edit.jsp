@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="/common/common.jspf"%>
+<link rel="stylesheet" href="${ctx}/js/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="${ctx}/js/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript" src="${ctx}/js/system/role/edit.js"></script>
 <style type="text/css">
 .col-sm-3 {
@@ -43,6 +45,16 @@
 				</div>
 				<div class="line line-dashed line-lg pull-in"></div>
 				<div class="form-group">
+					<label class="col-sm-3 control-label">父级角色</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control checkacc"
+							placeholder="请选择父级角色" value="${role.parentName }" readonly="readonly" style="cursor: default;" id="parentId" onclick="showZtree()">
+						<input type="hidden" name="roleFormMap.parentId" id="parentIdVal" value="${role.parentId }"/>
+					</div>
+					<ul id="treeDemo" class="ztree form-control checkacc" style="width: 452px; height: 100px;margin-left: 100px; overflow: auto;display: none;"></ul>
+				</div>
+				<div class="line line-dashed line-lg pull-in"></div>
+				<div class="form-group">
 					<label class="col-sm-3 control-label">描述</label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" placeholder="请输入角色描述"
@@ -71,7 +83,7 @@
 			</div>
 			<footer class="panel-footer text-right bg-light lter">
 			<button type="submit" class="btn btn-success btn-s-xs">提交</button>
-		</footer> 
+		</footer>
 	</section>
 	</form>
 	<script type='text/javascript'>
