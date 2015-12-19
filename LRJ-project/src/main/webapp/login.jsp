@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>登录</title>
+<link rel="icon" href="${ctx }/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="${ctx }/favicon.ico" type="image/x-icon">
 </head>
 <style type="text/css">
 * {
@@ -20,7 +22,7 @@
 		$("body").css("width",w + "px");
 		$("body").css("height",h + "px");
 	}
-	
+
 	function submit(){
 		var username = $("input[name='username']").val();
 		var pwd = $("input[name='password']").val();
@@ -37,7 +39,7 @@
 			<span style="height: 40px;display: inline-block;"><img width="40px;" title="翼龙贷" alt="翼龙贷" src="/LRJ-project/admin_files/logo.png"></span>
 			<span style="font-size:45px;font-weight:bold;font-family:YouYuan;height: 60px;display: inline-block; vertical-align:middle;">ELONGCN</span>
 		</div>
-	
+
 	</div>
 	<div style="width: 100%; height: 50%; background-color: #666C78;">
 		<div style="padding-top:20px;">

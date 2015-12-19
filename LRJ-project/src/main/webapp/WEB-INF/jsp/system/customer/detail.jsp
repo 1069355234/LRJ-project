@@ -71,8 +71,10 @@
 	<tr>
 		<td class="small-title">所属业务员</td>
 		<td>${customerLoan.salesman }</td>
+		<td class="small-title">联保人数</td>
+		<td>${customerLoan.applloanlbrs }</td>
 		<td class="small-title">描述信息</td>
-		<td colspan="3">${customerLoan.applyloanMsxx }</td>
+		<td>${customerLoan.applyloanMsxx }</td>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">个人信息</td>

@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lrj.mapper.CustomerMapper">
 	<!--mybatis ehcache缓存配置 -->
-	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache" 
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 <cache type="org.mybatis.caches.ehcache.LoggingEhcache"
 		/> -->
 	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
 	<!-- 以下与实体类的中字段一致 -->
@@ -21,8 +21,17 @@
 		<if test="applyloanJkQy != null and applyloanJkQy != ''">
 			and a.applyloanJkQy like '%${applyloanJkQy}%'
 		</if>
-		<if test="applyloanJkje != null and applyloanJkje != ''">
-			and a.applyloanJkje = '${applyloanJkje}'
+		<if test="applyloanJkje == 1">
+			<![CDATA[and a.applyloanJkje < 10000]]>
+		</if>
+		<if test="applyloanJkje == 2">
+			<![CDATA[and a.applyloanJkje >= 10000 and a.applyloanJkje < 50000]]>
+		</if>
+		<if test="applyloanJkje == 3">
+			<![CDATA[and a.applyloanJkje >= 50000 and a.applyloanJkje < 100000]]>
+		</if>
+		<if test="applyloanJkje == 4">
+			<![CDATA[and a.applyloanJkje >= 100000]]>
 		</if>
 		<if test="begin != null and begin != '' and (end == null or end == '')">
           <![CDATA[ and a.createTime >= '${begin}']]>
@@ -48,7 +57,7 @@
 		show full fields from
 		tb_customer_basic
 	</select>
-	
+
 	<select id="showCusLoanInfo" resultType="map">
 		show full fields from
 		tb_customer_loan
