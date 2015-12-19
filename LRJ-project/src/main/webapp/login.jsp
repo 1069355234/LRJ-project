@@ -53,7 +53,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="checkbox" name="username"/>&nbsp;&nbsp;<span style="font-size:12px;color:#fff;">记住我</span></td>
+						<td><input type="checkbox" name=""/>&nbsp;&nbsp;<span style="font-size:12px;color:#fff;">记住我</span></td>
 						<td></td>
 						<td style="text-align:right;padding-right:26px;"><button style="width:76px;background-color:#585F69;color:#fff; ">登录</button></td>
 					</tr>
