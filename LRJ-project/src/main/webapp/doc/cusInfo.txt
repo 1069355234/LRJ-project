@@ -1,0 +1,62 @@
+{
+    "basic": {
+        "idCard": "320322154802041156",
+        "name": "张三",
+        "sex": "男",
+        "age": "32",
+        "national": "汉",
+        "phoneNumber": "13062505804",
+        "qqPhone": "105523225",
+        "censusSeat": "江苏南京",
+        "parentSeat": "江苏徐州",
+        "nowliveAddress": "江苏南京建邺区",
+        "unitName": "南京凌睿吉",
+        "unitAddress": "南京晓庄",
+        "unitPhone": "025-110110110",
+        "descriPtion": "描述信息"
+    },
+    "contact": {
+        "relativesName": "王斌",
+        "relativesPhoneNumber": "111111111",
+        "socialFriendsName": "李治国",
+        "socialFriendsPhoneNumber": "222222222",
+        "classmatesName": "陈忠",
+        "classmatesPhoneNubmer": "3333333",
+        "colleaguesName": "王婷婷",
+        "colleaguesPhoneNumber": "645135165",
+        "simpleFriend": "赵柳",
+        "simpleFriendPhoneNumber": "2131",
+        "borrowFriendsName": "王琪",
+        "borrowFriendsPhoneNumber": "9865465"
+    },
+    "credit": {
+        "workYear": "3-5年",
+        "commericial": "有",
+        "nickName": "工程师",
+        "socialYear": "10年",
+        "houserProperty": "100万",
+        "longLive": "江苏南京",
+        "annualIncome": "20万",
+        "maritalStatus": "已婚",
+        "cusAge": "32岁",
+        "educationDegree": "本科",
+        "professional": "工程师",
+        "loanRecords": "无贷款记录",
+        "creditCards": "8000",
+        "creditReport": "诚信良好"
+    },
+    "loan": {
+        "salesman": "lisi",
+        "idCard": "320322154802041156",
+        "applyloanKey": "20151216224822",
+        "applyloanBlx": "翼农贷",
+        "applyloanJkje": "100000",
+        "applyloanJkqx": "40天",
+        "applyloanZgnll": "10.0%",
+        "applyloanHkfs": "还本付息",
+        "applyloanJklx": "个人消费",
+        "applyloanJkQy": "江苏南京",
+        "applyloanJkmd": "房贷",
+        "applyloanMsxx": "描述信息"
+    }
+}
