@@ -14,6 +14,8 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -52,6 +54,9 @@ import com.lrj.util.ZipUtil;
 @Controller
 @RequestMapping("/customer/")
 public class CustomerController extends BaseController {
+
+	private Logger logger = LoggerFactory.getLogger(CustomerController. class);
+
 	@Inject
 	private UserMapper userMapper;
 
@@ -393,9 +398,9 @@ public class CustomerController extends BaseController {
 	@ResponseBody
 	@RequestMapping(value="saveCusInfo", method = RequestMethod.POST)
 	public boolean saveCusInfo(HttpServletRequest request,String cusInfo,File picFile, String picInfo){
-		System.out.println("接收到cusInfo:"+cusInfo);
-		System.out.println("接收到file:"+picFile.getName());
-		System.out.println("接收到picInfo:"+picInfo);
+		logger.info("接收到cusInfo:"+cusInfo);
+		logger.info("接收到file:"+picFile.getName());
+		logger.info("接收到picInfo:"+picInfo);
 		if(addCusInfo(request,cusInfo)){
 			return addCusPic(request,picFile,picInfo);
 		}
