@@ -116,12 +116,12 @@ public class Common {
 	}
 
 	/**
-	 * 返回当前时间　格式：yyyy-MM-dd hh:mm:ss
+	 * 返回当前时间　格式：yyyy-MM-dd HH:mm:ss
 	 *
 	 * @return String
 	 */
 	public static String fromDateH() {
-		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return format1.format(new Date());
 	}
 
