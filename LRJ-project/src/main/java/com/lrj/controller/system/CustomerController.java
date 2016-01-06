@@ -522,40 +522,42 @@ public class CustomerController extends BaseController {
 	public boolean saveCusInfo(HttpServletRequest request, String cusInfo,
 			String picInfo) {
 		// {"credittype":"2","filePath":"/storage/emulated/0/Android/data/com.lrj.ptp/files/admin/123456/2/5/20160104165042.jpg","fileleng":4707105,"filename":"20160104165042.jpg","filetype":"5","id":22,"idCard":"123456","isupover":"0","username":"admin"}
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		MultipartFile picFile = multipartRequest.getFile("picFile");
-		if (null != cusInfo) {
-			addCusInfo(request, cusInfo);
-		}
-
-		CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
-		for (Map.Entry<String, Object> entry : JSONObject.parseObject(picInfo)
-				.entrySet()) {
-			if (entry.getKey().equals("id")) {
-				continue;
-			}
-			customerPicFormMap.put(entry.getKey(), entry.getValue());
-		}
-
-		String applyloanKey = customerPicFormMap.get("applyloanKey").toString();
-		// String applyloanKey = "20151216224823";
-//		String name = customerPicFormMap.get("name").toString();// 客户姓名
-		String name = "测试";
-		String fileName = customerPicFormMap.get("filename").toString();
-		String applyloanBlx = getLoanType(Integer.parseInt(customerPicFormMap.get("credittype").toString()));// 标类型
-
-		String picPath = "/uploadFile/" + name + "_" + applyloanKey;
-
-		String filetype = getPicType(Integer.parseInt(customerPicFormMap.get("credittype").toString()),Integer.parseInt(customerPicFormMap.get("filetype").toString()));
-
-		String picRealPath = request.getServletContext().getRealPath(picPath + "/" + applyloanBlx + "/" + filetype);
-
-		File saveFile = new File(picRealPath);
-		if (!saveFile.exists()) {
-			saveFile.mkdirs();
-		}
-
+		logger.info("接收到的参数[cusInfo]为："+cusInfo);
+		logger.info("接收到的参数[picInfo]为："+picInfo);
 		try {
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			MultipartFile picFile = multipartRequest.getFile("picFile");
+			if (null != cusInfo) {
+				addCusInfo(request, cusInfo);
+			}
+
+			CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
+			for (Map.Entry<String, Object> entry : JSONObject.parseObject(picInfo)
+					.entrySet()) {
+				if (entry.getKey().equals("id")) {
+					continue;
+				}
+				customerPicFormMap.put(entry.getKey(), entry.getValue());
+			}
+
+			String applyloanKey = customerPicFormMap.get("applyloanKey").toString();
+			// String applyloanKey = "20151216224823";
+			String name = customerPicFormMap.get("name").toString();// 客户姓名
+	//		String name = "测试";
+			String fileName = customerPicFormMap.get("filename").toString();
+			String applyloanBlx = getLoanType(Integer.parseInt(customerPicFormMap.get("credittype").toString()));// 标类型
+
+			String picPath = "/uploadFile/" + name + "_" + applyloanKey;
+
+			String filetype = getPicType(Integer.parseInt(customerPicFormMap.get("credittype").toString()),Integer.parseInt(customerPicFormMap.get("filetype").toString()));
+
+			String picRealPath = request.getServletContext().getRealPath(picPath + "/" + applyloanBlx + "/" + filetype);
+
+			File saveFile = new File(picRealPath);
+			if (!saveFile.exists()) {
+				saveFile.mkdirs();
+			}
+
 			InputStream fileInputStream = picFile.getInputStream();
 			FileOutputStream fos = new FileOutputStream(picRealPath + "/"
 					+ fileName);
@@ -573,7 +575,7 @@ public class CustomerController extends BaseController {
 			fileInputStream.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.info("上传失败");
+			logger.info("上传失败，原因："+e.getMessage());
 			return false;
 		}
 		logger.info("上传成功");

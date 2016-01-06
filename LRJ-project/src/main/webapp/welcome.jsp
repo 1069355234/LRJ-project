@@ -27,16 +27,18 @@
  			if(null == data[i].longitude || null == data[i].latitude){
  				continue;
  			}
- 			var longitude = data[i].longitude;
- 			var latitude = data[i].latitude;
- 			eval("var new_point_"+i+" = new BMap.Point("+longitude+","+latitude+")");
- 			eval("var marker_"+i+" = new BMap.Marker(new_point_"+i+")");  // 创建标注
- 	 		map.addOverlay(eval("marker_"+i));              // 将标注添加到地图中
- 	 		map.panTo(eval("new_point_"+i));
- 	 		var infoWindow = new BMap.InfoWindow("员工["+data[i].userName+"]的最近一次定位时间："+data[i].locationTime, opts);  // 创建信息窗口对象
- 	 		eval("marker_"+i).addEventListener("click", function(){
- 	 		map.openInfoWindow(infoWindow,eval("new_point_"+i)); //开启信息窗口
- 	 		});
+ 			(function(x){
+	 			var longitude = data[x].longitude;
+	 			var latitude = data[x].latitude;
+	 			var point = new BMap.Point(longitude,latitude);
+	 			var marker = new BMap.Marker(point);  // 创建标注
+	 	 		map.addOverlay(marker);              // 将标注添加到地图中
+	 	 		map.panTo(point);
+	 	 		var infoWindow = new BMap.InfoWindow("员工["+data[x].userName+"]的最近一次定位时间："+data[x].locationTime, opts);  // 创建信息窗口对象
+	 	 		marker.addEventListener("click", function(){
+	 	 			map.openInfoWindow(infoWindow,point); //开启信息窗口
+	 	 		});
+ 			})(i)
  		}
 
  	}
