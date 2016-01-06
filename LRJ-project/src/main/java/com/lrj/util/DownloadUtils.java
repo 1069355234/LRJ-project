@@ -88,6 +88,8 @@ public class DownloadUtils {
 			toClient.close();
 		} catch (IOException ex) {
 			ex.printStackTrace();
+		} finally {
+			file.delete();
 		}
 		return response;
 	}

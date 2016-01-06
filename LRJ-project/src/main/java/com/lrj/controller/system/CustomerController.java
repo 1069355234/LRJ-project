@@ -244,7 +244,7 @@ public class CustomerController extends BaseController {
 
 		String filePath = request.getServletContext().getRealPath(picPath);
 
-		File zip = ZipUtil.zip(filePath, custName);
+		File zip = ZipUtil.zip(filePath);
 
 		DownloadUtils.downloadFile(zip, response);
 	}

@@ -35,12 +35,12 @@ public class ZipUtil {
 	 * @param filePath 待压缩的文件路径
 	 * @return 压缩后的文件
 	 */
-	public static File zip(String filePath,String custName) {
+	public static File zip(String filePath) {
 		File target = null;
 		File source = new File(filePath);
 		if (source.exists()) {
 			// 压缩文件名=源文件名.zip
-			String zipName = custName + "_" + source.getName() + ".zip";
+			String zipName = source.getName() + ".zip";
 			target = new File(source.getParent(), zipName);
 			if (target.exists()) {
 				target.delete(); // 删除旧的文件
