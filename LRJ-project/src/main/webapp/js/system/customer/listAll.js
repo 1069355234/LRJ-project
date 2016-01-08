@@ -41,7 +41,7 @@ $(function() {
 				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='piclist(\""+data+"\")' style='color:blue'>资料照片</a>";
 			}
 		}],
-		jsonUrl : rootPath + '/customer/findByPage.shtml?flag=byAssign',
+		jsonUrl : rootPath + '/customer/findByPage.shtml?flag=byRole',
 		checkbox : true,
 		serNumber : true,
 		checkValue : "id"

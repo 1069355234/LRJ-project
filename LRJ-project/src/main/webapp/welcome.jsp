@@ -5,7 +5,7 @@
 
  	var data = CommnUtil.ajax("<%=request.getContextPath()%>/lowuser/getAllLowerUsers.shtml", {}, "json");
  	if(null == data || data.length == 0){
- 		$("#allmap").text("暂无数据");
+ 		$("#allmap").text("暂无下属员工定位数据");
  	}else{
  		// 百度地图API功能
  		var map = new BMap.Map("allmap");

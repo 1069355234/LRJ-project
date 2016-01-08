@@ -45,42 +45,48 @@ public class LowUserController extends BaseController {
 		return Common.BACKGROUND_PATH + "/system/lowuser/list";
 	}
 
+	@RequestMapping("listAll")
+	public String listUIAll(Model model) throws Exception {
+		model.addAttribute("res", findByRes());
+		return Common.BACKGROUND_PATH + "/system/lowuser/listAll";
+	}
+
 	@ResponseBody
 	@RequestMapping("findByPage")
-	public PageView getAllLowerUsers(String pageNow,
-			String pageSize,String column,String sort){
+	public PageView getAllLowerUsers(HttpServletRequest request,String pageNow,
+			String pageSize,String column,String sort,String flag){
 		// 获取登录的bean
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		UserFormMap userFormMap = (UserFormMap)Common.findUserSession(request);
 		Integer userId = Integer.parseInt(userFormMap.get("id").toString());
-		List<Integer> roleIds = new ArrayList<>();
-		UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
-		userRoleFormMap.put("userId", userId);
 
-		List<UserRoleFormMap> userRoleFormMaps = userMapper.findByNames(userRoleFormMap);
-		for(UserRoleFormMap u : userRoleFormMaps){
-//			roleIds.add(Integer.parseInt(u.get("roleId").toString()));
-			getAllLowerRoles(Integer.parseInt(u.get("roleId").toString()),roleIds);
-		}
+		if(flag.equals("byRole")){
+			List<Integer> roleIds = new ArrayList<>();
+			UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
+			userRoleFormMap.put("userId", userId);
 
-		String strRoleIds = "";
-		for(Integer roleId : roleIds){
-			strRoleIds += roleId + ",";
-		}
-		strRoleIds = Common.trimComma(strRoleIds);
+			List<UserRoleFormMap> userRoleFormMaps = userMapper.findByNames(userRoleFormMap);
+			for(UserRoleFormMap u : userRoleFormMaps){
+				getAllLowerRoles(Integer.parseInt(u.get("roleId").toString()),roleIds);
+			}
 
-		/*if(StringUtils.isEmpty(strRoleIds)){
+			String strRoleIds = "";
+			for(Integer roleId : roleIds){
+				strRoleIds += roleId + ",";
+			}
+			strRoleIds = Common.trimComma(strRoleIds);
+
 			UserFormMap ufm = getFormMap(UserFormMap.class);
+			ufm.put("roleIds", strRoleIds);
 			ufm=toFormMap(ufm, pageNow, pageSize,ufm.getStr("orderby"));
-			return pageView;
-		}*/
-
-		UserFormMap ufm = getFormMap(UserFormMap.class);
-		ufm.put("roleIds", strRoleIds);
-		ufm=toFormMap(ufm, pageNow, pageSize,ufm.getStr("orderby"));
-		ufm.put("column", column);
-		ufm.put("sort", sort);
-        pageView.setRecords(userMapper.selectAllLowerUser(ufm));//不调用默认分页,调用自已的mapper中findUserPage
+			ufm.put("column", column);
+			ufm.put("sort", sort);
+	        pageView.setRecords(userMapper.selectAllLowerUser(ufm));//不调用默认分页,调用自已的mapper中findUserPage
+		}else{
+			UserFormMap ufm = getFormMap(UserFormMap.class);
+			ufm.put("userId", userId);
+			ufm = toFormMap(ufm, pageNow, pageSize,ufm.getStr("orderby"));
+			pageView.setRecords(userMapper.selectChoosedLowerUser(ufm));
+		}
         return pageView;
 
 	}
@@ -120,6 +126,9 @@ public class LowUserController extends BaseController {
 		UserFormMap ufm = getFormMap(UserFormMap.class);
 		ufm.put("roleIds", strRoleIds);
 		List<UserFormMap> users = userMapper.selectAllLowerUser(ufm);
+
+		List<UserFormMap> usersLocation = new ArrayList<>();
+
 		for(UserFormMap u : users){
 			String accountName = u.get("accountName").toString();
 			UserLocationFormMap location = getLocation(accountName);
@@ -127,9 +136,10 @@ public class LowUserController extends BaseController {
 				u.put("longitude", location.get("longitude"));
 				u.put("latitude", location.get("latitude"));
 				u.put("locationTime", location.get("locationTime"));
+				usersLocation.add(u);
 			}
 		}
-        return users;
+        return usersLocation;
 	}
 
 	@ResponseBody

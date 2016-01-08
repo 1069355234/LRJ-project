@@ -27,8 +27,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -73,10 +71,18 @@ public class CustomerController extends BaseController {
 	@Inject
 	private RoleMapper roleMapper;
 
+	//所有本级和下级员工的客户信息
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
 		model.addAttribute("res", findByRes());
 		return Common.BACKGROUND_PATH + "/system/customer/list";
+	}
+
+	//所有本级和下级角色的客户信息
+	@RequestMapping("listAll")
+	public String listUIAll(Model model) throws Exception {
+		model.addAttribute("res", findByRes());
+		return Common.BACKGROUND_PATH + "/system/customer/listAll";
 	}
 
 	/**
@@ -95,8 +101,8 @@ public class CustomerController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("findByPage")
-	public PageView findByPage(String pageNow, String pageSize, String column,
-			String sort) throws Exception {
+	public PageView findByPage(HttpServletRequest request,String pageNow, String pageSize, String column,
+			String sort,String flag) throws Exception {
 		CustomerLoanFormMap customerFormMap = getFormMap(CustomerLoanFormMap.class);
 		customerFormMap = toFormMap(customerFormMap, pageNow, pageSize,
 				customerFormMap.getStr("orderby"));
@@ -104,34 +110,37 @@ public class CustomerController extends BaseController {
 		customerFormMap.put("sort", sort);
 
 		// 获取下属员工
-		// 获取登录的bean
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes()).getRequest();
 		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
 
 		List<String> salesman = new ArrayList<>();
 
 		List<Integer> roleIds = new ArrayList<>();
 		UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
-		userRoleFormMap.put("userId",
-				Integer.parseInt(userFormMap.get("id").toString()));
+		userRoleFormMap.put("userId",Integer.parseInt(userFormMap.get("id").toString()));
 
-		List<UserRoleFormMap> userRoleFormMaps = userMapper
-				.findByNames(userRoleFormMap);
+		List<UserRoleFormMap> userRoleFormMaps = userMapper.findByNames(userRoleFormMap);
 		for (UserRoleFormMap u : userRoleFormMaps) {
-			getAllLowerRoles(Integer.parseInt(u.get("roleId").toString()),
-					roleIds);
+			getAllLowerRoles(Integer.parseInt(u.get("roleId").toString()),roleIds);
 		}
+		List<UserFormMap> allLowerUser = new ArrayList<>();
 
-		String strRoleIds = "";
-		for (Integer roleId : roleIds) {
-			strRoleIds += roleId + ",";
+		//根据下级角色获取下属用户
+		if(flag.equals("byRole")){
+			String strRoleIds = "";
+			for (Integer roleId : roleIds) {
+				strRoleIds += roleId + ",";
+			}
+			strRoleIds = Common.trimComma(strRoleIds);
+
+
+			UserFormMap ufm = getFormMap(UserFormMap.class);
+			ufm.put("roleIds", strRoleIds);
+			allLowerUser = userMapper.selectAllLowerUser(ufm);
+		}else{
+			userFormMap.put("userId", Integer.parseInt(userFormMap.get("id").toString()));
+			//或分配的下级员工
+			allLowerUser = userMapper.selectChoosedLowerUser(userFormMap);
 		}
-		strRoleIds = Common.trimComma(strRoleIds);
-
-		UserFormMap ufm = getFormMap(UserFormMap.class);
-		ufm.put("roleIds", strRoleIds);
-		List<UserFormMap> allLowerUser = userMapper.selectAllLowerUser(ufm);
 
 		for (UserFormMap u : allLowerUser) {
 			salesman.add(u.get("accountName").toString());// 当前用户可以查看其下属用户的客户

@@ -40,7 +40,7 @@ $(function() {
 				return "<a herf='javascript:void(0)' onclick='showPlace(\""+data+"\")' style='cursor:pointer;color:blue;'>查看定位</a>";
 			}
 		}],
-		jsonUrl : rootPath + '/lowuser/findByPage.shtml?flag=byAssign',
+		jsonUrl : rootPath + '/lowuser/findByPage.shtml?flag=byRole',
 		checkbox : false,
 		serNumber : true
 	});
