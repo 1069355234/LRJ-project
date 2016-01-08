@@ -83,6 +83,7 @@
 			/install.shtml = anon
 			/lanyuan.shtml = anon
 			/code.shtml = anon
+			/app/** = anon
 			</value>
 		</property>
 	</bean>
