@@ -64,18 +64,18 @@ function uploadPic(){
 </script>
 
 <style type="text/css">
-	table{
+	.info{
 		border:1px solid #CAD9EA;
 		width:100%;
 		font-family: 宋体;
 		font-size:14px;
 	}
-	tr{
+	.info tr{
 		border:1px solid #CAD9EA;
 		margin:2px 0;
 		height:26px;
 	}
-	td{
+	.info td{
 		border:1px solid #CAD9EA;
 	}
 	.big-title{
@@ -93,6 +93,10 @@ function uploadPic(){
 		text-align:center;
 		background-color: #DCDCDC;
 	}
+
+	.uploadPic{
+		width: 325px;
+	}
 </style>
 
 
@@ -101,7 +105,7 @@ function uploadPic(){
 	<a class="btn btn-primary marR10" type="button" onclick="exportBaseInfo(${customer.id })">导出客户基本信息</a>
 </div> --%>
 
-<table>
+<table class="info">
 	<tr class="big-title">
 		<td colspan="7">借款标信息</td>
 	</tr>
@@ -290,9 +294,9 @@ function uploadPic(){
 </div>
 <p class="big-title" style="clear: both;">补充图片</p>
 
-<table style="width:200px;">
+<table class="uploadPic">
 	<tr>
-		<td style="width:50px;">选择分类：</td>
+		<td style="width:71px;">选择分类：</td>
 		<td><select>
 			<option>身份证</option>
 			<option>房产证</option>
