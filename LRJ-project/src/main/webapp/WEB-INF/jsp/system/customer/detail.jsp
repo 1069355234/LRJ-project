@@ -60,6 +60,26 @@ function uploadPic(){
 
 }
 
+function addItem(){
+	var tr = $("<tr><td></td><td><input type='file' name=''/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/delete.png' width='20px' height='20px' onclick='delItem($(this))'></td></tr>");
+	$("#uploadPic").append(tr);
+}
+
+function delItem(item){
+	item.parent().parent().remove();
+}
+
+function delTab(item){
+	item.parent().parent().parent().remove();
+}
+
+function addTable(){
+	var table = $("<table class='uploadPic' id='uploadPic'></table>");
+	var tr1 = $("<tr><td>选择分类：</td><td><select></select></td></tr>");
+	var tr2 = $("<tr><td>选择文件：</td><td><input type='file' name=''/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/add.png' width='20px' height='20px' onclick='addItem()'></td></tr>");
+	table.append(tr1).append(tr2);
+	$("#addPic").append(table);
+}
 
 </script>
 
@@ -95,7 +115,31 @@ function uploadPic(){
 	}
 
 	.uploadPic{
-		width: 325px;
+		font-size:14px;
+		width: 330px;
+		border:1px solid grey;
+		float:left;
+		margin-bottom:5px;
+		margin-left:10px;
+	}
+	.pointer{
+		cursor: pointer;
+	}
+	.addPic{
+		display:block;
+		float:right;
+		margin-top:-32px;
+	}
+	
+	.addPic a{
+		font-size:14px;
+		color:#fff;
+		text-decoration: underline;
+	}
+	
+	.addPic a:hover{
+		color:red;
+		text-decoration: underline;
 	}
 </style>
 
@@ -293,27 +337,25 @@ function uploadPic(){
 	</c:forEach>
 </div>
 <p class="big-title" style="clear: both;">补充图片</p>
+<span class="addPic"><a class="pointer" href="javascript:void(0)" onclick="addTable()">继续添加</a>&nbsp;&nbsp;<a class="pointer" href="javascript:void(0)">保存图片</a></span>
 
-<table class="uploadPic">
-	<tr>
-		<td style="width:71px;">选择分类：</td>
-		<td><select>
-			<option>身份证</option>
-			<option>房产证</option>
-		</select></td>
-	</tr>
-	<tr>
-		<td>选择文件：</td>
-		<td><input type="file" name=""/></td>
-		<td><img src="${pageContext.request.contextPath}/images/add.png" width="20px" height="20px"></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><input type="file" name=""/></td>
-		<td><img src="${pageContext.request.contextPath}/images/delete.png" width="20px" height="20px"></td>
-	</tr>
-</table>
-
+<div id="addPic">
+	<table class="uploadPic" id="uploadPic">
+		<tr>
+			<td>选择分类：</td>
+			<td><select>
+				<option>身份证</option>
+				<option>房产证</option>
+			</select></td>
+			<td class="pointer"><img src="${pageContext.request.contextPath}/images/delTab.jpg" width="22px" height="22px" onclick="delTab($(this))"></td>
+		</tr>
+		<tr>
+			<td>选择文件：</td>
+			<td><input type="file" name=""/></td>
+			<td class="pointer"><img src="${pageContext.request.contextPath}/images/add.png" width="20px" height="20px" onclick="addItem()"></td>
+		</tr>
+	</table>
+</div>
 
 
 
