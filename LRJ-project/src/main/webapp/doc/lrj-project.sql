@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 121.199.13.118
-Source Server Version : 50624
-Source Host           : 121.199.13.118:3306
+Source Server         : localhost
+Source Server Version : 50621
+Source Host           : localhost:3306
 Source Database       : lrj-project
 
 Target Server Type    : MYSQL
-Target Server Version : 50624
+Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2016-01-08 09:31:25
+Date: 2016-01-11 13:30:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,7 +53,7 @@ CREATE TABLE `ly_log` (
   `operTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_log
@@ -62,6 +62,14 @@ INSERT INTO `ly_log` VALUES ('1', 'admin', '系统管理', '用户管理-修改�
 INSERT INTO `ly_log` VALUES ('2', 'admin', '系统管理', '用户管理/组管理-修改权限', '56', '0:0:0:0:0:0:0:1', '2016-01-07 14:55:29', '执行成功!');
 INSERT INTO `ly_log` VALUES ('3', 'admin', '系统管理', '用户管理/组管理-修改权限', '51', '0:0:0:0:0:0:0:1', '2016-01-07 14:58:53', '执行成功!');
 INSERT INTO `ly_log` VALUES ('4', 'admin', '系统管理', '用户管理-删除用户', '96', '183.206.172.32', '2016-01-08 09:29:59', '执行成功!');
+INSERT INTO `ly_log` VALUES ('5', 'boss1', '系统管理', '用户管理-新增用户', '55', '180.110.134.157', '2016-01-09 14:15:02', '执行成功!');
+INSERT INTO `ly_log` VALUES ('6', 'boss1', '系统管理', '用户管理-修改用户', '52', '180.110.134.157', '2016-01-09 14:15:15', '执行成功!');
+INSERT INTO `ly_log` VALUES ('7', 'admin', '系统管理', '用户管理-新增用户', '73', '180.110.134.157', '2016-01-09 16:13:26', '执行成功!');
+INSERT INTO `ly_log` VALUES ('8', 'admin', '系统管理', '用户管理/组管理-修改权限', '29', '180.110.134.157', '2016-01-09 16:15:14', '执行成功!');
+INSERT INTO `ly_log` VALUES ('9', 'admin', '系统管理', '用户管理/组管理-修改权限', '366', '0:0:0:0:0:0:0:1', '2016-01-11 12:58:01', '执行成功!');
+INSERT INTO `ly_log` VALUES ('10', 'admin', '系统管理', '用户管理-密码初始化', '8', '0:0:0:0:0:0:0:1', '2016-01-11 13:10:54', '执行成功!');
+INSERT INTO `ly_log` VALUES ('11', 'leader', '系统管理', '用户管理-修改密码', '1', '0:0:0:0:0:0:0:1', '2016-01-11 13:11:43', '执行成功!');
+INSERT INTO `ly_log` VALUES ('12', 'admin', '系统管理', '用户管理-密码初始化', '3', '0:0:0:0:0:0:0:1', '2016-01-11 13:12:23', '执行成功!');
 
 -- ----------------------------
 -- Table structure for `ly_resources`
@@ -79,7 +87,7 @@ CREATE TABLE `ly_resources` (
   `ishide` int(3) DEFAULT '0',
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_resources
@@ -113,6 +121,9 @@ INSERT INTO `ly_resources` VALUES ('39', '选中导出', '37', 'export_choose', 
 INSERT INTO `ly_resources` VALUES ('40', '全部导出', '37', 'export_all', '2', null, '2', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;allExport&quot;&nbsp;class=&quot;btn&nbsp;btn-info&nbsp;marR10&quot;&gt;全部导出&lt;/button&gt;');
 INSERT INTO `ly_resources` VALUES ('41', '客户端', '0', 'download', '0', '', '9', 'fa-desktop', '0', '客户端');
 INSERT INTO `ly_resources` VALUES ('42', '客户端下载', '41', 'download_apk', '1', '/download/download.shtml', '1', null, '0', '客户端下载');
+INSERT INTO `ly_resources` VALUES ('43', '地图定位', '0', 'map', '0', null, '10', 'fa-desktop', '0', '地图定位');
+INSERT INTO `ly_resources` VALUES ('44', '员工定位', '43', 'user_location', '1', '/map/map.shtml', '1', null, '0', '员工定位');
+INSERT INTO `ly_resources` VALUES ('46', '密码初始化', '2', 'init_pwd', '2', '/user/initPwd.shtml', '5', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;initPwd&quot;&nbsp;class=&quot;btn&nbsp;btn-warning&nbsp;marR10&quot;&gt;密码初始化&lt;/button&gt;');
 
 -- ----------------------------
 -- Table structure for `ly_res_user`
@@ -212,10 +223,11 @@ INSERT INTO `ly_role_res` VALUES ('1', '39');
 INSERT INTO `ly_role_res` VALUES ('1', '40');
 INSERT INTO `ly_role_res` VALUES ('1', '41');
 INSERT INTO `ly_role_res` VALUES ('1', '42');
+INSERT INTO `ly_role_res` VALUES ('1', '43');
+INSERT INTO `ly_role_res` VALUES ('1', '44');
+INSERT INTO `ly_role_res` VALUES ('1', '46');
 INSERT INTO `ly_role_res` VALUES ('4', '36');
 INSERT INTO `ly_role_res` VALUES ('4', '37');
-INSERT INTO `ly_role_res` VALUES ('4', '39');
-INSERT INTO `ly_role_res` VALUES ('4', '40');
 INSERT INTO `ly_role_res` VALUES ('5', '36');
 INSERT INTO `ly_role_res` VALUES ('5', '37');
 INSERT INTO `ly_role_res` VALUES ('5', '38');
@@ -315,13 +327,13 @@ CREATE TABLE `ly_user` (
   `deletestatus` int(1) DEFAULT '0' COMMENT '逻辑删除状态0:存在1:删除',
   `region` varchar(10) DEFAULT NULL COMMENT '用户负责的城市',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_user
 -- ----------------------------
 INSERT INTO `ly_user` VALUES ('3', '管理员', 'admin', 'a813f2811c43dbc91dad52fb99f954df', '5a8bc6da0ba9ea4dd1066d3f36e828c2', '3434', '0', '2015-12-31 11:35:42', '0', null);
-INSERT INTO `ly_user` VALUES ('6', '团队长1', 'leader', '3f2fc54551271bbd89cfcf9071a346f8', '35ced4c52f0b896c7c0c9488ee62c732', '', '0', '2015-12-09 23:44:19', '0', '');
+INSERT INTO `ly_user` VALUES ('6', '团队长1', 'leader', 'b630bf43cc2045510b5df27335b7e44d', 'd7d39efacdd11dd527d685de478e9e5a', '', '0', '2016-01-11 13:11:43', '0', '');
 INSERT INTO `ly_user` VALUES ('7', '业务员1', 'salesman1', '21940300cf372e0bdeafcd1f065ba33e', 'd278603b0142e42752b7c2f53af84008', null, '0', '2015-12-09 23:47:44', '0', '南京');
 INSERT INTO `ly_user` VALUES ('8', '业务员2', 'salesman2', 'e400f0c6173fb88411d20d3a6e64996d', '674237efa5f82bc32726b157268356bf', null, '0', '2015-12-09 23:47:57', '0', '南京');
 INSERT INTO `ly_user` VALUES ('9', '业务员3', 'salesman3', 'cdb92205bbd0b5201859d73ee1228b83', '8a48d11f74ea5acb494962ab4e53b28d', null, '0', '2015-12-09 20:57:31', '0', '扬州');
@@ -329,6 +341,8 @@ INSERT INTO `ly_user` VALUES ('10', '业务员4', 'salesman4', '22737e5eb23c04cf
 INSERT INTO `ly_user` VALUES ('11', '业务员5', 'salesman5', 'c7d1eecc7f9b3dbaeb7d54f8cb8ff395', 'e4db0905bd5f5dc0793dde49c66b8772', '', '0', '2015-12-09 21:19:17', '0', '');
 INSERT INTO `ly_user` VALUES ('12', '业务员6', 'salesman6', '94c3632ab1e9b5abcccf3c2abefb01bd', '5bb1b71cf7973a5f80eb82fab5482d15', null, '0', '2015-12-09 21:06:22', '0', null);
 INSERT INTO `ly_user` VALUES ('13', '总审1', 'boss1', '36778364b5f488b79c80f79cf25ff4de', '265bfd1a92957bb21c103359e9ad1117', null, '0', '2015-12-09 22:27:55', '0', null);
+INSERT INTO `ly_user` VALUES ('14', '张三', '111111', '6c6771afe176588942a6ae01733abce6', 'b9e6502856fee7cdcda958acf90c58dd', null, '0', '2016-01-09 14:15:15', '0', '南京');
+INSERT INTO `ly_user` VALUES ('15', '王武', 'wagnw', 'fdc69764ae1327cdd80c0a113b4a2056', 'e2a92d84f5b63faf03fe7751c411c11d', null, '0', '2016-01-09 16:13:26', '0', '淮北');
 
 -- ----------------------------
 -- Table structure for `ly_userlogin`
@@ -342,7 +356,7 @@ CREATE TABLE `ly_userlogin` (
   `loginIP` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ly_user_loginlist` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_userlogin
@@ -435,6 +449,44 @@ INSERT INTO `ly_userlogin` VALUES ('85', '3', 'admin', '2016-01-07 19:26:22', '1
 INSERT INTO `ly_userlogin` VALUES ('86', '3', 'admin', '2016-01-08 09:09:11', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('87', '3', 'admin', '2016-01-08 09:15:11', '183.206.172.32');
 INSERT INTO `ly_userlogin` VALUES ('88', '3', 'admin', '2016-01-08 09:28:43', '183.206.172.32');
+INSERT INTO `ly_userlogin` VALUES ('89', '3', 'admin', '2016-01-09 14:14:13', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('90', '13', 'boss1', '2016-01-09 14:14:34', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('91', '6', 'leader', '2016-01-09 14:15:52', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('92', '3', 'admin', '2016-01-09 14:18:14', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('93', '6', 'leader', '2016-01-09 14:34:25', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('94', '3', 'admin', '2016-01-09 14:35:10', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('95', '6', 'leader', '2016-01-09 14:36:59', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('96', '3', 'admin', '2016-01-09 14:43:34', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('97', '6', 'leader', '2016-01-09 14:48:40', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('98', '6', 'leader', '2016-01-09 15:36:14', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('99', '6', 'leader', '2016-01-09 15:45:36', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('100', '3', 'admin', '2016-01-09 15:48:22', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('101', '6', 'leader', '2016-01-09 15:54:18', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('102', '3', 'admin', '2016-01-09 16:07:27', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('103', '6', 'leader', '2016-01-09 16:08:02', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('104', '3', 'admin', '2016-01-09 16:09:48', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('105', '15', 'wagnw', '2016-01-09 16:16:06', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('106', '3', 'admin', '2016-01-09 16:17:21', '180.110.134.157');
+INSERT INTO `ly_userlogin` VALUES ('107', '3', 'admin', '2016-01-10 11:09:08', '218.94.82.99');
+INSERT INTO `ly_userlogin` VALUES ('108', '3', 'admin', '2016-01-10 11:09:09', '218.94.82.99');
+INSERT INTO `ly_userlogin` VALUES ('109', '13', 'boss1', '2016-01-10 11:17:26', '218.94.82.99');
+INSERT INTO `ly_userlogin` VALUES ('110', '6', 'leader', '2016-01-10 11:18:00', '218.94.82.99');
+INSERT INTO `ly_userlogin` VALUES ('111', '3', 'admin', '2016-01-11 12:33:15', '183.206.174.204');
+INSERT INTO `ly_userlogin` VALUES ('112', '3', 'admin', '2016-01-11 12:40:04', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('113', '3', 'admin', '2016-01-11 12:57:49', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('114', '3', 'admin', '2016-01-11 12:58:10', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('115', '3', 'admin', '2016-01-11 13:06:32', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('116', '3', 'admin', '2016-01-11 13:07:18', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('117', '3', 'admin', '2016-01-11 13:08:23', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('118', '3', 'admin', '2016-01-11 13:09:55', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('119', '6', 'leader', '2016-01-11 13:11:12', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('120', '6', 'leader', '2016-01-11 13:11:29', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('121', '6', 'leader', '2016-01-11 13:11:56', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('122', '3', 'admin', '2016-01-11 13:12:13', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('123', '6', 'leader', '2016-01-11 13:12:33', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('124', '3', 'admin', '2016-01-11 13:12:45', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('125', '6', 'leader', '2016-01-11 13:15:45', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('126', '6', 'leader', '2016-01-11 13:24:57', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for `ly_user_role`
@@ -459,6 +511,8 @@ INSERT INTO `ly_user_role` VALUES ('11', '4');
 INSERT INTO `ly_user_role` VALUES ('12', '4');
 INSERT INTO `ly_user_role` VALUES ('13', '1');
 INSERT INTO `ly_user_role` VALUES ('13', '8');
+INSERT INTO `ly_user_role` VALUES ('14', '4');
+INSERT INTO `ly_user_role` VALUES ('15', '4');
 
 -- ----------------------------
 -- Table structure for `tb_customer_basic`
@@ -509,11 +563,13 @@ CREATE TABLE `tb_customer_basic` (
   `createTime` varchar(32) DEFAULT NULL COMMENT '创建时间',
   `updateTime` varchar(32) DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_customer_basic
 -- ----------------------------
+INSERT INTO `tb_customer_basic` VALUES ('24', '123456789123456789', '张三', '男', '60岁以上', '汉族', '13585390197', '12646797976764', '江苏', '啊哈哈是', '泯然众人矣', null, null, null, null, '5年以上', '5年以上', '高级管理人员、总公司总经历、中校以上(教授)', '5年以上', '自有未按揭，价值100万元以上(含)', '商业社区', '合计所得24.1-39万元', '已婚有子女', null, '本科', '一般上市公司员工', '5年以上', '60001-20000', '有', '你', '13979794948', '是', '13649797676', '谁', '13679797676', '你', '13131313133', '还', '13797976797', '好', '13527789767', '2016-01-09 14:21:43', '2016-01-09 14:40:16');
+INSERT INTO `tb_customer_basic` VALUES ('25', '320322198909041134', '客户', '男', '43-50岁', '汉族', '13062505804', '1069355234', '江苏', '考虑他哦里', '考虑他哦里', '考虑他哦里', '考虑他哦里', '13062505804', '考虑他哦里', '5年以上', '5年以上', '中级管理人员、公司或分公司总经理', '3-5年(含)', '自有未按揭，价值0-100万元(不含)', '商业社区', '合计所得12.1-24万元', '已婚无子女', null, '本科', '优质公用事业单位员工', '5年以上', '3000以下', '有', '测试', '13062505804', '测试2', '13062505804', '测试3', '13062505804', '13062585804', '13062505804', '测试5', '13062505804', '测试5', '13062505804', '2016-01-09 14:30:45', '2016-01-09 14:47:33');
 
 -- ----------------------------
 -- Table structure for `tb_customer_loan`
@@ -537,11 +593,14 @@ CREATE TABLE `tb_customer_loan` (
   `applloanlbrs` varchar(255) DEFAULT NULL COMMENT '联保人数',
   `picPath` varchar(255) DEFAULT NULL COMMENT '图片文件服务器路径',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_customer_loan
 -- ----------------------------
+INSERT INTO `tb_customer_loan` VALUES ('28', '111111', '123456789123456789', '2016-01-09 14:21:43', '20160109142038', '房贷', '1000000000', '一年', '16%', '等额本金', '生意周转', '辽宁', '不一点', '你在说我去洗', null, '/uploadFile/客户_20160109142038');
+INSERT INTO `tb_customer_loan` VALUES ('29', 'salesman3', '320322198909041134', '2016-01-09 14:30:45', '20160109142808', '房贷', '10000', '半年', '16%', '等额本金', '个人消费', '江苏', '考虑他哦里', '考虑他哦里', null, '/uploadFile/客户_20160109142808');
+INSERT INTO `tb_customer_loan` VALUES ('30', 'admin', '123456789123456789', '2016-01-09 14:33:06', '20160107165659', '房贷', '64979764', '一年', '16%', '等额本金', '翼车贷', '浙江', '不知道', '不想说', null, '/uploadFile/张三_20160107165659');
 
 -- ----------------------------
 -- Table structure for `tb_custom_pic`
@@ -558,11 +617,30 @@ CREATE TABLE `tb_custom_pic` (
   `idCard` varchar(20) NOT NULL COMMENT '客户身份证号码',
   `createTime` varchar(32) DEFAULT NULL COMMENT '保存时间(yyyy-MM-dd HH:mm:ss)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_custom_pic
 -- ----------------------------
+INSERT INTO `tb_custom_pic` VALUES ('116', '20160107165711.jpg', '/uploadFile/张三_20160107165659/房贷/央行征信报告/20160107165711.jpg', '1206725', '央行征信报告', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:33:06');
+INSERT INTO `tb_custom_pic` VALUES ('117', '20160107165831.jpg', '/uploadFile/张三_20160107165659/房贷/本人身份证/20160107165831.jpg', '1368646', '本人身份证', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:13');
+INSERT INTO `tb_custom_pic` VALUES ('118', '20160107165711.jpg', '/uploadFile/张三_20160107165659/房贷/央行征信报告/20160107165711.jpg', '1206725', '央行征信报告', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:16');
+INSERT INTO `tb_custom_pic` VALUES ('119', '20160109143307.jpg', '/uploadFile/张三_20160107165659/房贷/户口本/20160109143307.jpg', '1388771', '户口本', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:18');
+INSERT INTO `tb_custom_pic` VALUES ('120', '20160109133006.jpg', '/uploadFile/张三_20160107165659/房贷/亲属身份证/20160109133006.jpg', '1693306', '亲属身份证', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:20');
+INSERT INTO `tb_custom_pic` VALUES ('121', '20160109143313.jpg', '/uploadFile/张三_20160107165659/房贷/结婚证/20160109143313.jpg', '1351308', '结婚证', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:22');
+INSERT INTO `tb_custom_pic` VALUES ('122', '20160109143332.jpg', '/uploadFile/张三_20160107165659/房贷/家访记录/20160109143332.jpg', '1343375', '家访记录', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:28');
+INSERT INTO `tb_custom_pic` VALUES ('123', '20160109143319.jpg', '/uploadFile/张三_20160107165659/房贷/与直系亲属合影照/20160109143319.jpg', '1388452', '与直系亲属合影照', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:29');
+INSERT INTO `tb_custom_pic` VALUES ('124', '20160109143325.jpg', '/uploadFile/张三_20160107165659/房贷/场所照片/20160109143325.jpg', '1161619', '场所照片', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:32');
+INSERT INTO `tb_custom_pic` VALUES ('125', '20160109143338.jpg', '/uploadFile/张三_20160107165659/房贷/房产证明及家访照片/20160109143338.jpg', '1359243', '房产证明及家访照片', '20160107165659', 'admin', '123456789123456789', '2016-01-09 14:40:32');
+INSERT INTO `tb_custom_pic` VALUES ('126', '20160109142844.jpg', '/uploadFile/客户_20160109142808/房贷/亲属身份证/20160109142844.jpg', '4877572', '亲属身份证', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:47:23');
+INSERT INTO `tb_custom_pic` VALUES ('127', '20160109142835.jpg', '/uploadFile/客户_20160109142808/房贷/本人身份证/20160109142835.jpg', '4694448', '本人身份证', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:47:27');
+INSERT INTO `tb_custom_pic` VALUES ('128', '20160109142824.jpg', '/uploadFile/客户_20160109142808/房贷/央行征信报告/20160109142824.jpg', '5598427', '央行征信报告', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:47:33');
+INSERT INTO `tb_custom_pic` VALUES ('129', '20160109142851.jpg', '/uploadFile/客户_20160109142808/房贷/户口本/20160109142851.jpg', '4813324', '户口本', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:47:52');
+INSERT INTO `tb_custom_pic` VALUES ('130', '20160109142906.jpg', '/uploadFile/客户_20160109142808/房贷/与直系亲属合影照/20160109142906.jpg', '4392545', '与直系亲属合影照', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:01');
+INSERT INTO `tb_custom_pic` VALUES ('131', '20160109142859.jpg', '/uploadFile/客户_20160109142808/房贷/结婚证/20160109142859.jpg', '4448971', '结婚证', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:07');
+INSERT INTO `tb_custom_pic` VALUES ('132', '20160109142920.jpg', '/uploadFile/客户_20160109142808/房贷/家访记录/20160109142920.jpg', '3908720', '家访记录', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:24');
+INSERT INTO `tb_custom_pic` VALUES ('133', '20160109142913.jpg', '/uploadFile/客户_20160109142808/房贷/场所照片/20160109142913.jpg', '4367325', '场所照片', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:25');
+INSERT INTO `tb_custom_pic` VALUES ('134', '20160109142927.jpg', '/uploadFile/客户_20160109142808/房贷/房产证明及家访照片/20160109142927.jpg', '4568793', '房产证明及家访照片', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:32');
 
 -- ----------------------------
 -- Table structure for `tb_user_location`
@@ -575,12 +653,32 @@ CREATE TABLE `tb_user_location` (
   `latitude` double(10,4) DEFAULT NULL COMMENT '纬度',
   `locationTime` varchar(32) NOT NULL COMMENT '定位时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_user_location
 -- ----------------------------
 INSERT INTO `tb_user_location` VALUES ('151', 'admin', '118.7207', '32.1313', '2016-01-08 09:29:57');
+INSERT INTO `tb_user_location` VALUES ('152', '111111', '118.7919', '32.0480', '2016-01-09 14:15:50');
+INSERT INTO `tb_user_location` VALUES ('153', '111111', '118.7918', '32.0481', '2016-01-09 14:16:54');
+INSERT INTO `tb_user_location` VALUES ('154', 'admin', '118.7918', '32.0481', '2016-01-09 14:22:52');
+INSERT INTO `tb_user_location` VALUES ('155', 'salesman1', '118.7918', '32.0492', '2016-01-09 14:23:38');
+INSERT INTO `tb_user_location` VALUES ('156', 'salesman3', '118.7920', '32.0481', '2016-01-09 14:24:13');
+INSERT INTO `tb_user_location` VALUES ('157', 'admin', '118.7918', '32.0493', '2016-01-09 14:26:34');
+INSERT INTO `tb_user_location` VALUES ('158', 'admin', '118.7918', '32.0492', '2016-01-09 14:27:28');
+INSERT INTO `tb_user_location` VALUES ('159', 'admin', '118.7919', '32.0481', '2016-01-09 14:31:04');
+INSERT INTO `tb_user_location` VALUES ('160', 'admin', '118.7918', '32.0492', '2016-01-09 14:31:53');
+INSERT INTO `tb_user_location` VALUES ('161', 'salesman3', '118.7918', '32.0480', '2016-01-09 14:32:19');
+INSERT INTO `tb_user_location` VALUES ('162', 'admin', '118.7920', '32.0480', '2016-01-09 14:40:03');
+INSERT INTO `tb_user_location` VALUES ('163', 'salesman2', '118.7919', '32.0483', '2016-01-09 14:46:16');
+INSERT INTO `tb_user_location` VALUES ('164', 'salesman3', '118.7920', '32.0482', '2016-01-09 14:46:50');
+INSERT INTO `tb_user_location` VALUES ('165', 'admin', '118.7207', '32.1314', '2016-01-09 15:41:05');
+INSERT INTO `tb_user_location` VALUES ('166', '111111', '118.7921', '32.0481', '2016-01-09 15:50:31');
+INSERT INTO `tb_user_location` VALUES ('167', 'admin', '118.7921', '32.0482', '2016-01-09 15:51:35');
+INSERT INTO `tb_user_location` VALUES ('168', 'admin', '118.7874', '32.0388', '2016-01-09 16:03:10');
+INSERT INTO `tb_user_location` VALUES ('169', 'admin', '118.7628', '31.9951', '2016-01-09 19:39:55');
+INSERT INTO `tb_user_location` VALUES ('170', 'admin', '118.7628', '31.9951', '2016-01-09 19:41:26');
+INSERT INTO `tb_user_location` VALUES ('171', 'admin', '118.7628', '31.9951', '2016-01-09 19:42:06');
 
 -- ----------------------------
 -- Table structure for `tb_user_relation`
@@ -599,3 +697,5 @@ INSERT INTO `tb_user_relation` VALUES ('6', '7');
 INSERT INTO `tb_user_relation` VALUES ('6', '8');
 INSERT INTO `tb_user_relation` VALUES ('6', '9');
 INSERT INTO `tb_user_relation` VALUES ('6', '10');
+INSERT INTO `tb_user_relation` VALUES ('6', '14');
+INSERT INTO `tb_user_relation` VALUES ('6', '15');

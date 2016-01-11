@@ -12,78 +12,49 @@ $(function(){
 
 	var $container = $('#fullscreenSlideshowContainer');
 
-	$container.bind("init", function() { 
-	
+	$container.bind("init", function() {
+
 		$container
 		.append('<div class="ui" id="fs-close">&times;</div>')
 		.append('<div class="ui" id="fs-loader">Loading...</div>')
 		.append('<div class="ui" id="fs-prev">&lt;</div>')
 		.append('<div class="ui" id="fs-next">&gt;</div>')
 		.append('<div class="ui" id="fs-caption"><span></span></div>');
-	
+
 		$('#fs-prev').click(function(){
 			$container.trigger("prevSlide");
 		});
-		
+
 		$('#fs-next').click(function(){
 			$container.trigger("nextSlide");
 		});
-		
+
 		$('#fs-close').click(function(){
 			$container.trigger("close");
 		});
-	
+
 	})
-	
-	.bind("startLoading", function() { 
+
+	.bind("startLoading", function() {
 		$('#fs-loader').show();
 	})
-	
-	.bind("stopLoading", function() { 
+
+	.bind("stopLoading", function() {
 		$('#fs-loader').hide();
 	})
-	
-	.bind("startOfSlide", function(event, slide) { 
+
+	.bind("startOfSlide", function(event, slide) {
 
 		$('#fs-caption span').text(slide.title);
 		$('#fs-caption').show();
 	})
-	
-	.bind("endOfSlide", function(event, slide) { 
+
+	.bind("endOfSlide", function(event, slide) {
 		$('#fs-caption').hide();
 	});
-	
+
 });
 </script>
-
-
-<!-- <style type="text/css">
-.container{
-	width:100%;
-	background-color: #123659;
-	margin:0px;
-	padding:0 auto;
-}
-.part{
-	width:162px;
-	height:185px;
-	background-color: #265380;
-	float:left;
-	text-align:center;
-	margin-bottom:25px;
-	margin-left:15px;
-}
-.part a{
-	display: inline-block;
-	padding-top:8px;
-	width:100%;
-}
-.part span{
-	display: inline-block;
-	width:100%;
-	text-align:center;
-}
-</style> -->
 
 <script type="text/javascript">
 function exportAll(applyloanKey){
@@ -123,5 +94,5 @@ function exportAll(applyloanKey){
 			</c:if>
 		</c:forEach>
 	</c:forEach>
-		
+
 </div>

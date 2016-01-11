@@ -59,6 +59,9 @@ $(function() {
 	$("#permissions").click("click", function() {
 		permissions();
 	});
+	$("#initPwd").click("click", function() {
+		initPwd();
+	});
 });
 function editAccount() {
 	var cbox = grid.getSelectedCheckbox();
@@ -112,5 +115,23 @@ function permissions() {
 		type : 2,
 		area : [ "416px", "50%" ],
 		content : url
+	});
+}
+function initPwd() {
+	var cbox = grid.getSelectedCheckbox();
+	if (cbox == "") {
+		layer.msg("请选择需要初始化密码的员工！！");
+		return;
+	}
+	layer.confirm('是否密码初始化？', function(index) {
+		var url = rootPath + '/user/initPwd.shtml';
+		var s = CommnUtil.ajax(url, {
+			ids : cbox.join(",")
+		}, "json");
+		if (s == "success") {
+			layer.msg('密码初始化成功，初始化密码为：123456789');
+		} else {
+			layer.msg('密码初始化失败');
+		}
 	});
 }

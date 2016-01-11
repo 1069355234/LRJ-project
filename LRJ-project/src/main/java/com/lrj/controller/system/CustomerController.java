@@ -183,6 +183,9 @@ public class CustomerController extends BaseController {
 				CustomerBasicFormMap.class);
 		model.addAttribute("customerBasic", customerBasicFormMap);
 		model.addAttribute("customerLoan", customerLoanFormMap);
+
+		picList(model,applyloanKey);
+
 		return Common.BACKGROUND_PATH + "/system/customer/detail";
 	}
 
@@ -197,8 +200,7 @@ public class CustomerController extends BaseController {
 	 * @param customer_id
 	 * @return
 	 */
-	@RequestMapping("piclist")
-	public String picList(Model model, String applyloanKey) {
+	public void picList(Model model, String applyloanKey) {
 		CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
 		customerPicFormMap.put("applyloanKey", applyloanKey);
 
@@ -220,7 +222,6 @@ public class CustomerController extends BaseController {
 
 		model.addAttribute("customerPics", customerPics);
 		model.addAttribute("applyloanKey", applyloanKey);
-		return Common.BACKGROUND_PATH + "/system/customer/piclist";
 	}
 
 	/**

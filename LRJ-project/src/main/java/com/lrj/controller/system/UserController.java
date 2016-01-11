@@ -254,4 +254,20 @@ public class UserController extends BaseController {
 		return "success";
 	}
 
+	@ResponseBody
+	@RequestMapping("initPwd")
+	@Transactional(readOnly=false)
+	@SystemLog(module="系统管理",methods="用户管理-密码初始化")
+	public String initPwd() throws Exception {
+		String[] ids = getParaValues("ids");
+		for (String id : ids) {
+			UserFormMap userFormMap = userMapper.findbyFrist("id", id, UserFormMap.class);
+			userFormMap.put("password", "123456789");
+			PasswordHelper passwordHelper = new PasswordHelper();
+			passwordHelper.encryptPassword(userFormMap);
+			userMapper.editEntity(userFormMap);
+		}
+		return "success";
+	}
+
 }
