@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <link href="${pageContext.request.contextPath}/js/FullPhoto/css/pagestyle.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/js/FullPhoto/css/fullscreenstyle.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/FullPhoto/js/jquery.fullscreenslides.js"></script>
@@ -54,6 +55,12 @@ $(function(){
 	});
 
 });
+
+function uploadPic(){
+
+}
+
+
 </script>
 
 <style type="text/css">
@@ -125,10 +132,16 @@ $(function(){
 	<tr>
 		<td class="small-title">所属业务员</td>
 		<td>${customerLoan.salesman }</td>
-		<td class="small-title">联保人数</td>
-		<td>${customerLoan.applloanlbrs }</td>
-		<td class="small-title">描述信息</td>
-		<td>${customerLoan.applyloanMsxx }</td>
+		<c:if test="${null == customerLoan.applloanlbrs }">
+			<td class="small-title">描述信息</td>
+			<td colspan="3">${customerLoan.applyloanMsxx }</td>
+		</c:if>
+		<c:if test="${null != customerLoan.applloanlbrs }">
+			<td class="small-title">联保人数</td>
+			<td>${customerLoan.applloanlbrs }</td>
+			<td class="small-title">描述信息</td>
+			<td>${customerLoan.applyloanMsxx }</td>
+		</c:if>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">个人信息</td>
@@ -241,7 +254,16 @@ $(function(){
 					<a rel="gallery${i.index }" title="${pic.filename }" href="${pageContext.request.contextPath}${pic.filepath}"><img
 						src="${pageContext.request.contextPath}${pic.filepath}" width="148px;" height="140px;"></a>
 					<div class="caption">
-						${item.key }
+						<span title="${item.key}">
+							<c:choose>
+							   <c:when test="${fn:length(item.key) > 10}">
+							   		<c:out value="${fn:substring(item.key, 0, 10)}..." />
+							   </c:when>
+							   <c:otherwise>
+							        <c:out value="${item.key}" />
+							    </c:otherwise>
+							</c:choose>
+						</span>
 					</div>
 				</div>
 			</c:if>
@@ -250,11 +272,44 @@ $(function(){
 					<a rel="gallery${i.index }" title="${pic.filename }" href="${pageContext.request.contextPath}${pic.filepath}"><img
 						src="${pageContext.request.contextPath}${pic.filepath}" width="148px;" height="140px;"></a>
 					<div class="caption">
-						${item.key }
+						<span title="${item.key}">
+							<c:choose>
+							   <c:when test="${fn:length(item.key) > 10}">
+							   		<c:out value="${fn:substring(item.key, 0, 10)}..." />
+							   </c:when>
+							   <c:otherwise>
+							        <c:out value="${item.key}" />
+							    </c:otherwise>
+							</c:choose>
+						</span>
 					</div>
 				</div>
 			</c:if>
 		</c:forEach>
 	</c:forEach>
-
 </div>
+<p class="big-title" style="clear: both;">补充图片</p>
+
+<table style="width:200px;">
+	<tr>
+		<td style="width:50px;">选择分类：</td>
+		<td><select>
+			<option>身份证</option>
+			<option>房产证</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td>选择文件：</td>
+		<td><input type="file" name=""/></td>
+		<td><img src="${pageContext.request.contextPath}/images/add.png" width="20px" height="20px"></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="file" name=""/></td>
+		<td><img src="${pageContext.request.contextPath}/images/delete.png" width="20px" height="20px"></td>
+	</tr>
+</table>
+
+
+
+

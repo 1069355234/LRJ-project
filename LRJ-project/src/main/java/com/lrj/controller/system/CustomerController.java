@@ -22,6 +22,7 @@ import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
 import com.lrj.entity.CustomerBasicFormMap;
 import com.lrj.entity.CustomerLoanFormMap;
@@ -341,24 +343,17 @@ public class CustomerController extends BaseController {
 	 * @param txtGroupsSelect
 	 * @return
 	 */
-	// @ResponseBody
-	// @RequestMapping(value="addCusInfo", method = RequestMethod.POST)
-	// @SystemLog(module="客户管理",methods="客户管理-新增客户")//凡需要处理业务逻辑的.都需要记录操作日志
-	// @Transactional(readOnly=false)//需要事务操作必须加入此注解
+	 @ResponseBody
+	 @RequestMapping(value="addCusInfo", method = RequestMethod.POST)
+	 @SystemLog(module="客户管理",methods="客户管理-新增客户")//凡需要处理业务逻辑的.都需要记录操作日志
+	 @Transactional(readOnly=false)//需要事务操作必须加入此注解
 	public boolean addCusInfo(HttpServletRequest request, String cusInfo) {
 
 		String time = Common.fromDateH();
-		JSONObject jsonInfo = null;
 
-		// if(null == cusInfo){
-		// String param =
-		// "{\"basic\":{\"idCard\":\"320322154802041156\",\"name\":\"张顶飞\",\"sex\":\"男\",\"age\":\"32\",\"national\":\"汉\",\"phoneNumber\":\"13062505804\",\"qqPhone\":\"105523225\",\"censusSeat\":\"江苏南京\",\"parentSeat\":\"江苏徐州\",\"nowliveAddress\":\"江苏南京建邺区\",\"unitName\":\"南京凌睿吉\",\"unitAddress\":\"南京晓庄\",\"unitPhone\":\"025-110110110\",\"descriPtion\":\"描述信息\"},\"contact\":{\"relativesName\":\"王斌\",\"relativesPhoneNumber\":\"111111111\",\"socialFriendsName\":\"李治国\",\"socialFriendsPhoneNumber\":\"222222222\",\"classmatesName\":\"陈忠\",\"classmatesPhoneNubmer\":\"3333333\",\"colleaguesName\":\"王婷婷\",\"colleaguesPhoneNumber\":\"645135165\",\"simpleFriend\":\"赵柳\",\"simpleFriendPhoneNumber\":\"2131\",\"borrowFriendsName\":\"王琪\",\"borrowFriendsPhoneNumber\":\"9865465\"},\"credit\":{\"workYear\":\"3-5年\",\"commericial\":\"有\",\"nickName\":\"工程师\",\"socialYear\":\"10年\",\"houserProperty\":\"100万\",\"longLive\":\"江苏南京\",\"annualIncome\":\"20万\",\"maritalStatus\":\"已婚\",\"cusAge\":\"32岁\",\"educationDegree\":\"本科\",\"professional\":\"工程师\",\"loanRecords\":\"无贷款记录\",\"creditCards\":\"8000\",\"creditReport\":\"诚信良好\"},\"loan\":{\"salesman\":\"lisi\",\"idCard\":\"320322154802041156\",\"applyloanKey\":\"20151216224823\",\"applyloanBlx\":\"翼农贷\",\"applyloanJkje\":\"100000\",\"applyloanJkqx\":\"40天\",\"applyloanZgnll\":\"10.0%\",\"applyloanHkfs\":\"还本付息\",\"applyloanJklx\":\"个人消费\",\"applyloanJkQy\":\"江苏南京\",\"applyloanJkmd\":\"房贷\",\"applyloanMsxx\":\"描述信息\"}}";
-		// jsonInfo = JSONObject.parseObject(param);
-		// }else{
-		System.out.println("cusInfo参数值：" + cusInfo);
+		logger.info("APP端传入的cusInfo参数值为：" + cusInfo);
 
-		jsonInfo = JSONObject.parseObject(cusInfo);
-		// }
+		JSONObject jsonInfo = JSONObject.parseObject(cusInfo);
 
 		JSONObject basicO = jsonInfo.getJSONObject("basic");
 		JSONObject basicN = new JSONObject();
@@ -457,13 +452,12 @@ public class CustomerController extends BaseController {
 
 		if (null == customerLoanFormMap) {
 			String picPath = "/uploadFile/" + name + "_" + applyloanKey;
-			// String picHolePath =
-			// request.getServletContext().getRealPath(picPath);
-			// File picFile = new File(picHolePath);
-			//
-			// if(!picFile.exists()){
-			// picFile.mkdirs();
-			// }
+			String picHolePath = request.getServletContext().getRealPath(picPath);
+			File picFile = new File(picHolePath);
+
+			if(!picFile.exists()){
+				picFile.mkdirs();
+			}
 
 			loanN.put("picPath", picPath);
 			loanN.put("createTime", time);
@@ -483,21 +477,17 @@ public class CustomerController extends BaseController {
 		return true;
 	}
 
-	// @ResponseBody
-	// @RequestMapping(value="addCusPic", method = RequestMethod.POST)
-	// @SystemLog(module="客户管理",methods="客户管理-上传图片")//凡需要处理业务逻辑的.都需要记录操作日志
-	// @Transactional(readOnly=false)//需要事务操作必须加入此注解
-	public boolean addCusPic(HttpServletRequest request, File picFile,
-			String picInfo) {
-		CustomerPicFormMap customerPicFormMap = JSONObject.parseObject(picInfo,
-				CustomerPicFormMap.class);
+//	 @ResponseBody
+//	 @RequestMapping(value="addCusPic", method = RequestMethod.POST)
+//	 @SystemLog(module="客户管理",methods="客户管理-上传图片")//凡需要处理业务逻辑的.都需要记录操作日志
+//	 @Transactional(readOnly=false)//需要事务操作必须加入此注解
+	public boolean addCusPic(HttpServletRequest request, File picFile,String picInfo) {
+		CustomerPicFormMap customerPicFormMap = JSONObject.parseObject(picInfo,CustomerPicFormMap.class);
 		String applyloanKey = customerPicFormMap.get("applyloanKey").toString();
 
-		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist(
-				"applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
 		String picPath = customerLoanFormMap.get("picPath").toString();
-		String applyloanBlx = customerLoanFormMap.get("applyloanBlx")
-				.toString();
+		String applyloanBlx = customerLoanFormMap.get("applyloanBlx").toString();
 		String filetype = customerPicFormMap.get("filetype").toString();
 
 		String picRealPath = request.getServletContext().getRealPath(
@@ -525,17 +515,12 @@ public class CustomerController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping(value = "saveCusInfo", method = RequestMethod.POST)
-	public boolean saveCusInfo(HttpServletRequest request, String cusInfo,
-			String picInfo) {
+	public boolean saveCusInfo(HttpServletRequest request,String picInfo) {
 		// {"credittype":"2","filePath":"/storage/emulated/0/Android/data/com.lrj.ptp/files/admin/123456/2/5/20160104165042.jpg","fileleng":4707105,"filename":"20160104165042.jpg","filetype":"5","id":22,"idCard":"123456","isupover":"0","username":"admin"}
-		logger.info("接收到的参数[cusInfo]为："+cusInfo);
-		logger.info("接收到的参数[picInfo]为："+picInfo);
+		logger.info("APP端传入的picInfo为："+picInfo);
 		try {
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			MultipartFile picFile = multipartRequest.getFile("picFile");
-			if (null != cusInfo) {
-				addCusInfo(request, cusInfo);
-			}
 
 			CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
 			for (Map.Entry<String, Object> entry : JSONObject.parseObject(picInfo)
@@ -547,13 +532,15 @@ public class CustomerController extends BaseController {
 			}
 
 			String applyloanKey = customerPicFormMap.get("applyloanKey").toString();
-			// String applyloanKey = "20151216224823";
-			String name = customerPicFormMap.get("name").toString();// 客户姓名
-	//		String name = "测试";
-			String fileName = customerPicFormMap.get("filename").toString();
-			String applyloanBlx = getLoanType(Integer.parseInt(customerPicFormMap.get("credittype").toString()));// 标类型
+			CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+			String picPath = customerLoanFormMap.get("picPath").toString();
+			String applyloanBlx = customerLoanFormMap.get("applyloanBlx").toString();
 
-			String picPath = "/uploadFile/" + name + "_" + applyloanKey;
+
+			String fileName = customerPicFormMap.get("filename").toString();
+//			String applyloanBlx = getLoanType(Integer.parseInt(customerPicFormMap.get("credittype").toString()));// 标类型
+
+//			String picPath = "/uploadFile/" + name + "_" + applyloanKey;
 
 			String filetype = getPicType(Integer.parseInt(customerPicFormMap.get("credittype").toString()),Integer.parseInt(customerPicFormMap.get("filetype").toString()));
 
