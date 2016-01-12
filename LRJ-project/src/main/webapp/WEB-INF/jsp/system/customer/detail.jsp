@@ -5,8 +5,12 @@
 <link href="${pageContext.request.contextPath}/js/FullPhoto/css/pagestyle.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/js/FullPhoto/css/fullscreenstyle.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/FullPhoto/js/jquery.fullscreenslides.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery/ajaxfileupload.js"></script>
 
 <script type="text/javascript">
+var options = "<option value='' selected='selected'>请选择</option>";
+var inputIndex = 1;
+
 $(function(){
 
 	$('.image img').fullscreenslides();
@@ -54,15 +58,68 @@ $(function(){
 		$('#fs-caption').hide();
 	});
 
+	setOptions();
+
 });
 
+function setOptions(){
+	var fileTypes = JSON.parse($("#fileTypes").val());
+
+	for(var i=0;i<fileTypes.length;i++){
+		options += "<option>"+fileTypes[i]+"</option>";
+	}
+}
+
 function uploadPic(){
+	var flag = false;
+	$("#form").find("select").each(function(){
+		var val = $(this).val();
+		if("" == val){
+			flag = true;
+		}
+	});
+	if(flag){
+		layer.alert("请选择图片类型！！");
+		return;
+	}
+	var applyloanKey = $("#applyloanKey").text();
+	$("#form").find("table").each(function(){
+		var fileType = $(this).find("select").val();
+		$(this).find("input").each(function(){
+			var inputId = $(this).attr("id");
+			var inputName = $(this).attr("name");
+			fileUpload(inputId,inputName,fileType,applyloanKey);
+		});
+	});
 
 }
 
-function addItem(){
-	var tr = $("<tr><td></td><td><input type='file' name=''/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/delete.png' width='20px' height='20px' onclick='delItem($(this))'></td></tr>");
-	$("#uploadPic").append(tr);
+function fileUpload(id,inputName,fileType,applyloanKey){
+	var url = "${pageContext.request.contextPath}/customer/uploadPic.shtml";
+	 $.ajaxFileUpload({
+        url:url,
+        secureuri:false, // 是否启用安全提交，默认为false。
+        fileElementId:id, // 需要上传的文件域的ID，即<input type="file">的ID
+        dataType: 'json',
+        type : 'post',
+        data : {'inputName':inputName,'applyloanKey':applyloanKey,'fileType':fileType},
+        success: function (data) {
+			if("success" == data){
+				$("#"+id).parent().parent().find("img").attr("src","${pageContext.request.contextPath}/images/success.jpg");
+				$("#"+id).parent().parent().find("img").removeAttr("onclick");
+			}
+        },error: function(){
+        	$("#"+id).parent().parent().find("img").attr("src","${pageContext.request.contextPath}/images/error.jpg");
+        	$("#"+id).parent().parent().find("img").removeAttr("onclick");
+        }
+ });
+}
+
+function addItem(item){
+	var tr = $("<tr><td></td><td><input type='file' id='pic_"+inputIndex+"' name='pic'/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/delete.png' width='20px' height='20px' onclick='delItem($(this))'></td></tr>");
+	item.parent().parent().parent().parent().append(tr);
+
+	inputIndex ++;
 }
 
 function delItem(item){
@@ -70,15 +127,22 @@ function delItem(item){
 }
 
 function delTab(item){
-	item.parent().parent().parent().remove();
+	item.parent().parent().parent().parent().remove();
 }
 
 function addTable(){
-	var table = $("<table class='uploadPic' id='uploadPic'></table>");
-	var tr1 = $("<tr><td>选择分类：</td><td><select></select></td></tr>");
-	var tr2 = $("<tr><td>选择文件：</td><td><input type='file' name=''/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/add.png' width='20px' height='20px' onclick='addItem()'></td></tr>");
+	var table = $("<table class='uploadPic'></table>");
+	var tr1 = $("<tr><td>选择分类：</td><td><select>"+options+"</select></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/delTab.jpg' width='22px' height='22px' onclick='delTab($(this))'></td></tr>");
+	var tr2 = $("<tr><td>选择文件：</td><td><input type='file' id='pic_"+inputIndex+"' name='pic'/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/add.png' width='20px' height='20px' onclick='addItem($(this))'></td></tr>");
 	table.append(tr1).append(tr2);
 	$("#addPic").append(table);
+
+	inputIndex ++;
+}
+
+function exportPic(){
+	var applyloanKey = $("#applyloanKey").text();
+	window.location.href = "${pageContext.request.contextPath}/customer/exportAll.shtml?applyloanKey="+applyloanKey;
 }
 
 </script>
@@ -130,13 +194,13 @@ function addTable(){
 		float:right;
 		margin-top:-32px;
 	}
-	
+
 	.addPic a{
 		font-size:14px;
 		color:#fff;
 		text-decoration: underline;
 	}
-	
+
 	.addPic a:hover{
 		color:red;
 		text-decoration: underline;
@@ -149,13 +213,15 @@ function addTable(){
 	<a class="btn btn-primary marR10" type="button" onclick="exportBaseInfo(${customer.id })">导出客户基本信息</a>
 </div> --%>
 
+<input type="hidden" id="fileTypes" value='${fileTypes }'/>
+
 <table class="info">
 	<tr class="big-title">
 		<td colspan="7">借款标信息</td>
 	</tr>
 	<tr>
 		<td class="small-title">标流水号</td>
-		<td>${customerLoan.applyloanKey }</td>
+		<td id="applyloanKey">${customerLoan.applyloanKey }</td>
 		<td class="small-title">标类型</td>
 		<td>${customerLoan.applyloanBlx }</td>
 		<td class="small-title">借款金额</td>
@@ -290,6 +356,7 @@ function addTable(){
 	</tr>
 </table>
 <p class="big-title">图片资料</p>
+<span class="addPic"><a class="pointer" href="javascript:void(0)" onclick="exportPic()">导出图片</a></span>
 <div>
 	<c:if test="${customerPics.size() == 0 }">
 		<span style="color:#FFD700;display: inline-block;text-align: center;width: 100%">暂无图片资料信息</span>
@@ -337,25 +404,29 @@ function addTable(){
 	</c:forEach>
 </div>
 <p class="big-title" style="clear: both;">补充图片</p>
-<span class="addPic"><a class="pointer" href="javascript:void(0)" onclick="addTable()">继续添加</a>&nbsp;&nbsp;<a class="pointer" href="javascript:void(0)">保存图片</a></span>
+<span class="addPic"><a class="pointer" href="javascript:void(0)" onclick="addTable()">继续添加</a>&nbsp;&nbsp;<a class="pointer" href="javascript:void(0)" onclick="uploadPic()">保存图片</a></span>
 
-<div id="addPic">
-	<table class="uploadPic" id="uploadPic">
-		<tr>
-			<td>选择分类：</td>
-			<td><select>
-				<option>身份证</option>
-				<option>房产证</option>
-			</select></td>
-			<td class="pointer"><img src="${pageContext.request.contextPath}/images/delTab.jpg" width="22px" height="22px" onclick="delTab($(this))"></td>
-		</tr>
-		<tr>
-			<td>选择文件：</td>
-			<td><input type="file" name=""/></td>
-			<td class="pointer"><img src="${pageContext.request.contextPath}/images/add.png" width="20px" height="20px" onclick="addItem()"></td>
-		</tr>
-	</table>
-</div>
+<form id="form" action="${pageContext.request.contextPath}/customer/uploadPic.shtml" enctype="multipart/form-data">
+	<div id="addPic">
+		<table class="uploadPic">
+			<tr>
+				<td>选择分类：</td>
+				<td><select name="fileType0">
+					<option value="" selected="selected">请选择</option>
+					<c:forEach items="${fileTypes }" var="item">
+						<option>${item }</option>
+					</c:forEach>
+				</select></td>
+				<td class="pointer"><img src="${pageContext.request.contextPath}/images/delTab.jpg" width="22px" height="22px" onclick="delTab($(this))"></td>
+			</tr>
+			<tr>
+				<td>选择文件：</td>
+				<td><input type="file" id="pic_0" name="pic"/></td>
+				<td class="pointer"><img src="${pageContext.request.contextPath}/images/add.png" width="20px" height="20px" onclick="addItem($(this))"></td>
+			</tr>
+		</table>
+	</div>
+</form>
 
 
 

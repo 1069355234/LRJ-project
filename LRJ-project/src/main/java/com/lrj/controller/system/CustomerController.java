@@ -222,8 +222,69 @@ public class CustomerController extends BaseController {
 			}
 		}
 
+		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+		String applyloanBlx = customerLoanFormMap.get("applyloanBlx").toString();
+
 		model.addAttribute("customerPics", customerPics);
+		model.addAttribute("fileTypes", getPicTypeByLoanType(applyloanBlx));
 		model.addAttribute("applyloanKey", applyloanKey);
+	}
+
+	@ResponseBody
+	@RequestMapping("/uploadPic")
+	public String uploadPic(HttpServletRequest request,String inputName,String fileType,String applyloanKey){
+		try {
+			CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist("applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+			String picPath = customerLoanFormMap.get("picPath").toString();
+			String applyloanBlx = customerLoanFormMap.get("applyloanBlx").toString();
+			String filePath = request.getServletContext().getRealPath(picPath+"/"+applyloanBlx+"/"+fileType);
+			String salesman = customerLoanFormMap.get("salesman").toString();
+			String idCard = customerLoanFormMap.get("idCard").toString();
+			String time = Common.fromDateH();
+
+			File file = new File(filePath);
+			if(!file.exists()){
+				file.mkdirs();
+			}
+
+			File[] childFiles = file.listFiles();
+
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			MultipartFile multipartFile = multipartRequest.getFile(inputName);
+
+			//如果有相同名字的文件，则跳过，不上传
+			for(File f : childFiles){
+				if(f.getName().equals(multipartFile.getOriginalFilename())){
+					return "success";
+				}
+			}
+
+			InputStream is = multipartFile.getInputStream();
+			Long fileSize = multipartFile.getSize();
+			byte[] b = new byte[fileSize.intValue()];
+			int length = is.read(b);
+			FileOutputStream outputStream = new FileOutputStream(filePath+"/"+multipartFile.getOriginalFilename());
+			outputStream.write(b, 0, length);
+			outputStream.close();
+			is.close();
+
+			CustomerPicFormMap customerPicFormMap = new CustomerPicFormMap();
+			customerPicFormMap.put("filename", multipartFile.getOriginalFilename());
+			customerPicFormMap.put("filepath", picPath+"/"+applyloanBlx+"/"+fileType+"/"+multipartFile.getOriginalFilename());
+			customerPicFormMap.put("fileleng", fileSize.intValue());
+			customerPicFormMap.put("filetype", fileType);
+			customerPicFormMap.put("applyloanKey", applyloanKey);
+			customerPicFormMap.put("username", salesman);
+			customerPicFormMap.put("idCard", idCard);
+			customerPicFormMap.put("createTime", time);
+
+			customerMapper.addEntity(customerPicFormMap);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return "success";
 	}
 
 	/**
@@ -245,10 +306,10 @@ public class CustomerController extends BaseController {
 				"applyloanKey", applyloanKey, CustomerLoanFormMap.class);
 
 		String picPath = customerLoanFormMap.get("picPath").toString();
-		String idCard = customerLoanFormMap.get("idCard").toString();
-		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist(
-				"idCard", idCard, CustomerBasicFormMap.class);
-		String custName = customerBasicFormMap.get("name").toString();
+//		String idCard = customerLoanFormMap.get("idCard").toString();
+//		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist(
+//				"idCard", idCard, CustomerBasicFormMap.class);
+//		String custName = customerBasicFormMap.get("name").toString();
 
 		String filePath = request.getServletContext().getRealPath(picPath);
 
@@ -640,8 +701,64 @@ public class CustomerController extends BaseController {
 		}
 		String regEx="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
 		Pattern   p   =   Pattern.compile(regEx);
+		if(picType.indexOf("[") > -1 && picType.indexOf("]") > picType.indexOf("[")){
+			picType = picType.substring(picType.indexOf("]"),picType.length());
+		}
 		Matcher   m   =   p.matcher(picType);
 		return m.replaceAll("").trim();
+	}
+
+	private List<String> getPicTypeByLoanType(String loanType){
+		List<String> picTypes = new ArrayList<>();
+		String type = "";
+		switch(loanType){
+		case "车贷":
+			type = "automobile_credit";
+			break;
+		case "房贷":
+			type = "mortgage";
+			break;
+		case "三户联保贷":
+		case "翼农贷":
+			type = "wing_agricultural_loan";
+			break;
+		case "翼企贷":
+			type = "wing_enterprise_credit";
+			break;
+		case "翼商贷":
+			type = "wing_business_credit";
+			break;
+		}
+		String regEx="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+		Pattern   p   =   Pattern.compile(regEx);
+		try {
+			SAXReader saxReader = new SAXReader();
+			Document doc = saxReader.read(new File(PropertiesUtils.class.getResource("/arrays.xml").getPath()));
+			Element root = doc.getRootElement();
+			List childList = root.elements();
+			for(int i=0;i<childList.size();i++){
+				Element child = (Element) childList.get(i);
+				if(child.attributeValue("name").equals(type)){
+					List childChildList = child.elements();
+					for(int j=0;j<childChildList.size();j++){
+						Element childChild = (Element) childChildList.get(j);
+						String picType = childChild.getText();
+						if(picType.indexOf("[") > -1 && picType.indexOf("]") > picType.indexOf("[")){
+							picType = picType.substring(picType.indexOf("]"),picType.length());
+						}
+						Matcher m = p.matcher(picType);
+						picTypes.add(m.replaceAll("").trim());
+					}
+
+				}
+			}
+
+		} catch (DocumentException e) {
+			e.printStackTrace();
+			logger.error("解析xml出错");
+		}
+		return picTypes;
+
 	}
 
 	public static void main(String[] args) {

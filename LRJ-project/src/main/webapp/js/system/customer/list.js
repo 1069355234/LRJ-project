@@ -38,7 +38,7 @@ $(function() {
 			colkey : "applyloanKey",
 			name : "操作",
 			renderData : function(rowindex,data, rowdata, column) {
-				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='piclist(\""+data+"\")' style='color:blue'>资料照片</a>";
+				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='' style='color:blue'>审核</a>";
 			}
 		}],
 		jsonUrl : rootPath + '/customer/findByPage.shtml?flag=byAssign',
@@ -72,6 +72,7 @@ function detail(data){
 	tb.load(rootPath+"/customer/detail.shtml",{"applyloanKey":data});
 }
 
+//此方法无用了
 function piclist(data){
 	var li = $("<li>><a href='javascript:void(0)'>资料照片</a></li>");
 	$("#topli").append(li);
