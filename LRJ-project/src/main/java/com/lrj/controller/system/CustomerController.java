@@ -76,15 +76,44 @@ public class CustomerController extends BaseController {
 
 	//所有本级和下级员工的客户信息
 	@RequestMapping("list")
-	public String listUI(Model model) throws Exception {
+	public String listUI(HttpServletRequest request,Model model) throws Exception {
 		model.addAttribute("res", findByRes());
+
+		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
+		userFormMap.put("userId", Integer.parseInt(userFormMap.get("id").toString()));
+		//获取分配的下级员工
+		List<UserFormMap> allLowerUser = userMapper.selectChoosedLowerUser(userFormMap);
+		allLowerUser.add(userFormMap);//算上自己
+		model.addAttribute("lowerUser", allLowerUser);
 		return Common.BACKGROUND_PATH + "/system/customer/list";
 	}
 
 	//所有本级和下级角色的客户信息
 	@RequestMapping("listAll")
-	public String listUIAll(Model model) throws Exception {
+	public String listUIAll(HttpServletRequest request,Model model) throws Exception {
 		model.addAttribute("res", findByRes());
+
+		UserFormMap userFormMap = (UserFormMap) Common.findUserSession(request);
+		List<Integer> roleIds = new ArrayList<>();
+		UserRoleFormMap userRoleFormMap = new UserRoleFormMap();
+		userRoleFormMap.put("userId",Integer.parseInt(userFormMap.get("id").toString()));
+
+		List<UserRoleFormMap> userRoleFormMaps = userMapper.findByNames(userRoleFormMap);
+		for (UserRoleFormMap u : userRoleFormMaps) {
+			getAllLowerRoles(Integer.parseInt(u.get("roleId").toString()),roleIds);
+		}
+		String strRoleIds = "";
+		for (Integer roleId : roleIds) {
+			strRoleIds += roleId + ",";
+		}
+		strRoleIds = Common.trimComma(strRoleIds);
+
+		UserFormMap ufm = getFormMap(UserFormMap.class);
+		ufm.put("roleIds", strRoleIds);
+		List<UserFormMap> allLowerUser = userMapper.selectAllLowerUser(ufm);
+		allLowerUser.add(userFormMap);//算上自己
+
+		model.addAttribute("lowerUser", allLowerUser);
 		return Common.BACKGROUND_PATH + "/system/customer/listAll";
 	}
 
@@ -141,7 +170,7 @@ public class CustomerController extends BaseController {
 			allLowerUser = userMapper.selectAllLowerUser(ufm);
 		}else{
 			userFormMap.put("userId", Integer.parseInt(userFormMap.get("id").toString()));
-			//或分配的下级员工
+			//获取分配的下级员工
 			allLowerUser = userMapper.selectChoosedLowerUser(userFormMap);
 		}
 
@@ -463,7 +492,7 @@ public class CustomerController extends BaseController {
 
 		String time = Common.fromDateH();
 
-		logger.info("APP端传入的cusInfo参数值为：" + cusInfo);
+		logger.info("***************APP端传入的cusInfo参数值为：" + cusInfo+"*******************");
 
 		JSONObject jsonInfo = JSONObject.parseObject(cusInfo);
 
@@ -629,7 +658,7 @@ public class CustomerController extends BaseController {
 	@RequestMapping(value = "saveCusInfo", method = RequestMethod.POST)
 	public boolean saveCusInfo(HttpServletRequest request,String picInfo) {
 		// {"credittype":"2","filePath":"/storage/emulated/0/Android/data/com.lrj.ptp/files/admin/123456/2/5/20160104165042.jpg","fileleng":4707105,"filename":"20160104165042.jpg","filetype":"5","id":22,"idCard":"123456","isupover":"0","username":"admin"}
-		logger.info("APP端传入的picInfo为："+picInfo);
+		logger.info("*************APP端传入的picInfo为："+picInfo+"***************");
 		try {
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			MultipartFile picFile = multipartRequest.getFile("picFile");
@@ -661,6 +690,14 @@ public class CustomerController extends BaseController {
 			File saveFile = new File(picRealPath);
 			if (!saveFile.exists()) {
 				saveFile.mkdirs();
+			}
+
+			//如果有相同名字的文件，则跳过，不上传
+			for(File f : saveFile.listFiles()){
+				if(f.getName().equals(picFile.getOriginalFilename())){
+					logger.info("************存在同名文件["+f.getName()+"]，跳过不上传************");
+					return true;
+				}
 			}
 
 			InputStream fileInputStream = picFile.getInputStream();

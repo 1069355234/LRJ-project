@@ -13,9 +13,13 @@
 					name="customerLoanFormMap.name">
 
 				<label class="control-label"> <span
-					class="h6 font-thin v-middle">所属业务员:</span></label> <input
-					class="input-medium ui-autocomplete-input" placeholder="请输入业务员帐号" id=""
-					name="customerLoanFormMap.salesman">
+					class="h6 font-thin v-middle">所属业务员:</span></label>
+					<select name="customerLoanFormMap.salesman">
+						<option value="">全部</option>
+						<c:forEach items="${lowerUser }" var="item">
+							<option>${item.accountName }</option>
+						</c:forEach>
+					</select>
 
 				<label class="control-label"> <span
 					class="h6 font-thin v-middle">借款区域:</span></label> <input
