@@ -86,9 +86,15 @@ function uploadPic(){
 	$("#form").find("table").each(function(){
 		var fileType = $(this).find("select").val();
 		$(this).find("input").each(function(){
-			var inputId = $(this).attr("id");
-			var inputName = $(this).attr("name");
-			fileUpload(inputId,inputName,fileType,applyloanKey);
+			var value = $(this).val();
+			if("" != value){
+				var inputId = $(this).attr("id");
+				var inputName = $(this).attr("name");
+				fileUpload(inputId,inputName,fileType,applyloanKey);
+			}else{
+				$(this).parent().parent().find("img").attr("src","${pageContext.request.contextPath}/images/error.jpg");
+	        	$(this).parent().parent().find("img").removeAttr("onclick");
+			}
 		});
 	});
 
