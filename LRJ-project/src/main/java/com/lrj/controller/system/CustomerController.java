@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
@@ -180,15 +181,65 @@ public class CustomerController extends BaseController {
 	public String detail(Model model, String applyloanKey) {
 		CustomerLoanFormMap customerLoanFormMap = customerMapper.findbyFrist(
 				"applyloanKey", applyloanKey, CustomerLoanFormMap.class);
+
+		String idCard =  customerLoanFormMap.get("idCard").toString();
+
 		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist(
-				"idCard", customerLoanFormMap.get("idCard").toString(),
+				"idCard", idCard,
 				CustomerBasicFormMap.class);
+
+		Map<String,Object> phoneInfo = new HashMap<>();
+
 		model.addAttribute("customerBasic", customerBasicFormMap);
 		model.addAttribute("customerLoan", customerLoanFormMap);
 
+		for(Map.Entry<String, Object> entry : customerBasicFormMap.entrySet()){
+			if(entry.getKey().equals("phoneNumber")){
+				phoneInfo.put("phoneNumber", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+			if(entry.getKey().equals("relativesPhoneNumber")){
+				phoneInfo.put("relativesPhoneNumber", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+			if(entry.getKey().equals("socialFriendsPhoneNumber")){
+				phoneInfo.put("socialFriendsPhoneNumber", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+			if(entry.getKey().equals("classmatesPhoneNubmer")){
+				phoneInfo.put("classmatesPhoneNubmer", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+			if(entry.getKey().equals("colleaguesPhoneNumber")){
+				phoneInfo.put("colleaguesPhoneNumber", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+			if(entry.getKey().equals("simpleFriendPhoneNumber")){
+				phoneInfo.put("simpleFriendPhoneNumber", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+			if(entry.getKey().equals("borrowFriendsPhoneNumber")){
+				phoneInfo.put("borrowFriendsPhoneNumber", getPhoneInfo(idCard,entry.getValue()==null?"-1":entry.getValue().toString()));
+			}
+		}
+		model.addAttribute("phoneInfo", phoneInfo);
 		picList(model,applyloanKey);
 
 		return Common.BACKGROUND_PATH + "/system/customer/detail";
+	}
+
+	private String getPhoneInfo(String idCard,String phoneNumber){
+		String usedInfo = "";
+		CustomerBasicFormMap cbf = new CustomerBasicFormMap();
+		cbf.put("idCard", idCard);
+		cbf.put("phoneNumber", phoneNumber);
+		List<CustomerBasicFormMap> cusInfos = customerMapper.selectPhoneInfo(cbf);
+		for(CustomerBasicFormMap c : cusInfos){
+			String custName = c.get("name").toString();
+			if("".equals(usedInfo) ){
+				usedInfo += "客户："+custName;
+			}else{
+				usedInfo += ","+"客户："+custName;
+			}
+		}
+		if(!"".equals(usedInfo)){
+			return "(该手机号码曾被"+usedInfo+"使用过)";
+		}
+		return null;
 	}
 
 	/**
@@ -226,7 +277,7 @@ public class CustomerController extends BaseController {
 		String applyloanBlx = customerLoanFormMap.get("applyloanBlx").toString();
 
 		model.addAttribute("customerPics", customerPics);
-		model.addAttribute("fileTypes", getPicTypeByLoanType(applyloanBlx));
+		model.addAttribute("fileTypes", JSONArray.toJSON(getPicTypeByLoanType(applyloanBlx)));
 		model.addAttribute("applyloanKey", applyloanKey);
 	}
 

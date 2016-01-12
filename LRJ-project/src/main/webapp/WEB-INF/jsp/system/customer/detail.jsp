@@ -225,7 +225,7 @@ function exportPic(){
 		<td class="small-title">标类型</td>
 		<td>${customerLoan.applyloanBlx }</td>
 		<td class="small-title">借款金额</td>
-		<td>${customerLoan.applyloanJkje }</td>
+		<td>${customerLoan.applyloanJkje }(元)</td>
 	</tr>
 	<tr>
 		<td class="small-title">借款期限</td>
@@ -264,7 +264,7 @@ function exportPic(){
 		<td class="small-title">姓名</td>
 		<td>${customerBasic.name }</td>
 		<td class="small-title">手机号码</td>
-		<td>${customerBasic.phoneNumber }</td>
+		<td>${customerBasic.phoneNumber }${phoneInfo.phoneNumber }</td>
 		<td class="small-title">年龄</td>
 		<td>${customerBasic.age }</td>
 	</tr>
@@ -340,19 +340,19 @@ function exportPic(){
 	</tr>
 	<tr>
 		<td class="small-title">亲人：${customerBasic.relativesName }</td>
-		<td>${customerBasic.relativesPhoneNumber }</td>
+		<td>${customerBasic.relativesPhoneNumber }${phoneInfo.relativesPhoneNumber }</td>
 		<td class="small-title">社会朋友：${customerBasic.socialFriendsName }</td>
-		<td>${customerBasic.socialFriendsPhoneNumber }</td>
+		<td>${customerBasic.socialFriendsPhoneNumber }${phoneInfo.socialFriendsPhoneNumber }</td>
 		<td class="small-title">同学：${customerBasic.classmatesName }</td>
-		<td>${customerBasic.classmatesPhoneNubmer }</td>
+		<td>${customerBasic.classmatesPhoneNubmer }${phoneInfo.classmatesPhoneNubmer }</td>
 	</tr>
 	<tr>
 		<td class="small-title">同事：${customerBasic.colleaguesName }</td>
-		<td>${customerBasic.colleaguesPhoneNumber }</td>
+		<td>${customerBasic.colleaguesPhoneNumber }${phoneInfo.colleaguesPhoneNumber }</td>
 		<td class="small-title">普通朋友：${customerBasic.simpleFriend }</td>
-		<td>${customerBasic.simpleFriendPhoneNumber }</td>
+		<td>${customerBasic.simpleFriendPhoneNumber }${phoneInfo.simpleFriendPhoneNumber }</td>
 		<td class="small-title">贷友：${customerBasic.borrowFriendsName }</td>
-		<td>${customerBasic.borrowFriendsPhoneNumber }</td>
+		<td>${customerBasic.borrowFriendsPhoneNumber }${phoneInfo.borrowFriendsPhoneNumber }</td>
 	</tr>
 </table>
 <p class="big-title">图片资料</p>

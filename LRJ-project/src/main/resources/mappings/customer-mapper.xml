@@ -63,4 +63,8 @@
 		tb_customer_loan
 	</select>
 
+	<select id="selectPhoneInfo" resultType="com.lrj.entity.CustomerBasicFormMap">
+		<![CDATA[select * from tb_customer_basic where idCard <> '${idCard}' and phoneNumber = '${phoneNumber}']]>
+	</select>
+
 </mapper>
