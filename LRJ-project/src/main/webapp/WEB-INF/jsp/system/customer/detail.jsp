@@ -132,7 +132,7 @@ function delTab(item){
 
 function addTable(){
 	var table = $("<table class='uploadPic'></table>");
-	var tr1 = $("<tr><td>选择分类：</td><td><select>"+options+"</select></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/delTab.jpg' width='22px' height='22px' onclick='delTab($(this))'></td></tr>");
+	var tr1 = $("<tr><td><div class='w70'>选择分类：</div></td><td><select>"+options+"</select></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/delTab.jpg' width='22px' height='22px' onclick='delTab($(this))'></td></tr>");
 	var tr2 = $("<tr><td>选择文件：</td><td><input type='file' id='pic_"+inputIndex+"' name='pic'/></td><td class='pointer'><img src='${pageContext.request.contextPath}/images/add.png' width='20px' height='20px' onclick='addItem($(this))'></td></tr>");
 	table.append(tr1).append(tr2);
 	$("#addPic").append(table);
@@ -185,6 +185,9 @@ function exportPic(){
 		float:left;
 		margin-bottom:5px;
 		margin-left:10px;
+	}
+	.w70{
+		width:70px;
 	}
 	.pointer{
 		cursor: pointer;
@@ -410,7 +413,7 @@ function exportPic(){
 	<div id="addPic">
 		<table class="uploadPic">
 			<tr>
-				<td>选择分类：</td>
+				<td><div class="w70">选择分类：</div></td>
 				<td><select name="fileType0">
 					<option value="" selected="selected">请选择</option>
 					<c:forEach items="${fileTypes }" var="item">
