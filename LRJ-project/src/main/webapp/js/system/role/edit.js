@@ -1,7 +1,7 @@
 	//单独验证某一个input  class="checkpass"
 	 jQuery.validator.addMethod("checkRole", function(value, element) {
-	 	 return this.optional(element) || ((value.length <= 10) && (value.length>=3));
-	 }, "角色名由3至10位字符组合构成");
+	 	 return this.optional(element) || ((value.length <= 10) && (value.length>=2));
+	 }, "角色名由2至10位字符组合构成");
 	 $(function() {
 		 $("form").validate({
 	 		submitHandler : function(form) {//必须写在验证前面，否则无法ajax提交

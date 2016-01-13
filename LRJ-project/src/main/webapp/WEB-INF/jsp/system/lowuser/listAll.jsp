@@ -2,6 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/system/lowuser/listAll.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var btns = ${resJSON};
+		var flag = false;
+		for(var i=0;i<btns.length;i++){
+			if(btns[i].resKey == 'user_location'){
+				flag = true;
+				break;
+			}
+		}
+		initData(flag);
+	});
+</script>
 	<div class="m-b-md">
 		<form class="form-inline" role="form" id="searchForm"
 			name="searchForm">
@@ -17,7 +30,9 @@
 	<header class="panel-heading">
 	<div class="doc-buttons">
 		<c:forEach items="${res}" var="key">
-			${key.description}
+			<c:if test="${key.resKey != 'user_location' }">
+				${key.description}
+			</c:if>
 		</c:forEach>
 	</div>
 	</header>

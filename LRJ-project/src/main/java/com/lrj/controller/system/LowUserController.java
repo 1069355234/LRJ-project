@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.alibaba.fastjson.JSONArray;
 import com.lrj.controller.index.BaseController;
 import com.lrj.entity.RoleFormMap;
 import com.lrj.entity.UserFormMap;
@@ -42,12 +43,14 @@ public class LowUserController extends BaseController {
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
 		model.addAttribute("res", findByRes());
+		model.addAttribute("resJSON", JSONArray.toJSON(findByRes()));
 		return Common.BACKGROUND_PATH + "/system/lowuser/list";
 	}
 
 	@RequestMapping("listAll")
 	public String listUIAll(Model model) throws Exception {
 		model.addAttribute("res", findByRes());
+		model.addAttribute("resJSON", JSONArray.toJSON(findByRes()));
 		return Common.BACKGROUND_PATH + "/system/lowuser/listAll";
 	}
 
