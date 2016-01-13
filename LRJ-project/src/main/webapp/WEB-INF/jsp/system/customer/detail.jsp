@@ -248,7 +248,7 @@ function exportPic(){
 		<td class="small-title">借款类型</td>
 		<td>${customerLoan.applyloanJklx }</td>
 		<td class="small-title">借款区域</td>
-		<td>${customerLoan.applyloanJkQy }</td>
+		<td>${customerLoan.applyloanJkQy }${customerLoan.applyloanJkcs }${customerLoan.applyloanJkqu }</td>
 		<td class="small-title">借款目的</td>
 		<td>${customerLoan.applyloanJkmd }</td>
 	</tr>
@@ -305,7 +305,7 @@ function exportPic(){
 		<td class="small-title">婚姻状况</td>
 		<td>${customerBasic.maritalStatus }</td>
 		<td class="small-title">户籍所在地</td>
-		<td>${customerBasic.censusSeat }</td>
+		<td>${customerBasic.censusSeat }${customerBasic.censusshi }${customerBasic.censusqu }</td>
 		<td class="small-title">个人描述</td>
 		<td>${customerBasic.descriPtion }</td>
 	</tr>
