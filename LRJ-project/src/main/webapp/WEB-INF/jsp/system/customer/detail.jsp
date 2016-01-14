@@ -305,9 +305,13 @@ function exportPic(){
 		<td class="small-title">婚姻状况</td>
 		<td>${customerBasic.maritalStatus }</td>
 		<td class="small-title">户籍所在地</td>
-		<td>${customerBasic.censusSeat }${customerBasic.censusshi }${customerBasic.censusqu }</td>
-		<td class="small-title">个人描述</td>
-		<td>${customerBasic.descriPtion }</td>
+		<td colspan="3">${customerBasic.censusSeat }${customerBasic.censusshi }${customerBasic.censusqu }</td>
+	</tr>
+	<tr>
+		<td class="small-title">描述主题</td>
+		<td>${customerBasic.descriPtionTheme }</td>
+		<td class="small-title">描述信息</td>
+		<td colspan="3">${customerBasic.descriPtion }</td>
 	</tr>
 	<tr class="big-title">
 		<td colspan="7">信用信息</td>
