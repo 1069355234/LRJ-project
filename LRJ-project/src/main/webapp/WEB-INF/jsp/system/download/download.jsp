@@ -72,9 +72,9 @@
 		<div class="app_icon app_phone left"></div>
 		<div class="app_info">
 			<p class="app_title">手机客户端</p>
-			<p class="latest_version">发布时间：2016-01-07</p>
+			<p class="latest_version">发布时间：2016-01-14</p>
 			<p class="left download_p">
-				<a class="download_btn" href="${pageContext.request.contextPath}/download/downloadApk.shtml">立即下载</a>
+				<a class="download_btn" href="${pageContext.request.contextPath}/download/downloadPhoneApk.shtml">立即下载</a>
 			</p>
 			<p class="left download_p">
 				<a class="download_btn" href="javascript:download();">扫码下载</a>
