@@ -24,7 +24,7 @@
 				<label class="control-label"> <span
 					class="h6 font-thin v-middle">借款区域:</span></label> <input
 					class="input-medium ui-autocomplete-input" placeholder="请输入区域" id=""
-					name="customerLoanFormMap.applyloanJkQy">
+					name="customerLoanFormMap.loanArea">
 
 				<label class="control-label"> <span
 					class="h6 font-thin v-middle">借款金额:</span></label>

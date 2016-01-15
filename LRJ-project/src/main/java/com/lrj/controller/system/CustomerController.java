@@ -181,7 +181,16 @@ public class CustomerController extends BaseController {
 		salesman.add(userFormMap.get("accountName").toString());// 自己可以查看自己的客户
 		customerFormMap.put("lowerSalesman", salesman);
 
-		pageView.setRecords(customerMapper.findCustomerPage(customerFormMap));// 不调用默认分页,调用自已的mapper中findUserPage
+		List<CustomerLoanFormMap> customerPages = customerMapper.findCustomerPage(customerFormMap);
+
+		for(CustomerLoanFormMap cus : customerPages){
+			String applyloanJkQy = cus.get("applyloanJkQy")==null?"":cus.get("applyloanJkQy").toString();
+			String applyloanJkcs = cus.get("applyloanJkcs")==null?"":cus.get("applyloanJkcs").toString();
+			String applyloanJkqu = cus.get("applyloanJkqu")==null?"":cus.get("applyloanJkqu").toString();
+			cus.put("loanArea", applyloanJkQy+applyloanJkcs+applyloanJkqu);
+		}
+
+		pageView.setRecords(customerPages);// 不调用默认分页,调用自已的mapper中findUserPage
 		return pageView;
 	}
 

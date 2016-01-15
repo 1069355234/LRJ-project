@@ -18,8 +18,10 @@
 		<if test="salesman != null and salesman != ''">
 			and a.salesman like '%${salesman}%'
 		</if>
-		<if test="applyloanJkQy != null and applyloanJkQy != ''">
-			and a.applyloanJkQy like '%${applyloanJkQy}%'
+		<if test="loanArea != null and loanArea != ''">
+			and (a.applyloanJkQy like '%${loanArea}%'
+			or a.applyloanJkcs like '%${loanArea}%'
+			or a.applyloanJkqu like '%${loanArea}%')
 		</if>
 		<if test="applyloanJkje == 1">
 			<![CDATA[and a.applyloanJkje < 10000]]>

@@ -24,7 +24,7 @@ $(function() {
 			name : "所属业务员",
 			isSort:true,
 		}, {
-			colkey : "applyloanJkQy",
+			colkey : "loanArea",
 			name : "借款区域",
 			isSort:true,
 		}, {
