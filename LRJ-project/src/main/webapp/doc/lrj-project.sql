@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50621
-Source Host           : localhost:3306
+Source Server         : 121.199.13.118
+Source Server Version : 50624
+Source Host           : 121.199.13.118:3306
 Source Database       : lrj-project
 
 Target Server Type    : MYSQL
-Target Server Version : 50621
+Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-01-11 13:30:27
+Date: 2016-01-15 12:44:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,7 +53,7 @@ CREATE TABLE `ly_log` (
   `operTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `description` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_log
@@ -70,6 +70,40 @@ INSERT INTO `ly_log` VALUES ('9', 'admin', '系统管理', '用户管理/组管�
 INSERT INTO `ly_log` VALUES ('10', 'admin', '系统管理', '用户管理-密码初始化', '8', '0:0:0:0:0:0:0:1', '2016-01-11 13:10:54', '执行成功!');
 INSERT INTO `ly_log` VALUES ('11', 'leader', '系统管理', '用户管理-修改密码', '1', '0:0:0:0:0:0:0:1', '2016-01-11 13:11:43', '执行成功!');
 INSERT INTO `ly_log` VALUES ('12', 'admin', '系统管理', '用户管理-密码初始化', '3', '0:0:0:0:0:0:0:1', '2016-01-11 13:12:23', '执行成功!');
+INSERT INTO `ly_log` VALUES ('13', 'admin', '客户管理', '客户管理-新增客户', '609', '222.94.190.49', '2016-01-12 10:30:21', '执行成功!');
+INSERT INTO `ly_log` VALUES ('14', 'salesman2', '客户管理', '客户管理-新增客户', '203', '183.212.234.78', '2016-01-12 11:07:50', '执行成功!');
+INSERT INTO `ly_log` VALUES ('15', 'admin', '客户管理', '客户管理-新增客户', '125', '222.94.190.49', '2016-01-12 11:32:05', '执行成功!');
+INSERT INTO `ly_log` VALUES ('16', 'admin', '客户管理', '客户管理-新增客户', '141', '222.94.190.49', '2016-01-12 11:33:36', '执行成功!');
+INSERT INTO `ly_log` VALUES ('17', 'salesman2', '客户管理', '客户管理-新增客户', '343', '122.96.45.28', '2016-01-12 16:46:54', '执行成功!');
+INSERT INTO `ly_log` VALUES ('18', 'admin', '系统管理', '用户管理/组管理-修改权限', '78', '211.162.27.171', '2016-01-12 21:55:32', '执行成功!');
+INSERT INTO `ly_log` VALUES ('19', 'salesman2', '客户管理', '客户管理-新增客户', '234', '211.162.27.171', '2016-01-12 22:04:49', '执行成功!');
+INSERT INTO `ly_log` VALUES ('20', 'admin', '系统管理', '用户管理/组管理-修改权限', '47', '183.206.168.74', '2016-01-13 12:18:55', '执行成功!');
+INSERT INTO `ly_log` VALUES ('21', 'admin', '系统管理', '用户管理/组管理-修改权限', '31', '183.206.168.74', '2016-01-13 12:24:51', '执行成功!');
+INSERT INTO `ly_log` VALUES ('22', 'admin', '系统管理', '用户管理/组管理-修改权限', '16', '183.206.168.74', '2016-01-13 12:25:16', '执行成功!');
+INSERT INTO `ly_log` VALUES ('23', 'admin', '系统管理', '用户管理/组管理-修改权限', '0', '183.206.168.74', '2016-01-13 12:25:28', '执行成功!');
+INSERT INTO `ly_log` VALUES ('24', 'admin', '系统管理', '用户管理/组管理-修改权限', '0', '183.206.168.74', '2016-01-13 12:25:57', '执行成功!');
+INSERT INTO `ly_log` VALUES ('25', 'admin', '系统管理', '用户管理/组管理-修改权限', '0', '183.206.168.74', '2016-01-13 12:26:08', '执行成功!');
+INSERT INTO `ly_log` VALUES ('26', 'admin', '系统管理', '组管理-新增组', '15', '183.206.168.74', '2016-01-13 12:26:44', '执行成功!');
+INSERT INTO `ly_log` VALUES ('27', 'admin', '系统管理', '组管理-修改组', '16', '183.206.168.74', '2016-01-13 12:28:25', '执行成功!');
+INSERT INTO `ly_log` VALUES ('28', 'admin', '系统管理', '用户管理/组管理-修改权限', '16', '183.206.168.74', '2016-01-13 12:28:48', '执行成功!');
+INSERT INTO `ly_log` VALUES ('29', 'admin', '系统管理', '用户管理-新增用户', '94', '183.206.168.74', '2016-01-13 12:29:23', '执行成功!');
+INSERT INTO `ly_log` VALUES ('30', 'manager', '系统管理', '用户管理/组管理-修改权限', '0', '183.206.168.74', '2016-01-13 12:36:27', '执行成功!');
+INSERT INTO `ly_log` VALUES ('31', 'manager', '系统管理', '用户管理-删除用户', '63', '183.206.168.74', '2016-01-13 12:44:39', '执行成功!');
+INSERT INTO `ly_log` VALUES ('32', 'manager', '系统管理', '用户管理-删除用户', '31', '183.206.168.74', '2016-01-13 12:44:45', '执行成功!');
+INSERT INTO `ly_log` VALUES ('33', 'manager', '系统管理', '用户管理-修改用户', '16', '183.206.168.74', '2016-01-13 12:45:07', '执行成功!');
+INSERT INTO `ly_log` VALUES ('34', 'manager', '系统管理', '用户管理-删除用户', '31', '183.206.168.74', '2016-01-13 12:46:49', '执行成功!');
+INSERT INTO `ly_log` VALUES ('35', 'manager', '系统管理', '用户管理-新增用户', '16', '183.206.168.74', '2016-01-13 12:47:19', '执行成功!');
+INSERT INTO `ly_log` VALUES ('36', 'manager', '系统管理', '用户管理/组管理-修改权限', '16', '183.206.168.74', '2016-01-13 12:55:53', '执行成功!');
+INSERT INTO `ly_log` VALUES ('37', 'manager', '系统管理', '用户管理/组管理-修改权限', '16', '183.206.168.74', '2016-01-13 12:57:57', '执行成功!');
+INSERT INTO `ly_log` VALUES ('38', 'admin', '客户管理', '客户管理-新增客户', '797', '221.226.186.98', '2016-01-14 11:14:50', '执行成功!');
+INSERT INTO `ly_log` VALUES ('39', 'salesman2', '客户管理', '客户管理-新增客户', '328', '183.206.171.27', '2016-01-14 12:35:29', '执行成功!');
+INSERT INTO `ly_log` VALUES ('40', 'admin', '客户管理', '客户管理-新增客户', '31', '117.62.128.249', '2016-01-14 14:07:13', '执行成功!');
+INSERT INTO `ly_log` VALUES ('41', 'admin', '客户管理', '客户管理-新增客户', '46', '117.62.128.249', '2016-01-14 14:17:22', '执行成功!');
+INSERT INTO `ly_log` VALUES ('42', 'admin', '客户管理', '客户管理-新增客户', '31', '117.62.128.249', '2016-01-14 14:18:01', '执行成功!');
+INSERT INTO `ly_log` VALUES ('43', 'admin', '客户管理', '客户管理-新增客户', '31', '117.62.128.249', '2016-01-14 14:35:31', '执行成功!');
+INSERT INTO `ly_log` VALUES ('44', 'salesman2', '客户管理', '客户管理-新增客户', '360', '183.206.171.27', '2016-01-14 15:52:01', '执行成功!');
+INSERT INTO `ly_log` VALUES ('45', 'salesman2', '客户管理', '客户管理-新增客户', '875', '183.206.171.27', '2016-01-15 12:11:51', '执行成功!');
+INSERT INTO `ly_log` VALUES ('46', 'manager', '系统管理', '用户管理/组管理-修改权限', '125', '183.206.171.27', '2016-01-15 12:17:04', '执行成功!');
 
 -- ----------------------------
 -- Table structure for `ly_resources`
@@ -87,14 +121,14 @@ CREATE TABLE `ly_resources` (
   `ishide` int(3) DEFAULT '0',
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_resources
 -- ----------------------------
-INSERT INTO `ly_resources` VALUES ('1', '系统基础管理', '0', 'system', '0', 'system', '1', 'fa-desktop', '0', '系统基础管理');
-INSERT INTO `ly_resources` VALUES ('2', '员工管理', '1', 'account', '1', '/user/list.shtml', '2', null, '0', null);
-INSERT INTO `ly_resources` VALUES ('3', '角色管理', '1', 'role', '1', '/role/list.shtml', '7', 'fa-list', '0', '组管理');
+INSERT INTO `ly_resources` VALUES ('1', '基础管理', '0', 'system', '0', 'system', '1', 'fa-desktop', '0', '系统基础管理');
+INSERT INTO `ly_resources` VALUES ('2', '员工管理', '36', 'account', '1', '/user/list.shtml', '1', null, '0', null);
+INSERT INTO `ly_resources` VALUES ('3', '角色管理', '36', 'role', '1', '/role/list.shtml', '2', 'fa-list', '0', '组管理');
 INSERT INTO `ly_resources` VALUES ('4', '菜单管理', '1', 'ly_resources', '1', '/resources/list.shtml', '12', 'fa-list-alt', '0', '菜单管理');
 INSERT INTO `ly_resources` VALUES ('5', '新增用户', '2', 'account_add', '2', '/user/addUI.shtml', '3', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;addAccount&quot;&nbsp;class=&quot;btn&nbsp;btn-primary&nbsp;marR10&quot;&gt;新增&lt;/button&gt;');
 INSERT INTO `ly_resources` VALUES ('6', '修改用户', '2', 'account_edit', '2', '/user/editUI.shtml', '4', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;editAccount&quot;&nbsp;class=&quot;btn&nbsp;btn-info&nbsp;marR10&quot;&gt;编辑&lt;/button&gt;');
@@ -114,16 +148,18 @@ INSERT INTO `ly_resources` VALUES ('32', '系统监控管理', '0', 'monitor', '
 INSERT INTO `ly_resources` VALUES ('33', '实时监控', '32', 'sysmonitor', '1', '/monitor/monitor.shtml', '17', null, '0', '实时监控');
 INSERT INTO `ly_resources` VALUES ('34', '分配下属员工', '2', 'user_perss', '2', '', '6', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;permissions&quot;&nbsp;class=&quot;btn&nbsp;btn&nbsp;btn-grey&nbsp;marR10&quot;&gt;分配下属员工&lt;/button&gt;');
 INSERT INTO `ly_resources` VALUES ('35', '告警列表', '32', 'monitor_warn', '1', '/monitor/list.shtml', null, null, '0', '告警列表');
-INSERT INTO `ly_resources` VALUES ('36', '系统功能', '0', 'function', '0', '', '2', 'fa-desktop', '0', null);
+INSERT INTO `ly_resources` VALUES ('36', '功能菜单', '0', 'function', '0', '', '2', 'fa-desktop', '0', null);
 INSERT INTO `ly_resources` VALUES ('37', '客户信息', '36', 'customer_list', '1', '/customer/list.shtml', '2', null, '0', null);
 INSERT INTO `ly_resources` VALUES ('38', '下属员工', '36', 'lower_user', '1', '/lowuser/list.shtml', '1', null, '0', null);
-INSERT INTO `ly_resources` VALUES ('39', '选中导出', '37', 'export_choose', '2', null, '1', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;chooseExport&quot;&nbsp;class=&quot;btn&nbsp;btn-primary&nbsp;marR10&quot;&gt;选中导出&lt;/button&gt;');
-INSERT INTO `ly_resources` VALUES ('40', '全部导出', '37', 'export_all', '2', null, '2', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;allExport&quot;&nbsp;class=&quot;btn&nbsp;btn-info&nbsp;marR10&quot;&gt;全部导出&lt;/button&gt;');
+INSERT INTO `ly_resources` VALUES ('39', '客户信息(全部)', '36', 'customer_list_all', '1', '/customer/listAll.shtml', '3', null, '0', null);
+INSERT INTO `ly_resources` VALUES ('40', '下属员工(全部)', '36', 'lower_user_all', '1', '/lowuser/listAll.shtml', '4', null, '0', null);
 INSERT INTO `ly_resources` VALUES ('41', '客户端', '0', 'download', '0', '', '9', 'fa-desktop', '0', '客户端');
 INSERT INTO `ly_resources` VALUES ('42', '客户端下载', '41', 'download_apk', '1', '/download/download.shtml', '1', null, '0', '客户端下载');
 INSERT INTO `ly_resources` VALUES ('43', '地图定位', '0', 'map', '0', null, '10', 'fa-desktop', '0', '地图定位');
-INSERT INTO `ly_resources` VALUES ('44', '员工定位', '43', 'user_location', '1', '/map/map.shtml', '1', null, '0', '员工定位');
+INSERT INTO `ly_resources` VALUES ('44', '员工定位', '43', 'lowuser_location', '1', '/map/map.shtml', '1', null, '0', '员工定位');
+INSERT INTO `ly_resources` VALUES ('45', '查看定位', '38', 'user_location', '2', null, '1', null, '0', null);
 INSERT INTO `ly_resources` VALUES ('46', '密码初始化', '2', 'init_pwd', '2', '/user/initPwd.shtml', '5', null, '0', '&lt;button&nbsp;type=&quot;button&quot;&nbsp;id=&quot;initPwd&quot;&nbsp;class=&quot;btn&nbsp;btn-warning&nbsp;marR10&quot;&gt;密码初始化&lt;/button&gt;');
+INSERT INTO `ly_resources` VALUES ('47', '查看定位(全部)', '40', 'user_location', '2', null, '1', null, '0', null);
 
 -- ----------------------------
 -- Table structure for `ly_res_user`
@@ -169,7 +205,7 @@ CREATE TABLE `ly_role` (
   `roleKey` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_role
@@ -179,7 +215,8 @@ INSERT INTO `ly_role` VALUES ('4', '5', '0', '业务员', 'salesman', '业务员
 INSERT INTO `ly_role` VALUES ('5', '6', '0', '团队长', 'caption', '团队长角色');
 INSERT INTO `ly_role` VALUES ('6', '7', '0', '产品总监', 'chief', '产皮总监角色');
 INSERT INTO `ly_role` VALUES ('7', '8', '0', '内审', 'innerCheckor', '内审角色');
-INSERT INTO `ly_role` VALUES ('8', '0', '0', '总审', 'allCheckor', '总审角色');
+INSERT INTO `ly_role` VALUES ('8', '9', '0', '总审 ', 'allCheckor', '总审角色');
+INSERT INTO `ly_role` VALUES ('9', null, '0', '总经理', 'manager', null);
 
 -- ----------------------------
 -- Table structure for `ly_role_res`
@@ -228,39 +265,46 @@ INSERT INTO `ly_role_res` VALUES ('1', '44');
 INSERT INTO `ly_role_res` VALUES ('1', '46');
 INSERT INTO `ly_role_res` VALUES ('4', '36');
 INSERT INTO `ly_role_res` VALUES ('4', '37');
+INSERT INTO `ly_role_res` VALUES ('4', '41');
+INSERT INTO `ly_role_res` VALUES ('4', '42');
 INSERT INTO `ly_role_res` VALUES ('5', '36');
 INSERT INTO `ly_role_res` VALUES ('5', '37');
-INSERT INTO `ly_role_res` VALUES ('5', '38');
-INSERT INTO `ly_role_res` VALUES ('5', '39');
-INSERT INTO `ly_role_res` VALUES ('5', '40');
-INSERT INTO `ly_role_res` VALUES ('6', '1');
-INSERT INTO `ly_role_res` VALUES ('6', '2');
-INSERT INTO `ly_role_res` VALUES ('6', '3');
-INSERT INTO `ly_role_res` VALUES ('6', '5');
-INSERT INTO `ly_role_res` VALUES ('6', '6');
-INSERT INTO `ly_role_res` VALUES ('6', '7');
-INSERT INTO `ly_role_res` VALUES ('6', '8');
-INSERT INTO `ly_role_res` VALUES ('6', '9');
-INSERT INTO `ly_role_res` VALUES ('6', '10');
-INSERT INTO `ly_role_res` VALUES ('6', '11');
-INSERT INTO `ly_role_res` VALUES ('6', '25');
-INSERT INTO `ly_role_res` VALUES ('6', '26');
-INSERT INTO `ly_role_res` VALUES ('6', '34');
+INSERT INTO `ly_role_res` VALUES ('5', '41');
+INSERT INTO `ly_role_res` VALUES ('5', '42');
 INSERT INTO `ly_role_res` VALUES ('6', '36');
 INSERT INTO `ly_role_res` VALUES ('6', '37');
 INSERT INTO `ly_role_res` VALUES ('6', '38');
-INSERT INTO `ly_role_res` VALUES ('6', '39');
-INSERT INTO `ly_role_res` VALUES ('6', '40');
+INSERT INTO `ly_role_res` VALUES ('6', '41');
+INSERT INTO `ly_role_res` VALUES ('6', '42');
+INSERT INTO `ly_role_res` VALUES ('6', '43');
+INSERT INTO `ly_role_res` VALUES ('6', '44');
 INSERT INTO `ly_role_res` VALUES ('7', '36');
-INSERT INTO `ly_role_res` VALUES ('7', '37');
-INSERT INTO `ly_role_res` VALUES ('7', '38');
 INSERT INTO `ly_role_res` VALUES ('7', '39');
-INSERT INTO `ly_role_res` VALUES ('7', '40');
+INSERT INTO `ly_role_res` VALUES ('7', '41');
+INSERT INTO `ly_role_res` VALUES ('7', '42');
 INSERT INTO `ly_role_res` VALUES ('8', '36');
-INSERT INTO `ly_role_res` VALUES ('8', '37');
-INSERT INTO `ly_role_res` VALUES ('8', '38');
 INSERT INTO `ly_role_res` VALUES ('8', '39');
-INSERT INTO `ly_role_res` VALUES ('8', '40');
+INSERT INTO `ly_role_res` VALUES ('8', '41');
+INSERT INTO `ly_role_res` VALUES ('8', '42');
+INSERT INTO `ly_role_res` VALUES ('9', '2');
+INSERT INTO `ly_role_res` VALUES ('9', '3');
+INSERT INTO `ly_role_res` VALUES ('9', '5');
+INSERT INTO `ly_role_res` VALUES ('9', '6');
+INSERT INTO `ly_role_res` VALUES ('9', '7');
+INSERT INTO `ly_role_res` VALUES ('9', '8');
+INSERT INTO `ly_role_res` VALUES ('9', '9');
+INSERT INTO `ly_role_res` VALUES ('9', '10');
+INSERT INTO `ly_role_res` VALUES ('9', '11');
+INSERT INTO `ly_role_res` VALUES ('9', '34');
+INSERT INTO `ly_role_res` VALUES ('9', '36');
+INSERT INTO `ly_role_res` VALUES ('9', '39');
+INSERT INTO `ly_role_res` VALUES ('9', '40');
+INSERT INTO `ly_role_res` VALUES ('9', '41');
+INSERT INTO `ly_role_res` VALUES ('9', '42');
+INSERT INTO `ly_role_res` VALUES ('9', '43');
+INSERT INTO `ly_role_res` VALUES ('9', '44');
+INSERT INTO `ly_role_res` VALUES ('9', '46');
+INSERT INTO `ly_role_res` VALUES ('9', '47');
 
 -- ----------------------------
 -- Table structure for `ly_server_info`
@@ -327,7 +371,7 @@ CREATE TABLE `ly_user` (
   `deletestatus` int(1) DEFAULT '0' COMMENT '逻辑删除状态0:存在1:删除',
   `region` varchar(10) DEFAULT NULL COMMENT '用户负责的城市',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_user
@@ -336,13 +380,10 @@ INSERT INTO `ly_user` VALUES ('3', '管理员', 'admin', 'a813f2811c43dbc91dad52
 INSERT INTO `ly_user` VALUES ('6', '团队长1', 'leader', 'b630bf43cc2045510b5df27335b7e44d', 'd7d39efacdd11dd527d685de478e9e5a', '', '0', '2016-01-11 13:11:43', '0', '');
 INSERT INTO `ly_user` VALUES ('7', '业务员1', 'salesman1', '21940300cf372e0bdeafcd1f065ba33e', 'd278603b0142e42752b7c2f53af84008', null, '0', '2015-12-09 23:47:44', '0', '南京');
 INSERT INTO `ly_user` VALUES ('8', '业务员2', 'salesman2', 'e400f0c6173fb88411d20d3a6e64996d', '674237efa5f82bc32726b157268356bf', null, '0', '2015-12-09 23:47:57', '0', '南京');
-INSERT INTO `ly_user` VALUES ('9', '业务员3', 'salesman3', 'cdb92205bbd0b5201859d73ee1228b83', '8a48d11f74ea5acb494962ab4e53b28d', null, '0', '2015-12-09 20:57:31', '0', '扬州');
-INSERT INTO `ly_user` VALUES ('10', '业务员4', 'salesman4', '22737e5eb23c04cf7e871d5385c17b38', 'ce100b6ba7a20851398397917b438997', null, '0', '2015-12-09 20:57:48', '0', '淮北');
-INSERT INTO `ly_user` VALUES ('11', '业务员5', 'salesman5', 'c7d1eecc7f9b3dbaeb7d54f8cb8ff395', 'e4db0905bd5f5dc0793dde49c66b8772', '', '0', '2015-12-09 21:19:17', '0', '');
-INSERT INTO `ly_user` VALUES ('12', '业务员6', 'salesman6', '94c3632ab1e9b5abcccf3c2abefb01bd', '5bb1b71cf7973a5f80eb82fab5482d15', null, '0', '2015-12-09 21:06:22', '0', null);
-INSERT INTO `ly_user` VALUES ('13', '总审1', 'boss1', '36778364b5f488b79c80f79cf25ff4de', '265bfd1a92957bb21c103359e9ad1117', null, '0', '2015-12-09 22:27:55', '0', null);
 INSERT INTO `ly_user` VALUES ('14', '张三', '111111', '6c6771afe176588942a6ae01733abce6', 'b9e6502856fee7cdcda958acf90c58dd', null, '0', '2016-01-09 14:15:15', '0', '南京');
 INSERT INTO `ly_user` VALUES ('15', '王武', 'wagnw', 'fdc69764ae1327cdd80c0a113b4a2056', 'e2a92d84f5b63faf03fe7751c411c11d', null, '0', '2016-01-09 16:13:26', '0', '淮北');
+INSERT INTO `ly_user` VALUES ('16', '总经理', 'manager', 'c4449943d60363527187069695aa1f48', 'feddcd89006dc3df1fb8a593b1708aa9', null, '0', '2016-01-13 12:29:23', '0', null);
+INSERT INTO `ly_user` VALUES ('17', '总审', 'shen', 'e1a69b45d6b99ae7ab8c1afeafa0cc51', '683be0b93f31b7b77ac2ea258757cada', null, '0', '2016-01-13 12:47:19', '0', null);
 
 -- ----------------------------
 -- Table structure for `ly_userlogin`
@@ -356,7 +397,7 @@ CREATE TABLE `ly_userlogin` (
   `loginIP` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ly_user_loginlist` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ly_userlogin
@@ -487,6 +528,61 @@ INSERT INTO `ly_userlogin` VALUES ('123', '6', 'leader', '2016-01-11 13:12:33', 
 INSERT INTO `ly_userlogin` VALUES ('124', '3', 'admin', '2016-01-11 13:12:45', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('125', '6', 'leader', '2016-01-11 13:15:45', '0:0:0:0:0:0:0:1');
 INSERT INTO `ly_userlogin` VALUES ('126', '6', 'leader', '2016-01-11 13:24:57', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('127', '3', 'admin', '2016-01-12 10:24:25', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('128', '3', 'admin', '2016-01-12 16:33:18', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('129', '6', 'leader', '2016-01-12 16:50:23', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('130', '6', 'leader', '2016-01-12 17:16:07', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('131', '3', 'admin', '2016-01-12 17:18:57', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('132', '3', 'admin', '2016-01-12 17:34:12', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('133', '6', 'leader', '2016-01-12 17:39:26', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('134', '3', 'admin', '2016-01-12 18:12:09', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('135', '3', 'admin', '2016-01-12 18:14:41', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('136', '3', 'admin', '2016-01-12 20:23:09', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('137', '3', 'admin', '2016-01-12 20:37:00', '183.212.234.78');
+INSERT INTO `ly_userlogin` VALUES ('138', '3', 'admin', '2016-01-12 21:50:49', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('139', '6', 'leader', '2016-01-12 21:54:33', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('140', '3', 'admin', '2016-01-12 21:54:50', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('141', '6', 'leader', '2016-01-12 21:55:42', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('142', '3', 'admin', '2016-01-12 22:28:22', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('143', '3', 'admin', '2016-01-12 23:02:47', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('144', '3', 'admin', '2016-01-13 12:12:32', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('145', '6', 'leader', '2016-01-13 12:12:55', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('146', '3', 'admin', '2016-01-13 12:17:26', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('147', '3', 'admin', '2016-01-13 12:23:23', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('148', '16', 'manager', '2016-01-13 12:29:36', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('149', '17', 'shen', '2016-01-13 12:47:48', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('150', '16', 'manager', '2016-01-13 12:51:38', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('151', '6', 'leader', '2016-01-13 12:52:23', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('152', '16', 'manager', '2016-01-13 12:52:58', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('153', '6', 'leader', '2016-01-13 12:58:05', '183.206.168.74');
+INSERT INTO `ly_userlogin` VALUES ('154', '3', 'admin', '2016-01-13 21:29:35', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('155', '3', 'admin', '2016-01-13 21:45:28', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('156', '3', 'admin', '2016-01-13 21:52:46', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('157', '6', 'leader', '2016-01-13 22:03:49', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('158', '3', 'admin', '2016-01-13 22:06:53', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('159', '3', 'admin', '2016-01-13 22:10:56', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('160', '3', 'admin', '2016-01-13 22:19:40', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('161', '3', 'admin', '2016-01-13 22:38:17', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('162', '3', 'admin', '2016-01-13 23:21:20', '211.162.27.171');
+INSERT INTO `ly_userlogin` VALUES ('163', '3', 'admin', '2016-01-14 07:34:18', '211.162.27.225');
+INSERT INTO `ly_userlogin` VALUES ('164', '16', 'manager', '2016-01-14 07:36:12', '211.162.27.225');
+INSERT INTO `ly_userlogin` VALUES ('165', '6', 'leader', '2016-01-14 12:39:26', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('166', '3', 'admin', '2016-01-14 12:53:03', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('167', '3', 'admin', '2016-01-14 13:42:40', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('168', '3', 'admin', '2016-01-14 13:50:00', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('169', '3', 'admin', '2016-01-14 15:28:42', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('170', '6', 'leader', '2016-01-14 15:29:31', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('171', '6', 'leader', '2016-01-14 18:22:49', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('172', '16', 'manager', '2016-01-14 18:23:00', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('173', '16', 'manager', '2016-01-14 20:32:57', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('174', '3', 'admin', '2016-01-14 20:33:23', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('175', '16', 'manager', '2016-01-14 22:14:19', '211.162.27.225');
+INSERT INTO `ly_userlogin` VALUES ('176', '3', 'admin', '2016-01-15 09:06:25', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('177', '16', 'manager', '2016-01-15 12:16:43', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('178', '16', 'manager', '2016-01-15 12:17:11', '183.206.171.27');
+INSERT INTO `ly_userlogin` VALUES ('179', '16', 'manager', '2016-01-15 12:29:57', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('180', '16', 'manager', '2016-01-15 12:34:46', '0:0:0:0:0:0:0:1');
+INSERT INTO `ly_userlogin` VALUES ('181', '16', 'manager', '2016-01-15 12:41:07', '0:0:0:0:0:0:0:1');
 
 -- ----------------------------
 -- Table structure for `ly_user_role`
@@ -505,14 +601,10 @@ INSERT INTO `ly_user_role` VALUES ('3', '1');
 INSERT INTO `ly_user_role` VALUES ('6', '5');
 INSERT INTO `ly_user_role` VALUES ('7', '4');
 INSERT INTO `ly_user_role` VALUES ('8', '4');
-INSERT INTO `ly_user_role` VALUES ('9', '4');
-INSERT INTO `ly_user_role` VALUES ('10', '4');
-INSERT INTO `ly_user_role` VALUES ('11', '4');
-INSERT INTO `ly_user_role` VALUES ('12', '4');
-INSERT INTO `ly_user_role` VALUES ('13', '1');
-INSERT INTO `ly_user_role` VALUES ('13', '8');
 INSERT INTO `ly_user_role` VALUES ('14', '4');
 INSERT INTO `ly_user_role` VALUES ('15', '4');
+INSERT INTO `ly_user_role` VALUES ('16', '9');
+INSERT INTO `ly_user_role` VALUES ('17', '8');
 
 -- ----------------------------
 -- Table structure for `tb_customer_basic`
@@ -527,12 +619,15 @@ CREATE TABLE `tb_customer_basic` (
   `national` varchar(20) DEFAULT NULL COMMENT '民族',
   `phoneNumber` varchar(20) NOT NULL COMMENT '手机号码',
   `qqPhone` varchar(20) DEFAULT NULL COMMENT 'qq号码',
-  `censusSeat` varchar(255) DEFAULT NULL COMMENT '户籍所在地',
+  `censusSeat` varchar(255) DEFAULT NULL COMMENT '户籍所在地省份',
+  `censusshi` varchar(255) DEFAULT NULL COMMENT '户籍所在地城市',
+  `censusqu` varchar(255) DEFAULT NULL COMMENT '户籍所在地区县',
   `parentsSeat` varchar(255) DEFAULT NULL COMMENT '父母所在地',
   `nowliveAddress` varchar(255) DEFAULT NULL COMMENT '现居住地址',
   `unitName` varchar(255) DEFAULT NULL COMMENT '单位名称',
   `unitAddress` varchar(255) DEFAULT NULL COMMENT '单位地址',
   `unitPhone` varchar(20) DEFAULT NULL COMMENT '单位电话',
+  `descriPtionTheme` varchar(255) DEFAULT NULL COMMENT '描述主题',
   `descriPtion` varchar(255) DEFAULT NULL COMMENT '描述信息',
   `workYear` varchar(20) DEFAULT NULL COMMENT '工作年限',
   `commercial` varchar(20) DEFAULT NULL COMMENT '商业保险',
@@ -563,13 +658,18 @@ CREATE TABLE `tb_customer_basic` (
   `createTime` varchar(32) DEFAULT NULL COMMENT '创建时间',
   `updateTime` varchar(32) DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_customer_basic
 -- ----------------------------
-INSERT INTO `tb_customer_basic` VALUES ('24', '123456789123456789', '张三', '男', '60岁以上', '汉族', '13585390197', '12646797976764', '江苏', '啊哈哈是', '泯然众人矣', null, null, null, null, '5年以上', '5年以上', '高级管理人员、总公司总经历、中校以上(教授)', '5年以上', '自有未按揭，价值100万元以上(含)', '商业社区', '合计所得24.1-39万元', '已婚有子女', null, '本科', '一般上市公司员工', '5年以上', '60001-20000', '有', '你', '13979794948', '是', '13649797676', '谁', '13679797676', '你', '13131313133', '还', '13797976797', '好', '13527789767', '2016-01-09 14:21:43', '2016-01-09 14:40:16');
-INSERT INTO `tb_customer_basic` VALUES ('25', '320322198909041134', '客户', '男', '43-50岁', '汉族', '13062505804', '1069355234', '江苏', '考虑他哦里', '考虑他哦里', '考虑他哦里', '考虑他哦里', '13062505804', '考虑他哦里', '5年以上', '5年以上', '中级管理人员、公司或分公司总经理', '3-5年(含)', '自有未按揭，价值0-100万元(不含)', '商业社区', '合计所得12.1-24万元', '已婚无子女', null, '本科', '优质公用事业单位员工', '5年以上', '3000以下', '有', '测试', '13062505804', '测试2', '13062505804', '测试3', '13062505804', '13062585804', '13062505804', '测试5', '13062505804', '测试5', '13062505804', '2016-01-09 14:30:45', '2016-01-09 14:47:33');
+INSERT INTO `tb_customer_basic` VALUES ('24', '123456789123456789', '张三', '男', '60岁以上', '汉族', '13585390197', '12646797976764', '江苏', null, null, '啊哈哈是', '泯然众人矣', null, null, null, null, null, '5年以上', '5年以上', '高级管理人员、总公司总经历、中校以上(教授)', '5年以上', '自有未按揭，价值100万元以上(含)', '商业社区', '合计所得24.1-39万元', '已婚有子女', null, '本科', '一般上市公司员工', '5年以上', '60001-20000', '有', '你', '13979794948', '是', '13649797676', '谁', '13679797676', '你', '13131313133', '还', '13797976797', '好', '13527789767', '2016-01-09 14:21:43', '2016-01-09 14:40:16');
+INSERT INTO `tb_customer_basic` VALUES ('25', '320322198909041134', '龚琳娜', '男', '51-60岁', '汉族', '13062505809', '1069355234', '内蒙古', '赤峰', '克什克腾旗', '江苏徐州', '江苏徐州', '考虑他哦里', '考虑他哦里', '13062505804', '描述主题描述', '你啊死T1描述主题描述性生活的？描述', '5年以上', '5年以上', '中级管理人员、公司或分公司总经理', '3-5年(含)', '自有未按揭，价值100万元以上(含)', '城镇社区', '合计所得24.1-39万元', '已婚有子女', null, '本科', '人民警察、武警、人民解放军', '5年以上', '3001-6000', '有', '贼心', '13062505801', '玖月奇迹', '13062505802', '龚玥菲', '13062505803', '囖感觉', '13062505804', '投资', '13062505805', '现在', '13062505806', '2016-01-09 14:30:45', '2016-01-15 12:11:51');
+INSERT INTO `tb_customer_basic` VALUES ('26', '963852741963852741', '就是', '男', '23-25岁', '汉族', '13585390197', '111331313131', '安徽', null, null, '你猜', '不猜', null, null, null, null, null, '5年以上', '5年以上', '高级管理人员、总公司总经历、中校以上(教授)', '5年以上', '自有未按揭，价值100万元以上(含)', '商业社区', '合计所得24.1-39万元', '已婚有子女', null, '高中(中专)', '一般上市公司员工', '3-5年', '50001-100000', '无', '逆袭', '13894979797', '白', '13284979797', '富', '13499767679', '美', '13849976767', '吊', '13648797979', '丝', '13649797979', '2016-01-12 10:30:21', '2016-01-12 11:33:35');
+INSERT INTO `tb_customer_basic` VALUES ('27', '320655258588963321', '测试', '男', '51-60岁', '汉族', '13062505804', '1063655534', '吉林', null, null, '同岁积极', '同岁积极', '同岁积极', '同岁积极', '45788779', null, '同岁积极', '5年以上', '3-5年(含)', '中级管理人员、公司或分公司总经理', '5年以上', '自有未按揭，价值0-100万元(不含)', '其他居住区', '合计所得24.1-39万元', '已婚有子女', null, '本科', '国家机关离退休人员', '5年以上', '3000以下', '有', '张三', '13062505804', '李四', '13062505804', '养我', '13062585804', '赵柳', '13062505804', '洋气', '13032505804', '王八', '13062505804', '2016-01-12 11:07:50', '2016-01-12 11:07:50');
+INSERT INTO `tb_customer_basic` VALUES ('28', '325322487596851144', '张文斌', '男', '31-42岁', '汉族', '15651829776', '1550456996', '江苏', null, null, '江苏徐州', '江苏徐州', '江苏徐州', '江苏徐州', '15651829776', null, '江苏徐州', '5年以上', '5年以上', '中级管理人员、公司或分公司总经理', '5年以上', '自有未按揭，价值100万元以上(含)', '商业社区', '合计所得40万元以上', '已婚有子女', null, '专科', '优质公用事业单位员工', '5年以上', '3000以下', '有', '张永', '13062585804', '王建', '13065485841', '肖申克', '15362585848', '张三', '13032505804', '赵柳', '15854872546', '王八', '13062505804', '2016-01-12 16:46:54', '2016-01-12 16:46:54');
+INSERT INTO `tb_customer_basic` VALUES ('29', '358555467858564421', '找富贵', '男', '51-60岁', '汉族', '13062585804', '1069355234', '江苏', null, null, '江苏南京建邺区', '江苏南京建邺区', null, null, null, null, null, '5年以上', '5年以上', '中级管理人员、公司或分公司总经理', '3-5年(含)', '自有未按揭，价值0-100万元(不含)', '城镇社区', '合计所得12.1-24万元', '已婚有子女', null, '专科', '国家机关离退休人员', '5年以上', '3001-6000', '无', '几块钱', '13862505804', '你们', '13062586645', '没啦', '15651827664', '喔噢', '13584585580', '美女', '13062505805', '一次咩', '13658080854', '2016-01-12 22:04:49', '2016-01-12 22:04:49');
+INSERT INTO `tb_customer_basic` VALUES ('30', '330726196507040016', '驴踢', '男', '18-22', '汉族', '13997664689', '1111111', '山西', '长治', '屯留县', '凝玉', '你爱吃', null, null, null, null, '好哦也破也破也', '5年以上', '5年以上', '高级管理人员、总公司总经历、中校以上(教授)', '5年以上', '自有未按揭，价值100万元以上(含)', '商业社区', '合计所得40万元以上', '已婚有子女', null, '本科', '国家机关离退休人员', '1-3年', '50001-100000', '无', '明', '13699836868', '天', '13133131313', '会', '13133131313', '更', '13131631616', '好', '13161321616', '肯定', '13497676464', '2016-01-14 11:14:49', '2016-01-14 14:35:31');
 
 -- ----------------------------
 -- Table structure for `tb_customer_loan`
@@ -587,20 +687,30 @@ CREATE TABLE `tb_customer_loan` (
   `applyloanZgnll` varchar(20) DEFAULT NULL COMMENT '最高年利率',
   `applyloanHkfs` varchar(20) DEFAULT NULL COMMENT '还宽方式',
   `applyloanJklx` varchar(20) DEFAULT NULL COMMENT '借款类型',
-  `applyloanJkQy` varchar(20) DEFAULT NULL COMMENT '借款区域',
+  `applyloanJkQy` varchar(20) DEFAULT NULL COMMENT '借款区域省份',
+  `applyloanJkcs` varchar(20) DEFAULT NULL COMMENT '借款城市',
+  `applyloanJkqu` varchar(20) DEFAULT NULL COMMENT '借款区县',
   `applyloanJkmd` varchar(255) DEFAULT NULL COMMENT '借款目的',
   `applyloanMsxx` varchar(255) DEFAULT NULL COMMENT '描述信息',
   `applloanlbrs` varchar(255) DEFAULT NULL COMMENT '联保人数',
   `picPath` varchar(255) DEFAULT NULL COMMENT '图片文件服务器路径',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_customer_loan
 -- ----------------------------
-INSERT INTO `tb_customer_loan` VALUES ('28', '111111', '123456789123456789', '2016-01-09 14:21:43', '20160109142038', '房贷', '1000000000', '一年', '16%', '等额本金', '生意周转', '辽宁', '不一点', '你在说我去洗', null, '/uploadFile/客户_20160109142038');
-INSERT INTO `tb_customer_loan` VALUES ('29', 'salesman3', '320322198909041134', '2016-01-09 14:30:45', '20160109142808', '房贷', '10000', '半年', '16%', '等额本金', '个人消费', '江苏', '考虑他哦里', '考虑他哦里', null, '/uploadFile/客户_20160109142808');
-INSERT INTO `tb_customer_loan` VALUES ('30', 'admin', '123456789123456789', '2016-01-09 14:33:06', '20160107165659', '房贷', '64979764', '一年', '16%', '等额本金', '翼车贷', '浙江', '不知道', '不想说', null, '/uploadFile/张三_20160107165659');
+INSERT INTO `tb_customer_loan` VALUES ('28', '111111', '123456789123456789', '2016-01-09 14:21:43', '20160109142038', '房贷', '1000000000', '一年', '16%', '等额本金', '生意周转', '辽宁', null, null, '不一点', '你在说我去洗', null, '/uploadFile/客户_20160109142038');
+INSERT INTO `tb_customer_loan` VALUES ('29', 'salesman2', '320322198909041134', '2016-01-09 14:30:45', '20160109142808', '房贷', '10000', '半年', '16%', '等额本金', '个人消费', '江苏', null, null, '考虑他哦里', '考虑他哦里', null, '/uploadFile/客户_20160109142808');
+INSERT INTO `tb_customer_loan` VALUES ('30', 'admin', '123456789123456789', '2016-01-09 14:33:06', '20160107165659', '房贷', '64979764', '一年', '16%', '等额本金', '翼车贷', '浙江', null, null, '不知道', '不想说', null, '/uploadFile/张三_20160107165659');
+INSERT INTO `tb_customer_loan` VALUES ('31', 'admin', '963852741963852741', '2016-01-12 10:30:21', '20160107170156', '房贷', '466797', '半年', '16%', '等额本金', '站内周转', '安徽', null, null, '帮你XP', '暗红', null, '/uploadFile/就是_20160107170156');
+INSERT INTO `tb_customer_loan` VALUES ('32', 'salesman2', '320655258588963321', '2016-01-12 11:07:50', '20160112110722', '房贷', '10000', '半年', '16%', '等额本金', '生意周转', '吉林', null, null, '同岁积极', '同岁积极', null, '/uploadFile/测试_20160112110722');
+INSERT INTO `tb_customer_loan` VALUES ('33', 'salesman2', '325322487596851144', '2016-01-12 16:46:54', '20160112164156', '房贷', '10000', '半年', '16%', '等额本金', '教育助学', '江苏', null, null, '解救吾先生', '解救吾先生', null, '/uploadFile/张文斌_20160112164156');
+INSERT INTO `tb_customer_loan` VALUES ('34', 'salesman2', '358555467858564421', '2016-01-12 22:04:49', '20160112220210', '三户联保贷', '200000', '半年', '15%', '等额本金', '生意周转', '江苏', null, null, '哦里呼啦', '路URL考虑吐哈', '4', '/uploadFile/找富贵_20160112220210');
+INSERT INTO `tb_customer_loan` VALUES ('35', 'admin', '330726196507040016', '2016-01-14 11:14:49', '20160114111258', '房贷', '467667', '一年', '16%', '等额本金', '个人消费', '山西', '晋城', '泽州县', 'iOS哦XPXP', '买iOS诺酮', null, '/uploadFile/驴踢_20160114111258');
+INSERT INTO `tb_customer_loan` VALUES ('36', 'salesman2', '320322198909041134', '2016-01-14 12:35:28', '20160114123355', '房贷', '100000', '半年', '16%', '等额本金', '生意周转', '江苏', '徐州', '沛县', '借款单了吗嗯嗯额我', '看1筽挺好的吧我抽中通快递', null, '/uploadFile/张顶飞_20160114123355');
+INSERT INTO `tb_customer_loan` VALUES ('37', 'salesman2', '320322198909041134', '2016-01-14 15:52:01', '20160114154904', '三户联保贷', '10000', '11月', '16%', '等额本金', '生意周转', '内蒙古', '通辽', '开鲁县', '江苏徐州', '江苏徐州', null, '/uploadFile/陆小凤_20160114154904');
+INSERT INTO `tb_customer_loan` VALUES ('38', 'salesman2', '320322198909041134', '2016-01-15 12:11:51', '20160115120915', '房贷', '10000', '半年', '16%', '等额本金', '教育助学', '江苏', '徐州', '沛县', '生意周转箱子上', '教育基金会有的', null, '/uploadFile/龚琳娜_20160115120915');
 
 -- ----------------------------
 -- Table structure for `tb_custom_pic`
@@ -617,7 +727,7 @@ CREATE TABLE `tb_custom_pic` (
   `idCard` varchar(20) NOT NULL COMMENT '客户身份证号码',
   `createTime` varchar(32) DEFAULT NULL COMMENT '保存时间(yyyy-MM-dd HH:mm:ss)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_custom_pic
@@ -641,6 +751,112 @@ INSERT INTO `tb_custom_pic` VALUES ('131', '20160109142859.jpg', '/uploadFile/�
 INSERT INTO `tb_custom_pic` VALUES ('132', '20160109142920.jpg', '/uploadFile/客户_20160109142808/房贷/家访记录/20160109142920.jpg', '3908720', '家访记录', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:24');
 INSERT INTO `tb_custom_pic` VALUES ('133', '20160109142913.jpg', '/uploadFile/客户_20160109142808/房贷/场所照片/20160109142913.jpg', '4367325', '场所照片', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:25');
 INSERT INTO `tb_custom_pic` VALUES ('134', '20160109142927.jpg', '/uploadFile/客户_20160109142808/房贷/房产证明及家访照片/20160109142927.jpg', '4568793', '房产证明及家访照片', '20160109142808', 'salesman3', '320322198909041134', '2016-01-09 14:48:32');
+INSERT INTO `tb_custom_pic` VALUES ('135', '20160111142313.jpg', '/uploadFile/就是_20160107170156/房贷/央行征信报告/20160111142313.jpg', '3205111', '央行征信报告', '20160107170156', 'admin', '963852741963852741', '2016-01-12 10:34:19');
+INSERT INTO `tb_custom_pic` VALUES ('136', '20160112110737.jpg', '/uploadFile/测试_20160112110722/房贷/央行征信报告/20160112110737.jpg', '4811332', '央行征信报告', '20160112110722', 'salesman2', '320655258588963321', '2016-01-12 11:08:45');
+INSERT INTO `tb_custom_pic` VALUES ('137', '20160112110828.jpg', '/uploadFile/测试_20160112110722/房贷/场所照片/20160112110828.jpg', '5304086', '场所照片', '20160112110722', 'salesman2', '320655258588963321', '2016-01-12 11:17:54');
+INSERT INTO `tb_custom_pic` VALUES ('138', '20160112110836.jpg', '/uploadFile/测试_20160112110722/房贷/家访记录/20160112110836.jpg', '5523693', '家访记录', '20160112110722', 'salesman2', '320655258588963321', '2016-01-12 11:18:09');
+INSERT INTO `tb_custom_pic` VALUES ('139', '20160112110844.jpg', '/uploadFile/测试_20160112110722/房贷/房产证明及家访照片/20160112110844.jpg', '5588183', '房产证明及家访照片', '20160112110722', 'salesman2', '320655258588963321', '2016-01-12 11:18:52');
+INSERT INTO `tb_custom_pic` VALUES ('140', '20160112164407.jpg', '/uploadFile/张文斌_20160112164156/房贷/本人身份证/20160112164407.jpg', '5018920', '本人身份证', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:47:44');
+INSERT INTO `tb_custom_pic` VALUES ('141', '20160112164252.jpg', '/uploadFile/张文斌_20160112164156/房贷/亲属身份证/20160112164252.jpg', '4886521', '亲属身份证', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:48:03');
+INSERT INTO `tb_custom_pic` VALUES ('142', '20160112164237.jpg', '/uploadFile/张文斌_20160112164156/房贷/本人身份证/20160112164237.jpg', '5070394', '本人身份证', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:48:03');
+INSERT INTO `tb_custom_pic` VALUES ('143', '20160112164214.jpg', '/uploadFile/张文斌_20160112164156/房贷/央行征信报告/20160112164214.jpg', '5084949', '央行征信报告', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:48:03');
+INSERT INTO `tb_custom_pic` VALUES ('144', '20160112164301.jpg', '/uploadFile/张文斌_20160112164156/房贷/户口本/20160112164301.jpg', '5050462', '户口本', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:48:36');
+INSERT INTO `tb_custom_pic` VALUES ('145', '20160112164317.jpg', '/uploadFile/张文斌_20160112164156/房贷/结婚证/20160112164317.jpg', '5058987', '结婚证', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:48:49');
+INSERT INTO `tb_custom_pic` VALUES ('146', '20160112164336.jpg', '/uploadFile/张文斌_20160112164156/房贷/场所照片/20160112164336.jpg', '5121730', '场所照片', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:49:07');
+INSERT INTO `tb_custom_pic` VALUES ('147', '20160112164325.jpg', '/uploadFile/张文斌_20160112164156/房贷/与直系亲属合影照/20160112164325.jpg', '5047776', '与直系亲属合影照', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:49:11');
+INSERT INTO `tb_custom_pic` VALUES ('148', '20160112164356.jpg', '/uploadFile/张文斌_20160112164156/房贷/房产证明及家访照片/20160112164356.jpg', '5042379', '房产证明及家访照片', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:49:21');
+INSERT INTO `tb_custom_pic` VALUES ('149', '20160112164345.jpg', '/uploadFile/张文斌_20160112164156/房贷/家访记录/20160112164345.jpg', '5024272', '家访记录', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:49:21');
+INSERT INTO `tb_custom_pic` VALUES ('150', '20160112164237.jpg', '/uploadFile/张文斌_20160112164156/房贷/本人身份证/20160112164237.jpg', '5070394', '本人身份证', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:49:42');
+INSERT INTO `tb_custom_pic` VALUES ('151', '112.jpg', '/uploadFile/张文斌_20160112164156/房贷/央行征信报告/112.jpg', '7869', '央行征信报告', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:56:11');
+INSERT INTO `tb_custom_pic` VALUES ('152', '233.jpg', '/uploadFile/张文斌_20160112164156/房贷/央行征信报告/233.jpg', '7689', '央行征信报告', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:56:11');
+INSERT INTO `tb_custom_pic` VALUES ('153', '111.jpg', '/uploadFile/张文斌_20160112164156/房贷/央行征信报告/111.jpg', '8881', '央行征信报告', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:56:11');
+INSERT INTO `tb_custom_pic` VALUES ('154', '123.jpg', '/uploadFile/张文斌_20160112164156/房贷/央行征信报告/123.jpg', '15077', '央行征信报告', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 16:56:11');
+INSERT INTO `tb_custom_pic` VALUES ('155', '112.jpg', '/uploadFile/张文斌_20160112164156/房贷/房产证明及家访照片/112.jpg', '7869', '房产证明及家访照片', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 18:11:14');
+INSERT INTO `tb_custom_pic` VALUES ('156', '456.jpg', '/uploadFile/张文斌_20160112164156/房贷/房产证明及家访照片/456.jpg', '3888', '房产证明及家访照片', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 18:11:14');
+INSERT INTO `tb_custom_pic` VALUES ('157', '123.jpg', '/uploadFile/张文斌_20160112164156/房贷/本人身份证/123.jpg', '15077', '本人身份证', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 18:11:14');
+INSERT INTO `tb_custom_pic` VALUES ('158', '123.jpg', '/uploadFile/张文斌_20160112164156/房贷/场所照片/123.jpg', '15077', '场所照片', '20160112164156', 'salesman2', '325322487596851144', '2016-01-12 19:02:45');
+INSERT INTO `tb_custom_pic` VALUES ('159', '20090711101754-314944703.jpg', '/uploadFile/就是_20160107170156/房贷/户口本/20090711101754-314944703.jpg', '23374', '户口本', '20160107170156', 'admin', '963852741963852741', '2016-01-12 21:52:11');
+INSERT INTO `tb_custom_pic` VALUES ('160', '20160112220249.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/本人身份证/20160112220249.jpg', '3440932', '本人身份证', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:04:54');
+INSERT INTO `tb_custom_pic` VALUES ('161', '20160112220226.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/央行征信报告/20160112220226.jpg', '3394975', '央行征信报告', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:04:54');
+INSERT INTO `tb_custom_pic` VALUES ('162', '20160112220236.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/央行征信报告/20160112220236.jpg', '3403762', '央行征信报告', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:04:58');
+INSERT INTO `tb_custom_pic` VALUES ('163', '20160112220304.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/亲属身份证/20160112220304.jpg', '2975068', '亲属身份证', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:04:58');
+INSERT INTO `tb_custom_pic` VALUES ('164', '20160112220256.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/本人身份证/20160112220256.jpg', '3512290', '本人身份证', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:01');
+INSERT INTO `tb_custom_pic` VALUES ('165', '20160112220312.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/户口本/20160112220312.jpg', '3535686', '户口本', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:05');
+INSERT INTO `tb_custom_pic` VALUES ('166', '20160112220336.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/结婚证/20160112220336.jpg', '2040634', '结婚证', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:05');
+INSERT INTO `tb_custom_pic` VALUES ('167', '20160112220321.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/结婚证/20160112220321.jpg', '3451605', '结婚证', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:05');
+INSERT INTO `tb_custom_pic` VALUES ('168', '20160112220348.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/与直系亲属合影照/20160112220348.jpg', '1993531', '与直系亲属合影照', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:08');
+INSERT INTO `tb_custom_pic` VALUES ('169', '20160112220407.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/家访记录/20160112220407.jpg', '2004331', '家访记录', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:09');
+INSERT INTO `tb_custom_pic` VALUES ('170', '20160112220357.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/场所照片/20160112220357.jpg', '1987877', '场所照片', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:09');
+INSERT INTO `tb_custom_pic` VALUES ('171', '20160112220424.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/担保人材料/20160112220424.jpg', '1975534', '担保人材料', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:13');
+INSERT INTO `tb_custom_pic` VALUES ('172', '20160112220416.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/房产证明及家访照片/20160112220416.jpg', '1974308', '房产证明及家访照片', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:14');
+INSERT INTO `tb_custom_pic` VALUES ('173', '20160112220433.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/担保人材料/20160112220433.jpg', '1895531', '担保人材料', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:14');
+INSERT INTO `tb_custom_pic` VALUES ('174', '20160112220443.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/担保人材料/20160112220443.jpg', '1901105', '担保人材料', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:05:16');
+INSERT INTO `tb_custom_pic` VALUES ('175', '20090711101754-314944703.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/学历证明/20090711101754-314944703.jpg', '23374', '学历证明', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:09:28');
+INSERT INTO `tb_custom_pic` VALUES ('176', '2008319183523380_2.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/购房发票/2008319183523380_2.jpg', '123063', '购房发票', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:09:28');
+INSERT INTO `tb_custom_pic` VALUES ('177', '7411759_164157418126_2.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/学历证明/7411759_164157418126_2.jpg', '51320', '学历证明', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:09:28');
+INSERT INTO `tb_custom_pic` VALUES ('178', '7411759_164157418126_2.jpg', '/uploadFile/找富贵_20160112220210/三户联保贷/车辆保险/7411759_164157418126_2.jpg', '51320', '车辆保险', '20160112220210', 'salesman2', '358555467858564421', '2016-01-12 22:10:10');
+INSERT INTO `tb_custom_pic` VALUES ('179', '20160114111332.jpg', '/uploadFile/驴踢_20160114111258/房贷/本人身份证/20160114111332.jpg', '3039024', '本人身份证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:17:25');
+INSERT INTO `tb_custom_pic` VALUES ('180', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:18:24');
+INSERT INTO `tb_custom_pic` VALUES ('181', '20160114111344.jpg', '/uploadFile/驴踢_20160114111258/房贷/亲属身份证/20160114111344.jpg', '3809145', '亲属身份证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:19:30');
+INSERT INTO `tb_custom_pic` VALUES ('182', '20160114111355.jpg', '/uploadFile/驴踢_20160114111258/房贷/户口本/20160114111355.jpg', '3682030', '户口本', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:20:39');
+INSERT INTO `tb_custom_pic` VALUES ('183', '20160114111404.jpg', '/uploadFile/驴踢_20160114111258/房贷/结婚证/20160114111404.jpg', '2990876', '结婚证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:21:38');
+INSERT INTO `tb_custom_pic` VALUES ('184', '20160114111413.jpg', '/uploadFile/驴踢_20160114111258/房贷/与直系亲属合影照/20160114111413.jpg', '3718197', '与直系亲属合影照', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:23:04');
+INSERT INTO `tb_custom_pic` VALUES ('185', '20160114111422.jpg', '/uploadFile/驴踢_20160114111258/房贷/场所照片/20160114111422.jpg', '3398861', '场所照片', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:24:03');
+INSERT INTO `tb_custom_pic` VALUES ('186', '20160114111430.jpg', '/uploadFile/驴踢_20160114111258/房贷/家访记录/20160114111430.jpg', '5190073', '家访记录', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:27:15');
+INSERT INTO `tb_custom_pic` VALUES ('187', '20160114111440.jpg', '/uploadFile/驴踢_20160114111258/房贷/房产证明及家访照片/20160114111440.jpg', '3724283', '房产证明及家访照片', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:28:25');
+INSERT INTO `tb_custom_pic` VALUES ('188', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:39:44');
+INSERT INTO `tb_custom_pic` VALUES ('189', '20160114111422.jpg', '/uploadFile/驴踢_20160114111258/房贷/场所照片/20160114111422.jpg', '3398861', '场所照片', '20160114111258', 'admin', '330726196507040016', '2016-01-14 11:40:00');
+INSERT INTO `tb_custom_pic` VALUES ('190', '20160114123414.jpg', '/uploadFile/张顶飞_20160114123355/房贷/央行征信报告/20160114123414.jpg', '3450401', '央行征信报告', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:36:24');
+INSERT INTO `tb_custom_pic` VALUES ('191', '20160114123422.jpg', '/uploadFile/张顶飞_20160114123355/房贷/本人身份证/20160114123422.jpg', '4620272', '本人身份证', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:36:48');
+INSERT INTO `tb_custom_pic` VALUES ('192', '20160114123431.jpg', '/uploadFile/张顶飞_20160114123355/房贷/亲属身份证/20160114123431.jpg', '3928615', '亲属身份证', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:36:48');
+INSERT INTO `tb_custom_pic` VALUES ('193', '20160114123439.jpg', '/uploadFile/张顶飞_20160114123355/房贷/户口本/20160114123439.jpg', '4699562', '户口本', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:37:23');
+INSERT INTO `tb_custom_pic` VALUES ('194', '20160114123446.jpg', '/uploadFile/张顶飞_20160114123355/房贷/结婚证/20160114123446.jpg', '4644749', '结婚证', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:37:40');
+INSERT INTO `tb_custom_pic` VALUES ('195', '20160114123454.jpg', '/uploadFile/张顶飞_20160114123355/房贷/与直系亲属合影照/20160114123454.jpg', '4124842', '与直系亲属合影照', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:37:56');
+INSERT INTO `tb_custom_pic` VALUES ('196', '20160114123501.jpg', '/uploadFile/张顶飞_20160114123355/房贷/场所照片/20160114123501.jpg', '4703669', '场所照片', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:38:40');
+INSERT INTO `tb_custom_pic` VALUES ('197', '20160114123526.jpg', '/uploadFile/张顶飞_20160114123355/房贷/房产证明及家访照片/20160114123526.jpg', '3888513', '房产证明及家访照片', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:38:48');
+INSERT INTO `tb_custom_pic` VALUES ('198', '20160114123510.jpg', '/uploadFile/张顶飞_20160114123355/房贷/家访记录/20160114123510.jpg', '4706971', '家访记录', '20160114123355', 'salesman2', '320322198909041134', '2016-01-14 12:38:49');
+INSERT INTO `tb_custom_pic` VALUES ('199', '20160114111413.jpg', '/uploadFile/驴踢_20160114111258/房贷/与直系亲属合影照/20160114111413.jpg', '3718197', '与直系亲属合影照', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:09:30');
+INSERT INTO `tb_custom_pic` VALUES ('200', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:09:33');
+INSERT INTO `tb_custom_pic` VALUES ('201', '20160114111440.jpg', '/uploadFile/驴踢_20160114111258/房贷/房产证明及家访照片/20160114111440.jpg', '3724283', '房产证明及家访照片', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:11:29');
+INSERT INTO `tb_custom_pic` VALUES ('202', '20160114111430.jpg', '/uploadFile/驴踢_20160114111258/房贷/家访记录/20160114111430.jpg', '5190073', '家访记录', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:11:31');
+INSERT INTO `tb_custom_pic` VALUES ('203', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:13:09');
+INSERT INTO `tb_custom_pic` VALUES ('204', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:20:54');
+INSERT INTO `tb_custom_pic` VALUES ('205', '20160114111332.jpg', '/uploadFile/驴踢_20160114111258/房贷/本人身份证/20160114111332.jpg', '3039024', '本人身份证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:22:40');
+INSERT INTO `tb_custom_pic` VALUES ('206', '20160114111355.jpg', '/uploadFile/驴踢_20160114111258/房贷/户口本/20160114111355.jpg', '3682030', '户口本', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:23:43');
+INSERT INTO `tb_custom_pic` VALUES ('207', '20160114111404.jpg', '/uploadFile/驴踢_20160114111258/房贷/结婚证/20160114111404.jpg', '2990876', '结婚证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:25:31');
+INSERT INTO `tb_custom_pic` VALUES ('208', '20160114111413.jpg', '/uploadFile/驴踢_20160114111258/房贷/与直系亲属合影照/20160114111413.jpg', '3718197', '与直系亲属合影照', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:27:18');
+INSERT INTO `tb_custom_pic` VALUES ('209', '20160114111422.jpg', '/uploadFile/驴踢_20160114111258/房贷/场所照片/20160114111422.jpg', '3398861', '场所照片', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:27:49');
+INSERT INTO `tb_custom_pic` VALUES ('210', '20160114111430.jpg', '/uploadFile/驴踢_20160114111258/房贷/家访记录/20160114111430.jpg', '5190073', '家访记录', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:29:28');
+INSERT INTO `tb_custom_pic` VALUES ('211', '20160114111440.jpg', '/uploadFile/驴踢_20160114111258/房贷/房产证明及家访照片/20160114111440.jpg', '3724283', '房产证明及家访照片', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:29:41');
+INSERT INTO `tb_custom_pic` VALUES ('212', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:32:44');
+INSERT INTO `tb_custom_pic` VALUES ('213', '20160114111344.jpg', '/uploadFile/驴踢_20160114111258/房贷/亲属身份证/20160114111344.jpg', '3809145', '亲属身份证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:32:54');
+INSERT INTO `tb_custom_pic` VALUES ('214', '20160114111332.jpg', '/uploadFile/驴踢_20160114111258/房贷/本人身份证/20160114111332.jpg', '3039024', '本人身份证', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:38:32');
+INSERT INTO `tb_custom_pic` VALUES ('215', '20160114111322.jpg', '/uploadFile/驴踢_20160114111258/房贷/央行征信报告/20160114111322.jpg', '3213457', '央行征信报告', '20160114111258', 'admin', '330726196507040016', '2016-01-14 14:38:56');
+INSERT INTO `tb_custom_pic` VALUES ('216', '20160114155200.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/本人身份证/20160114155200.jpg', '2401933', '本人身份证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:52:47');
+INSERT INTO `tb_custom_pic` VALUES ('217', '20160114155004.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/本人身份证/20160114155004.jpg', '2613286', '本人身份证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:52:58');
+INSERT INTO `tb_custom_pic` VALUES ('218', '20160114155028.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/户口本/20160114155028.jpg', '2646554', '户口本', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:54:17');
+INSERT INTO `tb_custom_pic` VALUES ('219', '20160114155016.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/亲属身份证/20160114155016.jpg', '3092793', '亲属身份证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:54:21');
+INSERT INTO `tb_custom_pic` VALUES ('220', '20160114154919.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/央行征信报告/20160114154919.jpg', '4655250', '央行征信报告', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:54:24');
+INSERT INTO `tb_custom_pic` VALUES ('221', '20160114155051.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/结婚证/20160114155051.jpg', '2331327', '结婚证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:54:44');
+INSERT INTO `tb_custom_pic` VALUES ('222', '20160114155103.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/与直系亲属合影照/20160114155103.jpg', '2382419', '与直系亲属合影照', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:54:44');
+INSERT INTO `tb_custom_pic` VALUES ('223', '20160114155114.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/场所照片/20160114155114.jpg', '2471798', '场所照片', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:54:51');
+INSERT INTO `tb_custom_pic` VALUES ('224', '20160114155135.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/房产证明及家访照片/20160114155135.jpg', '2404222', '房产证明及家访照片', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:55:08');
+INSERT INTO `tb_custom_pic` VALUES ('225', '20160114155124.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/家访记录/20160114155124.jpg', '2429282', '家访记录', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:55:11');
+INSERT INTO `tb_custom_pic` VALUES ('226', '20160114155146.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/担保人材料/20160114155146.jpg', '2302272', '担保人材料', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:55:16');
+INSERT INTO `tb_custom_pic` VALUES ('227', '20160114155200.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/本人身份证/20160114155200.jpg', '2401933', '本人身份证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:58:00');
+INSERT INTO `tb_custom_pic` VALUES ('228', '20160114155004.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/本人身份证/20160114155004.jpg', '2613286', '本人身份证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:58:14');
+INSERT INTO `tb_custom_pic` VALUES ('229', '20160114155200.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/本人身份证/20160114155200.jpg', '2401933', '本人身份证', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 15:58:27');
+INSERT INTO `tb_custom_pic` VALUES ('230', '123.jpg', '/uploadFile/陆小凤_20160114154904/三户联保贷/水电煤气费/123.jpg', '15077', '水电煤气费', '20160114154904', 'salesman2', '320322198909041134', '2016-01-14 18:24:38');
+INSERT INTO `tb_custom_pic` VALUES ('231', '20160115121005.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/本人身份证/20160115121005.jpg', '3099532', '本人身份证', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:12:19');
+INSERT INTO `tb_custom_pic` VALUES ('232', '20160115120948.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/央行征信报告/20160115120948.jpg', '5465488', '央行征信报告', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:12:31');
+INSERT INTO `tb_custom_pic` VALUES ('233', '20160115121014.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/亲属身份证/20160115121014.jpg', '3179253', '亲属身份证', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:12:53');
+INSERT INTO `tb_custom_pic` VALUES ('234', '20160115121022.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/户口本/20160115121022.jpg', '4710832', '户口本', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:13:16');
+INSERT INTO `tb_custom_pic` VALUES ('235', '20160115121030.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/结婚证/20160115121030.jpg', '4411974', '结婚证', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:13:47');
+INSERT INTO `tb_custom_pic` VALUES ('236', '20160115121040.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/与直系亲属合影照/20160115121040.jpg', '4019508', '与直系亲属合影照', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:14:00');
+INSERT INTO `tb_custom_pic` VALUES ('237', '20160115121103.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/场所照片/20160115121103.jpg', '3991312', '场所照片', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:14:16');
+INSERT INTO `tb_custom_pic` VALUES ('238', '20160115121143.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/家访记录/20160115121143.jpg', '3815159', '家访记录', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:14:25');
+INSERT INTO `tb_custom_pic` VALUES ('239', '20160115121150.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/房产证明及家访照片/20160115121150.jpg', '3109180', '房产证明及家访照片', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:14:26');
+INSERT INTO `tb_custom_pic` VALUES ('240', '20160115120958.jpg', '/uploadFile/龚琳娜_20160115120915/房贷/本人身份证/20160115120958.jpg', '3123972', '本人身份证', '20160115120915', 'salesman2', '320322198909041134', '2016-01-15 12:16:06');
 
 -- ----------------------------
 -- Table structure for `tb_user_location`
@@ -653,7 +869,7 @@ CREATE TABLE `tb_user_location` (
   `latitude` double(10,4) DEFAULT NULL COMMENT '纬度',
   `locationTime` varchar(32) NOT NULL COMMENT '定位时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_user_location
@@ -679,6 +895,55 @@ INSERT INTO `tb_user_location` VALUES ('168', 'admin', '118.7874', '32.0388', '2
 INSERT INTO `tb_user_location` VALUES ('169', 'admin', '118.7628', '31.9951', '2016-01-09 19:39:55');
 INSERT INTO `tb_user_location` VALUES ('170', 'admin', '118.7628', '31.9951', '2016-01-09 19:41:26');
 INSERT INTO `tb_user_location` VALUES ('171', 'admin', '118.7628', '31.9951', '2016-01-09 19:42:06');
+INSERT INTO `tb_user_location` VALUES ('172', 'admin', '118.7206', '32.1312', '2016-01-12 10:25:19');
+INSERT INTO `tb_user_location` VALUES ('173', 'admin', '118.7202', '32.1316', '2016-01-12 10:30:12');
+INSERT INTO `tb_user_location` VALUES ('174', 'salesman2', '118.7452', '31.9975', '2016-01-12 11:03:46');
+INSERT INTO `tb_user_location` VALUES ('175', 'admin', '118.7208', '32.1316', '2016-01-12 11:31:32');
+INSERT INTO `tb_user_location` VALUES ('176', 'admin', '118.7207', '32.1315', '2016-01-12 11:33:00');
+INSERT INTO `tb_user_location` VALUES ('177', 'admin', '118.7207', '32.1315', '2016-01-12 11:38:53');
+INSERT INTO `tb_user_location` VALUES ('178', 'admin', '118.7207', '32.1315', '2016-01-12 11:39:40');
+INSERT INTO `tb_user_location` VALUES ('179', 'admin', '118.7206', '32.1318', '2016-01-12 13:51:40');
+INSERT INTO `tb_user_location` VALUES ('180', 'admin', '118.7207', '32.1314', '2016-01-12 13:53:30');
+INSERT INTO `tb_user_location` VALUES ('181', 'admin', '118.7208', '32.1316', '2016-01-12 13:59:33');
+INSERT INTO `tb_user_location` VALUES ('182', 'admin', '118.7207', '32.1314', '2016-01-12 15:13:45');
+INSERT INTO `tb_user_location` VALUES ('183', 'salesman2', '118.7446', '31.9970', '2016-01-12 16:36:09');
+INSERT INTO `tb_user_location` VALUES ('184', 'salesman2', '118.7447', '31.9971', '2016-01-12 16:41:28');
+INSERT INTO `tb_user_location` VALUES ('185', 'salesman2', '118.7612', '32.0177', '2016-01-12 21:57:41');
+INSERT INTO `tb_user_location` VALUES ('186', 'admin', '118.7207', '32.1315', '2016-01-13 15:44:20');
+INSERT INTO `tb_user_location` VALUES ('187', 'admin', '118.7207', '32.1315', '2016-01-13 15:46:18');
+INSERT INTO `tb_user_location` VALUES ('188', 'admin', '118.7207', '32.1315', '2016-01-13 15:48:42');
+INSERT INTO `tb_user_location` VALUES ('189', 'admin', '118.7207', '32.1313', '2016-01-13 15:51:15');
+INSERT INTO `tb_user_location` VALUES ('190', 'admin', '118.7207', '32.1318', '2016-01-13 16:04:46');
+INSERT INTO `tb_user_location` VALUES ('191', 'admin', '118.7207', '32.1314', '2016-01-13 17:03:53');
+INSERT INTO `tb_user_location` VALUES ('192', 'admin', '118.7204', '32.1314', '2016-01-13 17:10:05');
+INSERT INTO `tb_user_location` VALUES ('193', 'admin', '118.7204', '32.1314', '2016-01-13 17:12:39');
+INSERT INTO `tb_user_location` VALUES ('194', 'admin', '118.7207', '32.1315', '2016-01-13 17:17:14');
+INSERT INTO `tb_user_location` VALUES ('195', 'admin', '118.7207', '32.1315', '2016-01-13 17:27:15');
+INSERT INTO `tb_user_location` VALUES ('196', 'salesman2', '118.7452', '31.9975', '2016-01-13 18:08:35');
+INSERT INTO `tb_user_location` VALUES ('197', 'admin', null, null, '2016-01-14 09:23:24');
+INSERT INTO `tb_user_location` VALUES ('198', 'admin', '118.7206', '32.1315', '2016-01-14 10:06:26');
+INSERT INTO `tb_user_location` VALUES ('199', 'salesman2', '118.7452', '31.9974', '2016-01-14 10:08:58');
+INSERT INTO `tb_user_location` VALUES ('200', 'admin', '118.7206', '32.1315', '2016-01-14 10:15:00');
+INSERT INTO `tb_user_location` VALUES ('201', 'admin', '118.7206', '32.1314', '2016-01-14 10:28:57');
+INSERT INTO `tb_user_location` VALUES ('202', 'admin', '118.7207', '32.1315', '2016-01-14 11:02:06');
+INSERT INTO `tb_user_location` VALUES ('203', 'admin', '118.7207', '32.1315', '2016-01-14 11:14:56');
+INSERT INTO `tb_user_location` VALUES ('204', 'salesman2', '118.7453', '31.9975', '2016-01-14 12:23:44');
+INSERT INTO `tb_user_location` VALUES ('205', 'salesman2', '118.7453', '31.9975', '2016-01-14 12:27:06');
+INSERT INTO `tb_user_location` VALUES ('206', 'salesman2', '118.7453', '31.9975', '2016-01-14 12:29:25');
+INSERT INTO `tb_user_location` VALUES ('207', 'admin', '118.7206', '32.1315', '2016-01-14 14:06:43');
+INSERT INTO `tb_user_location` VALUES ('208', 'admin', '118.7208', '32.1316', '2016-01-14 14:17:13');
+INSERT INTO `tb_user_location` VALUES ('209', 'admin', '118.7206', '32.1315', '2016-01-14 14:17:51');
+INSERT INTO `tb_user_location` VALUES ('210', 'admin', '118.7206', '32.1315', '2016-01-14 14:33:48');
+INSERT INTO `tb_user_location` VALUES ('211', 'salesman2', '118.7453', '31.9975', '2016-01-14 15:13:14');
+INSERT INTO `tb_user_location` VALUES ('212', 'salesman2', '118.7452', '31.9974', '2016-01-14 15:16:40');
+INSERT INTO `tb_user_location` VALUES ('213', 'salesman2', '118.7452', '31.9974', '2016-01-14 15:35:21');
+INSERT INTO `tb_user_location` VALUES ('214', 'salesman2', '118.7452', '31.9974', '2016-01-14 16:08:48');
+INSERT INTO `tb_user_location` VALUES ('215', 'salesman2', '118.7452', '31.9975', '2016-01-14 16:13:00');
+INSERT INTO `tb_user_location` VALUES ('216', 'admin', null, null, '2016-01-15 11:02:38');
+INSERT INTO `tb_user_location` VALUES ('217', 'salesman2', '118.7452', '31.9974', '2016-01-15 11:22:50');
+INSERT INTO `tb_user_location` VALUES ('218', 'salesman2', '118.7453', '31.9976', '2016-01-15 11:29:31');
+INSERT INTO `tb_user_location` VALUES ('219', 'salesman2', '118.7452', '31.9974', '2016-01-15 11:43:33');
+INSERT INTO `tb_user_location` VALUES ('220', 'salesman2', '0.0000', '0.0000', '2016-01-15 12:06:55');
 
 -- ----------------------------
 -- Table structure for `tb_user_relation`
