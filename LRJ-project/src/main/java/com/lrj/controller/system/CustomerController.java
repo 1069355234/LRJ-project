@@ -560,10 +560,10 @@ public class CustomerController extends BaseController {
 		basicN.putAll(contactN);
 		basicN.putAll(creditN);
 
-		String idCard = basicN.get("idCard").toString();
-		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist(
-				"idCard", idCard, CustomerBasicFormMap.class);
-		if (null == customerBasicFormMap) {
+//		String idCard = basicN.get("idCard").toString();
+//		CustomerBasicFormMap customerBasicFormMap = customerMapper.findbyFrist(
+//				"idCard", idCard, CustomerBasicFormMap.class);
+//		if (null == customerBasicFormMap) {
 			basicN.put("createTime", time);
 			basicN.put("updateTime", time);
 			try {
@@ -576,23 +576,23 @@ public class CustomerController extends BaseController {
 				e.printStackTrace();
 				return false;
 			}
-		} else {
-			int id = Integer
-					.parseInt(customerBasicFormMap.get("id").toString());
-			basicN.put("updateTime", time);
-			basicN.put("id", id);
-
-			try {
-				CustomerBasicFormMap cbf = new CustomerBasicFormMap();
-				for (Map.Entry<String, Object> entry : basicN.entrySet()) {
-					cbf.put(entry.getKey(), entry.getValue());
-				}
-				customerMapper.editEntity(cbf);
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
-			}
-		}
+//		} else {
+//			int id = Integer
+//					.parseInt(customerBasicFormMap.get("id").toString());
+//			basicN.put("updateTime", time);
+//			basicN.put("id", id);
+//
+//			try {
+//				CustomerBasicFormMap cbf = new CustomerBasicFormMap();
+//				for (Map.Entry<String, Object> entry : basicN.entrySet()) {
+//					cbf.put(entry.getKey(), entry.getValue());
+//				}
+//				customerMapper.editEntity(cbf);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				return false;
+//			}
+//		}
 
 		String name = basicN.get("name").toString();
 		String applyloanKey = loanN.get("applyloanKey").toString();

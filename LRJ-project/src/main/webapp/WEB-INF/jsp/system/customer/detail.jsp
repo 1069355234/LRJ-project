@@ -379,7 +379,7 @@ function exportPic(){
 		<c:forEach varStatus="j" var="pic" items="${item.value }">
 			<c:if test="${j.index == 0 }">
 				<div class="image">
-					<a rel="gallery${i.index }" title="${pic.filename }" href="${pageContext.request.contextPath}${pic.filepath}"><img
+					<a rel="gallery${i.index }" title="${item.key }" href="${pageContext.request.contextPath}${pic.filepath}"><img
 						src="${pageContext.request.contextPath}${pic.filepath}" width="148px;" height="140px;"></a>
 					<div class="caption">
 						<span title="${item.key}">
@@ -397,7 +397,7 @@ function exportPic(){
 			</c:if>
 			<c:if test="${j.index != 0 }">
 				<div class="image" style="display:none;">
-					<a rel="gallery${i.index }" title="${pic.filename }" href="${pageContext.request.contextPath}${pic.filepath}"><img
+					<a rel="gallery${i.index }" title="${item.key}" href="${pageContext.request.contextPath}${pic.filepath}"><img
 						src="${pageContext.request.contextPath}${pic.filepath}" width="148px;" height="140px;"></a>
 					<div class="caption">
 						<span title="${item.key}">

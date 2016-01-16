@@ -20,6 +20,10 @@ $(function() {
 			name : "客户名",
 			isSort:true,
 		}, {
+			colkey : "idCard",
+			name : "客户身份证号",
+			isSort:true,
+		}, {
 			colkey : "salesman",
 			name : "所属业务员",
 			isSort:true,

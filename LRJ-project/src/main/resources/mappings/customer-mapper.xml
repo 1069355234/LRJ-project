@@ -15,6 +15,9 @@
 		<if test="name != null and name != ''">
 			and b.name like '%${name}%'
 		</if>
+		<if test="idCard != null and idCard != ''">
+			and a.idCard = '${idCard}'
+		</if>
 		<if test="salesman != null and salesman != ''">
 			and a.salesman like '%${salesman}%'
 		</if>

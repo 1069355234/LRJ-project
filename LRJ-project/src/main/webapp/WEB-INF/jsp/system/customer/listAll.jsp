@@ -13,6 +13,11 @@
 					name="customerLoanFormMap.name">
 
 				<label class="control-label"> <span
+					class="h6 font-thin v-middle">客户身份证号码:</span></label> <input
+					class="input-medium ui-autocomplete-input" placeholder="请输入客户身份证号码" id=""
+					name="customerLoanFormMap.idCard">
+
+				<label class="control-label"> <span
 					class="h6 font-thin v-middle">所属业务员:</span></label>
 					<select name="customerLoanFormMap.salesman">
 						<option value="">全部</option>
