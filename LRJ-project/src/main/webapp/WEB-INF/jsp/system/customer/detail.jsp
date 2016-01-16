@@ -255,13 +255,13 @@ function exportPic(){
 	<tr>
 		<td class="small-title">所属业务员</td>
 		<td>${customerLoan.salesman }</td>
-		<c:if test="${null == customerLoan.applloanlbrs }">
+		<c:if test="${null == customerLoan.applyloanlbrs || '' == customerLoan.applyloanlbrs}">
 			<td class="small-title">描述信息</td>
 			<td colspan="3">${customerLoan.applyloanMsxx }</td>
 		</c:if>
-		<c:if test="${null != customerLoan.applloanlbrs }">
+		<c:if test="${null != customerLoan.applyloanlbrs && '' != customerLoan.applyloanlbrs}">
 			<td class="small-title">联保人数</td>
-			<td>${customerLoan.applloanlbrs }</td>
+			<td>${customerLoan.applyloanlbrs }</td>
 			<td class="small-title">描述信息</td>
 			<td>${customerLoan.applyloanMsxx }</td>
 		</c:if>
