@@ -147,8 +147,14 @@ function addTable(){
 }
 
 function exportPic(){
+	var picInfosLen = $(".image").length;
+	if(picInfosLen == 0){
+		layer.alert("暂无图片资料！！");
+		return ;
+	}
 	var applyloanKey = $("#applyloanKey").text();
-	window.location.href = "${pageContext.request.contextPath}/customer/exportAll.shtml?applyloanKey="+applyloanKey;
+	//window.location.href = "${pageContext.request.contextPath}/customer/exportAll.shtml?applyloanKey="+applyloanKey;
+	window.open("${pageContext.request.contextPath}/customer/exportAll.shtml?applyloanKey="+applyloanKey);
 }
 
 </script>
@@ -372,7 +378,7 @@ function exportPic(){
 <span class="addPic"><a class="pointer" href="javascript:void(0)" onclick="exportPic()">导出图片</a></span>
 <div>
 	<c:if test="${customerPics.size() == 0 }">
-		<span style="color:#FFD700;display: inline-block;text-align: center;width: 100%">暂无图片资料信息</span>
+		<span style="color:#FF0000;display: inline-block;text-align: center;width: 100%">暂无图片资料信息</span>
 	</c:if>
 
 	<c:forEach var="item" items="${customerPics}" varStatus="i">

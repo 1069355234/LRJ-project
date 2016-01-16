@@ -86,10 +86,18 @@ public class DownloadUtils {
 			toClient.write(buffer);
 			toClient.flush();
 			toClient.close();
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		} catch (Exception ex) {
+			logger.error("下载文件异常，原因："+ex.getMessage());
+			try {
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().write("<script>alert('No files to download !');</script>");
+				response.getWriter().close();
+			} catch (IOException e) {
+				logger.error("下载文件异常，原因："+e.getMessage());
+			}
 		} finally {
-			file.delete();
+			if(null != file)
+				file.delete();
 		}
 		return response;
 	}
