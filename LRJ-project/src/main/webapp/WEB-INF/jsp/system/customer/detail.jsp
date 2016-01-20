@@ -176,14 +176,14 @@ function exportPic(){
 	}
 	.big-title{
 		text-align:left;
-		background-color: #808000;
+		background-color: #858585;
 		color:#fff;
 		font-size:16px;
 		font-family: '黑体';
 	}
 	.small-title{
 		text-align:center;
-		background-color: #F5DEB3;
+		background-color: #C7C7C7;
 	}
 	.link{
 		text-align:center;

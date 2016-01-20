@@ -42,7 +42,7 @@ $(function() {
 			colkey : "applyloanKey",
 			name : "操作",
 			renderData : function(rowindex,data, rowdata, column) {
-				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='' style='color:blue'>审核</a>";
+				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>";
 			}
 		}],
 		jsonUrl : rootPath + '/customer/findByPage.shtml?flag=byRole',
@@ -64,6 +64,10 @@ $(function() {
 	$("#chooseExport").click("click", function() {
 		chooseExport();
 	});
+	
+	$("#audit").click("click", function() {
+		audit();
+	});
 
 });
 
@@ -74,6 +78,19 @@ function detail(data){
 	var tb = $("#loadhtml");
 	tb.html(CommnUtil.loadingImg());
 	tb.load(rootPath+"/customer/detail.shtml",{"applyloanKey":data});
+}
+
+function audit(){
+	var cbox = grid.getSelectedCheckbox();
+	if (cbox.length > 1 || cbox == "") {
+		layer.msg("请选择一个！");
+		return;
+	}
+	var li = $("<li>><a href='javascript:void(0)'>审核</a></li>");
+	$("#topli").append(li);
+	var tb = $("#loadhtml");
+	tb.html(CommnUtil.loadingImg());
+	tb.load(rootPath+"/customer/audit.shtml?loanId="+cbox);
 }
 
 //此方法无用了

@@ -42,7 +42,7 @@ $(function() {
 			colkey : "applyloanKey",
 			name : "操作",
 			renderData : function(rowindex,data, rowdata, column) {
-				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>&nbsp;|&nbsp;<a href='javascript:void(0)' onclick='' style='color:blue'>审核</a>";
+				return "<a href='javascript:void(0)' onclick='detail(\""+data+"\")' style='color:blue'>详细信息</a>";
 			}
 		}],
 		jsonUrl : rootPath + '/customer/findByPage.shtml?flag=byAssign',
@@ -64,7 +64,11 @@ $(function() {
 	$("#chooseExport").click("click", function() {
 		chooseExport();
 	});
-
+	
+	/*$("#audit").click("click", function() {
+		audit();
+	});
+*/
 });
 
 
@@ -75,6 +79,8 @@ function detail(data){
 	tb.html(CommnUtil.loadingImg());
 	tb.load(rootPath+"/customer/detail.shtml",{"applyloanKey":data});
 }
+
+
 
 //此方法无用了
 function piclist(data){

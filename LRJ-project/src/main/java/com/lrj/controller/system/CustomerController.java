@@ -35,12 +35,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lrj.annotation.SystemLog;
 import com.lrj.controller.index.BaseController;
+import com.lrj.entity.AuditFormMap;
 import com.lrj.entity.CustomerBasicFormMap;
 import com.lrj.entity.CustomerLoanFormMap;
 import com.lrj.entity.CustomerPicFormMap;
 import com.lrj.entity.RoleFormMap;
 import com.lrj.entity.UserFormMap;
 import com.lrj.entity.UserRoleFormMap;
+import com.lrj.mapper.AuditMapper;
 import com.lrj.mapper.CustomerMapper;
 import com.lrj.mapper.RoleMapper;
 import com.lrj.mapper.UserMapper;
@@ -73,6 +75,9 @@ public class CustomerController extends BaseController {
 
 	@Inject
 	private RoleMapper roleMapper;
+	
+	@Inject
+	private AuditMapper auditMapper;
 
 	//所有本级和下级员工的客户信息
 	@RequestMapping("list")
@@ -258,6 +263,23 @@ public class CustomerController extends BaseController {
 		picList(model,applyloanKey);
 
 		return Common.BACKGROUND_PATH + "/system/customer/detail";
+	}
+	
+	/**
+	 * 审核
+	 * @param model
+	 * @param loanId
+	 * @return
+	 */
+	@RequestMapping("audit")
+	public String audit(Model model, String loanId) {
+		AuditFormMap auditFormMap = new AuditFormMap();
+		auditFormMap.put("loanId", loanId);
+		
+		List<AuditFormMap> audits = auditMapper.findByNames(auditFormMap);
+		
+		model.addAttribute("audits", audits);
+		return Common.BACKGROUND_PATH + "/system/customer/audit";
 	}
 
 	private String getPhoneInfo(String idCard,String phoneNumber){
